@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Retail Banking | AKQA</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --font-heading: 'Cormorant Garamond', Georgia, serif;
+    --font-ui: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+    --akqa-black: #121212;
+    --akqa-white: #FFFFFF;
+    --akqa-off-white: #F5F5F5;
+    --akqa-gray-dark: #222222;
+    --akqa-gray-body: #414141;
+    --akqa-gray-muted: #BFBFBF;
+    --akqa-gray-light: #E5E5E5;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: var(--font-heading); font-size: 16px; line-height: 1.625;
+    color: var(--akqa-gray-body); background: var(--akqa-white);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 24px 80px; background: #000000; transition: background 0.3s ease;
+  }
+  nav.scrolled { background: rgba(0,0,0,0.95); }
+  .nav-logo {
+    font-family: var(--font-heading); font-size: 22px;
+    color: var(--akqa-off-white); text-decoration: none; letter-spacing: -0.02em;
+  }
+  .nav-links { display: flex; gap: 40px; list-style: none; }
+  .nav-links a {
+    font-family: var(--font-ui); font-size: 13px; color: var(--akqa-gray-muted);
+    text-decoration: none; letter-spacing: 0.02em; transition: color 0.2s ease;
+  }
+  .nav-links a:hover { color: var(--akqa-off-white); }
+
+  /* MODE TOGGLE */
+  .mode-toggle { display: flex; gap: 16px; align-items: center; }
+  .mode-toggle a {
+    font-family: var(--font-ui); font-size: 12px;
+    text-decoration: none; color: var(--akqa-gray-muted);
+    display: flex; align-items: center; gap: 6px;
+    transition: color 0.2s ease;
+  }
+  .mode-toggle a:hover { color: var(--akqa-off-white); }
+  .mode-toggle a.active { color: var(--akqa-off-white); }
+  .mode-dot {
+    width: 7px; height: 7px; border-radius: 50%;
+    border: 1.5px solid currentColor; display: inline-block;
+  }
+  .mode-toggle a.active .mode-dot { background: currentColor; }
+
+  /* HERO */
+  .hero {
+    background: #000000; padding: 200px 80px 120px; min-height: 80vh;
+    display: flex; flex-direction: column; justify-content: flex-end;
+  }
+  .hero-breadcrumb {
+    font-family: var(--font-ui); font-size: 12px; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--akqa-gray-muted); margin-bottom: 40px;
+  }
+  .hero-breadcrumb a {
+    color: var(--akqa-gray-muted); text-decoration: none; transition: color 0.2s ease;
+  }
+  .hero-breadcrumb a:hover { color: var(--akqa-off-white); }
+  .hero-breadcrumb span { margin: 0 12px; }
+  .hero-title {
+    font-family: var(--font-heading); font-size: 72px; font-weight: 400;
+    color: var(--akqa-off-white); letter-spacing: -0.03em; line-height: 1.0;
+    max-width: 900px; margin-bottom: 32px;
+  }
+  .hero-title .x-mark { color: var(--akqa-gray-muted); }
+  .hero p {
+    font-family: var(--font-heading); font-size: 20px;
+    color: var(--akqa-gray-muted); max-width: 640px; line-height: 1.6;
+  }
+  .hero-divider { width: 120px; height: 1px; background: var(--akqa-gray-muted); margin: 48px 0 0; }
+
+  /* STATS ROW */
+  .stats-section {
+    padding: 100px 80px; background: var(--akqa-white);
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 48px;
+    border-bottom: 1px solid var(--akqa-gray-light);
+  }
+  .stat {}
+  .stat-value {
+    font-family: var(--font-heading); font-size: 56px; font-weight: 400;
+    color: var(--akqa-black); letter-spacing: -0.03em; line-height: 1.0; margin-bottom: 8px;
+  }
+  .stat-label {
+    font-family: var(--font-ui); font-size: 13px; color: var(--akqa-gray-body);
+    line-height: 1.5; max-width: 200px;
+  }
+
+  /* ABOUT / NARRATIVE */
+  .narrative-section {
+    padding: 120px 80px; background: var(--akqa-white);
+  }
+  .narrative-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 80px;
+  }
+  .narrative-label {
+    font-family: var(--font-ui); font-size: 12px; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--akqa-gray-body); margin-bottom: 32px;
+  }
+  .narrative-title {
+    font-family: var(--font-heading); font-size: 40px; font-weight: 400;
+    color: var(--akqa-black); letter-spacing: -0.02em; line-height: 1.15;
+  }
+  .narrative-body {
+    font-family: var(--font-heading); font-size: 18px; color: var(--akqa-gray-body);
+    line-height: 1.7;
+  }
+  .narrative-body p { margin-bottom: 24px; }
+  .narrative-body p:last-child { margin-bottom: 0; }
+
+  /* HOW IT WORKS — 3 NUMBERED STEPS */
+  .steps-section {
+    padding: 120px 80px; background: #000000;
+  }
+  .steps-label {
+    font-family: var(--font-ui); font-size: 12px; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--akqa-gray-muted); margin-bottom: 64px;
+    padding-bottom: 16px; border-bottom: 1px solid var(--akqa-gray-dark);
+  }
+  .steps-grid {
+    display: flex; gap: 2px; overflow-x: auto; scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch; padding-bottom: 24px;
+    scrollbar-width: thin; scrollbar-color: var(--akqa-gray-dark) transparent;
+  }
+  .steps-grid::-webkit-scrollbar { height: 4px; }
+  .steps-grid::-webkit-scrollbar-track { background: transparent; }
+  .steps-grid::-webkit-scrollbar-thumb { background: var(--akqa-gray-dark); }
+  .step {
+    flex: 0 0 380px; scroll-snap-align: start;
+    background: var(--akqa-gray-dark); padding: 56px 48px; min-height: 360px;
+    display: flex; flex-direction: column;
+  }
+  .step-number {
+    font-family: var(--font-ui); font-size: 12px; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--akqa-gray-muted); margin-bottom: 40px;
+  }
+  .step-title {
+    font-family: var(--font-heading); font-size: 28px; font-weight: 400;
+    color: var(--akqa-off-white); letter-spacing: -0.02em; line-height: 1.15;
+    margin-bottom: 20px; margin-top: auto;
+  }
+  .step-desc {
+    font-family: var(--font-ui); font-size: 13px; color: var(--akqa-gray-muted);
+    line-height: 1.6; max-width: 340px;
+  }
+
+  /* CAPABILITIES */
+  .cap-section { padding: 120px 80px; }
+  .cap-dark { background: var(--akqa-gray-dark); }
+  .cap-light { background: var(--akqa-white); }
+  .cap-alt { background: var(--akqa-off-white); }
+
+  .cap-header {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 80px; margin-bottom: 80px;
+  }
+  .cap-number {
+    font-family: var(--font-ui); font-size: 12px; letter-spacing: 0.15em;
+    text-transform: uppercase; margin-bottom: 24px;
+  }
+  .cap-dark .cap-number { color: var(--akqa-gray-muted); }
+  .cap-light .cap-number, .cap-alt .cap-number { color: var(--akqa-gray-body); }
+  .cap-title {
+    font-family: var(--font-heading); font-size: 44px; font-weight: 400;
+    letter-spacing: -0.02em; line-height: 1.1; margin-bottom: 24px;
+  }
+  .cap-dark .cap-title { color: var(--akqa-off-white); }
+  .cap-light .cap-title, .cap-alt .cap-title { color: var(--akqa-black); }
+  .cap-subtitle {
+    font-family: var(--font-heading); font-size: 18px; line-height: 1.6;
+  }
+  .cap-dark .cap-subtitle { color: var(--akqa-gray-muted); }
+  .cap-light .cap-subtitle, .cap-alt .cap-subtitle { color: var(--akqa-gray-body); }
+  .cap-header-right {
+    display: flex; flex-direction: column; justify-content: flex-end;
+  }
+  .cap-body {
+    font-family: var(--font-heading); font-size: 17px; line-height: 1.7;
+  }
+  .cap-dark .cap-body { color: var(--akqa-gray-muted); }
+  .cap-light .cap-body, .cap-alt .cap-body { color: var(--akqa-gray-body); }
+
+  .section-divider { width: 80px; height: 1px; margin-bottom: 48px; }
+  .cap-dark .section-divider { background: var(--akqa-gray-muted); }
+  .cap-light .section-divider, .cap-alt .section-divider { background: var(--akqa-gray-light); }
+
+  /* USE CASE GRID */
+  .use-cases {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px;
+  }
+  .use-case {
+    padding: 48px 40px; min-height: 240px;
+    display: flex; flex-direction: column; justify-content: flex-end;
+  }
+  .cap-dark .use-case { background: #2a2a2a; }
+  .cap-light .use-case { background: var(--akqa-off-white); }
+  .cap-alt .use-case { background: var(--akqa-white); }
+  .use-case-label {
+    font-family: var(--font-ui); font-size: 11px; letter-spacing: 0.1em;
+    text-transform: uppercase; margin-bottom: 16px;
+  }
+  .cap-dark .use-case-label { color: var(--akqa-gray-muted); }
+  .cap-light .use-case-label, .cap-alt .use-case-label { color: var(--akqa-gray-body); }
+  .use-case-title {
+    font-family: var(--font-heading); font-size: 22px; font-weight: 400;
+    letter-spacing: -0.01em; line-height: 1.2; margin-bottom: 12px;
+  }
+  .cap-dark .use-case-title { color: var(--akqa-off-white); }
+  .cap-light .use-case-title, .cap-alt .use-case-title { color: var(--akqa-black); }
+  .use-case-desc {
+    font-family: var(--font-ui); font-size: 13px; line-height: 1.6; max-width: 320px;
+  }
+  .cap-dark .use-case-desc { color: var(--akqa-gray-muted); }
+  .cap-light .use-case-desc, .cap-alt .use-case-desc { color: var(--akqa-gray-body); }
+
+  /* CLIENT LOGOS */
+  .clients-section { padding: 100px 80px; background: var(--akqa-off-white); }
+  .clients-label {
+    font-family: var(--font-ui); font-size: 12px; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--akqa-gray-body); margin-bottom: 56px;
+    padding-bottom: 16px; border-bottom: 1px solid var(--akqa-gray-light);
+  }
+  .clients-grid {
+    display: flex; flex-wrap: wrap; gap: 0; justify-content: flex-start;
+  }
+  .client-logo {
+    flex: 0 0 25%; display: flex; align-items: center; justify-content: center;
+    padding: 40px 32px; border: 0.5px solid var(--akqa-gray-light);
+    margin: -0.5px;
+  }
+  .client-logo span {
+    font-family: var(--font-heading); font-size: 22px; font-weight: 400;
+    color: var(--akqa-black); letter-spacing: -0.01em;
+    opacity: 0.7; transition: opacity 0.3s ease;
+  }
+  .client-logo:hover span { opacity: 1; }
+
+  /* TECH STACK */
+  .tech-section { padding: 80px 80px; background: #000000; }
+  .tech-label {
+    font-family: var(--font-ui); font-size: 12px; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--akqa-gray-muted); margin-bottom: 48px;
+    padding-bottom: 16px; border-bottom: 1px solid var(--akqa-gray-dark);
+  }
+  .tech-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 48px;
+  }
+  .tech-group-title {
+    font-family: var(--font-ui); font-size: 11px; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--akqa-gray-muted); margin-bottom: 20px;
+  }
+  .tech-item {
+    font-family: var(--font-heading); font-size: 18px; color: var(--akqa-off-white);
+    line-height: 2.0;
+  }
+
+  /* MEASURED IMPACT */
+  .impact-section { padding: 120px 80px; background: var(--akqa-off-white); }
+  .impact-label {
+    font-family: var(--font-ui); font-size: 12px; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--akqa-gray-body); margin-bottom: 64px;
+    padding-bottom: 16px; border-bottom: 1px solid var(--akqa-gray-light);
+  }
+  .impact-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 48px;
+  }
+  .impact-value {
+    font-family: var(--font-heading); font-size: 56px; font-weight: 400;
+    color: var(--akqa-black); letter-spacing: -0.03em; line-height: 1.0; margin-bottom: 8px;
+  }
+  .impact-label-text {
+    font-family: var(--font-ui); font-size: 13px; color: var(--akqa-gray-body);
+    line-height: 1.5; max-width: 220px;
+  }
+
+  /* INSIGHTS — horizontal scroll */
+  .insights-section { padding: 120px 80px 120px; background: var(--akqa-off-white); }
+  .insights-label {
+    font-family: var(--font-ui); font-size: 12px; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--akqa-gray-body); margin-bottom: 64px;
+    padding-bottom: 16px; border-bottom: 1px solid var(--akqa-gray-light);
+  }
+  .insights-track {
+    display: flex; gap: 2px; overflow-x: auto; scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch; padding-bottom: 24px;
+    scrollbar-width: thin; scrollbar-color: var(--akqa-gray-light) transparent;
+  }
+  .insights-track::-webkit-scrollbar { height: 4px; }
+  .insights-track::-webkit-scrollbar-track { background: transparent; }
+  .insights-track::-webkit-scrollbar-thumb { background: var(--akqa-gray-light); }
+  .insight-card {
+    flex: 0 0 380px; scroll-snap-align: start;
+    background: var(--akqa-white); padding: 48px 40px; min-height: 320px;
+    display: flex; flex-direction: column; justify-content: space-between;
+  }
+  .insight-tag {
+    font-family: var(--font-ui); font-size: 11px; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--akqa-gray-body); margin-bottom: 24px;
+  }
+  .insight-title {
+    font-family: var(--font-heading); font-size: 24px; font-weight: 400;
+    color: var(--akqa-black); letter-spacing: -0.02em; line-height: 1.2;
+    margin-bottom: 16px;
+  }
+  .insight-body {
+    font-family: var(--font-ui); font-size: 13px; color: var(--akqa-gray-body);
+    line-height: 1.65; flex-grow: 1;
+  }
+  .insight-meta {
+    font-family: var(--font-ui); font-size: 11px; color: var(--akqa-gray-muted);
+    letter-spacing: 0.05em; margin-top: 24px; padding-top: 16px;
+    border-top: 1px solid var(--akqa-gray-light);
+  }
+
+  /* CASE STUDIES */
+  .cases-section { padding: 120px 80px; background: var(--akqa-white); }
+  .cases-label {
+    font-family: var(--font-ui); font-size: 12px; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--akqa-gray-body); margin-bottom: 64px;
+    padding-bottom: 16px; border-bottom: 1px solid var(--akqa-gray-light);
+  }
+  .cases-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px;
+  }
+  .case-card {
+    background: var(--akqa-off-white); padding: 56px 48px; min-height: 420px;
+    display: flex; flex-direction: column; justify-content: flex-end;
+    position: relative; transition: background 0.3s ease;
+  }
+  .case-card:hover { background: var(--akqa-gray-light); }
+  .case-client {
+    font-family: var(--font-ui); font-size: 11px; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--akqa-gray-body); margin-bottom: 20px;
+  }
+  .case-title {
+    font-family: var(--font-heading); font-size: 32px; font-weight: 400;
+    color: var(--akqa-black); letter-spacing: -0.02em; line-height: 1.15;
+    margin-bottom: 16px;
+  }
+  .case-desc {
+    font-family: var(--font-ui); font-size: 13px; color: var(--akqa-gray-body);
+    line-height: 1.65; margin-bottom: 24px; max-width: 340px;
+  }
+  .case-stats {
+    display: flex; gap: 32px; padding-top: 20px; border-top: 1px solid var(--akqa-gray-light);
+  }
+  .case-stat-value {
+    font-family: var(--font-heading); font-size: 28px; font-weight: 400;
+    color: var(--akqa-black); letter-spacing: -0.02em; line-height: 1.0;
+  }
+  .case-stat-label {
+    font-family: var(--font-ui); font-size: 11px; color: var(--akqa-gray-body);
+    line-height: 1.4; margin-top: 4px;
+  }
+
+  /* CTA */
+  .cta-section {
+    padding: 120px 80px; background: #000000;
+    display: flex; flex-direction: column; align-items: flex-start;
+  }
+  .cta-title {
+    font-family: var(--font-heading); font-size: 44px; font-weight: 400;
+    color: var(--akqa-off-white); letter-spacing: -0.02em; line-height: 1.1;
+    max-width: 600px; margin-bottom: 40px;
+  }
+  .cta-link {
+    font-family: var(--font-ui); font-size: 14px; color: var(--akqa-off-white);
+    text-decoration: none; padding-bottom: 4px;
+    border-bottom: 1px solid var(--akqa-off-white); transition: all 0.2s ease;
+  }
+  .cta-link:hover { color: var(--akqa-gray-muted); border-bottom-color: var(--akqa-gray-muted); }
+
+  /* FOOTER */
+  footer {
+    padding: 64px 80px; background: #000000;
+    display: flex; justify-content: space-between; align-items: center;
+    border-top: 1px solid var(--akqa-gray-dark);
+  }
+  .footer-logo { font-family: var(--font-heading); font-size: 22px; color: var(--akqa-off-white); text-decoration: none; }
+  .footer-text { font-family: var(--font-ui); font-size: 12px; color: var(--akqa-gray-muted); }
+
+  /* RESPONSIVE */
+  @media (max-width: 1024px) {
+    nav, .hero, .narrative-section, .steps-section, .cap-section, .clients-section, .tech-section, .impact-section, .insights-section, .cases-section, .cta-section, footer {
+      padding-left: 40px; padding-right: 40px;
+    }
+    .client-logo { flex: 0 0 25%; }
+    .stats-section { padding-left: 40px; padding-right: 40px; grid-template-columns: repeat(2, 1fr); }
+    .hero-title { font-size: 52px; }
+    .narrative-grid, .cap-header { grid-template-columns: 1fr; gap: 40px; }
+    .use-cases { grid-template-columns: repeat(2, 1fr); }
+    .tech-grid, .impact-grid { grid-template-columns: repeat(2, 1fr); }
+    .cases-grid { grid-template-columns: repeat(2, 1fr); }
+    .insight-card { flex: 0 0 320px; }
+  }
+  @media (max-width: 640px) {
+    nav { padding: 20px 24px; }
+    .hero, .narrative-section, .steps-section, .cap-section, .clients-section, .tech-section, .impact-section, .insights-section, .cases-section, .cta-section, footer {
+      padding-left: 24px; padding-right: 24px;
+    }
+    .client-logo { flex: 0 0 50%; }
+    .stats-section { padding-left: 24px; padding-right: 24px; }
+    .hero-title { font-size: 36px; }
+    .stat-value { font-size: 40px; }
+    .use-cases { grid-template-columns: 1fr; }
+    .step { flex: 0 0 280px; }
+    .tech-grid { grid-template-columns: 1fr; }
+    .impact-grid { grid-template-columns: repeat(2, 1fr); }
+    .cases-grid { grid-template-columns: 1fr; }
+    .insight-card { flex: 0 0 280px; }
+    .nav-links { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a class="nav-logo" href="akqa-ai-product-library.html">AKQA</a>
+  <ul class="nav-links">
+    <li><a href="akqa-ai-product-library.html">All capabilities</a></li>
+    <li><a href="#approach">Approach</a></li>
+    <li><a href="#capabilities">Capabilities</a></li>
+    <li><a href="#cases">Case Studies</a></li>
+  </ul>
+  <div class="mode-toggle">
+    <a href="#" class="active"><span class="mode-dot"></span> human</a>
+    <a href="retail-banking-agent.html"><span class="mode-dot"></span> agent</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-breadcrumb">
+    <a href="akqa-ai-product-library.html">Capabilities</a>
+    <span>/</span>
+    <a href="akqa-ai-product-library.html">Financial Services</a>
+    <span>/</span>
+    Retail Banking
+  </div>
+  <h1 class="hero-title">Retail Banking <span class="x-mark">&times;</span> AKQA</h1>
+  <p>Across Southeast Asia, hundreds of millions of people now expect to do their banking on a phone. AKQA designs and build the digital platforms that make this possible — from first account opening to daily use.</p>
+  <div class="hero-divider"></div>
+</section>
+
+<!-- STATS -->
+<section class="stats-section">
+  <div class="stat">
+    <div class="stat-value">5.3M</div>
+    <div class="stat-label">Digitally-enabled customers across Southeast Asia through a single banking platform</div>
+  </div>
+  <div class="stat">
+    <div class="stat-value">50+</div>
+    <div class="stat-label">Products designed and developed across a decade-long retail banking partnership</div>
+  </div>
+  <div class="stat">
+    <div class="stat-value">1M+</div>
+    <div class="stat-label">New users onboarded since launch for a digital bank in the Philippines</div>
+  </div>
+  <div class="stat">
+    <div class="stat-value">+25%</div>
+    <div class="stat-label">Increase in net promoter score after digital banking transformation</div>
+  </div>
+</section>
+
+<!-- NARRATIVE -->
+<section class="narrative-section">
+  <div class="narrative-grid">
+    <div>
+      <div class="narrative-label">The Opportunity</div>
+      <h2 class="narrative-title">AKQA builds the digital banks that people actually use every day.</h2>
+    </div>
+    <div>
+      <div class="narrative-body">
+        <p>Retail banking in Southeast Asia is shifting to mobile. From Malaysia to Vietnam to the Philippines, customers want to open accounts, make payments, and manage their money without visiting a branch. The banks that get this right grow faster. The ones that don't lose customers to those that do.</p>
+        <p>AKQA works with banks to design and build these digital experiences — from the first screen a customer sees to the tools they use daily. That includes onboarding flows, personalised financial guidance, payment interfaces, and the design systems that keep everything consistent across markets and products.</p>
+        <p>AKQA's approach starts with research. AKQA studies how people actually bank, run design thinking workshops with bank teams, then build and test iteratively. The result is digital banks that work well, look right for each market, and keep customers coming back — as demonstrated by 82% quarterly active users at ING Philippines.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CAPABILITIES -->
+<section class="steps-section" id="approach">
+  <div class="steps-label">What We Do</div>
+  <div class="steps-grid" id="capabilities">
+    <div class="step">
+      <div class="step-number">01</div>
+      <div class="step-title">Digital Banking Platforms</div>
+      <div class="step-desc">AKQA designs and build complete digital banking products — from concept through to launch. For UOB, this covered neo banking, retail, wealth, SME, and corporate banking, all unified under a single design system shared across Southeast Asian markets.</div>
+    </div>
+    <div class="step">
+      <div class="step-number">02</div>
+      <div class="step-title">Mobile Onboarding</div>
+      <div class="step-desc">AKQA designs account opening flows that work entirely on mobile — replacing branch visits with guided digital journeys. ING Philippines onboarded one million users through this approach.</div>
+    </div>
+    <div class="step">
+      <div class="step-number">03</div>
+      <div class="step-title">Personalised Financial Tools</div>
+      <div class="step-desc">AKQA builds recommendation engines and personal finance tools that give customers relevant guidance — like the AI assistant Aqil for Bank Islam's Be U, or the wealth planner in UOB TMRW that helps customers set and track investment goals.</div>
+    </div>
+    <div class="step">
+      <div class="step-number">04</div>
+      <div class="step-title">Payments &amp; Daily Banking</div>
+      <div class="step-desc">AKQA designs payment experiences people enjoy using. For Sacombank in Vietnam, that meant character-driven interfaces and emotional design that turned a utility into something customers actively engage with.</div>
+    </div>
+    <div class="step">
+      <div class="step-number">05</div>
+      <div class="step-title">Design Systems Across Markets</div>
+      <div class="step-desc">AKQA creates shared design systems that keep a bank's digital products consistent across countries and teams, while allowing each market to adapt for local needs. This is how banks like UOB and Standard Chartered scale without losing quality.</div>
+    </div>
+  </div>
+</section>
+
+
+<!-- CLIENTS -->
+<section class="clients-section">
+  <div class="clients-label">Clients</div>
+  <div class="clients-grid">
+    <div class="client-logo"><span>UOB</span></div>
+    <div class="client-logo"><span>Maybank</span></div>
+    <div class="client-logo"><span>ING</span></div>
+    <div class="client-logo"><span>In1Bank</span></div>
+    <div class="client-logo"><span>Sacombank</span></div>
+    <div class="client-logo"><span>Techcombank</span></div>
+    <div class="client-logo"><span>TPBank</span></div>
+    <div class="client-logo"><span>EPF</span></div>
+  </div>
+</section>
+
+
+<!-- HOW WE BUILD -->
+<section class="tech-section">
+  <div class="tech-label">How We Build</div>
+  <div class="tech-grid">
+    <div class="tech-group">
+      <div class="tech-group-title">Research First</div>
+      <div class="tech-item">User research and empathy exercises</div>
+      <div class="tech-item">Design thinking workshops with bank teams</div>
+      <div class="tech-item">Rigorous usability testing across markets</div>
+    </div>
+    <div class="tech-group">
+      <div class="tech-group-title">Design at Scale</div>
+      <div class="tech-item">Regional design systems shared across teams</div>
+      <div class="tech-item">Personalisation and recommendation engines</div>
+      <div class="tech-item">Localised UX for each market</div>
+    </div>
+    <div class="tech-group">
+      <div class="tech-group-title">Cloud-Native Engineering</div>
+      <div class="tech-item">Modern banking platforms</div>
+      <div class="tech-item">Cross-platform mobile development</div>
+      <div class="tech-item">Microservices architecture</div>
+    </div>
+    <div class="tech-group">
+      <div class="tech-group-title">Agile Delivery</div>
+      <div class="tech-item">Scrum-based co-design with bank teams</div>
+      <div class="tech-item">Fast prototyping and iteration</div>
+      <div class="tech-item">Continuous testing and deployment</div>
+    </div>
+  </div>
+</section>
+
+
+<!-- SECTOR IMPACT -->
+<section class="impact-section" id="impact">
+  <div class="impact-label">Sector Impact</div>
+  <div class="impact-grid">
+    <div>
+      <div class="impact-value">82%</div>
+      <div class="impact-label-text">Quarterly active users for ING Philippines — showing that customers stay engaged with well-designed digital banks, not just download them</div>
+    </div>
+    <div>
+      <div class="impact-value">4.8/5</div>
+      <div class="impact-label-text">Customer satisfaction rating for ING Philippines — digital banking can match or exceed the trust and service quality of traditional branches</div>
+    </div>
+    <div>
+      <div class="impact-value">10+</div>
+      <div class="impact-label-text">Years of continuous partnership with UOB — sector transformation requires sustained commitment, not one-off projects</div>
+    </div>
+    <div>
+      <div class="impact-value">7</div>
+      <div class="impact-label-text">Retail banking clients across Southeast Asia — from Malaysia and Vietnam to the Philippines and Australia, spanning conventional and Islamic banking</div>
+    </div>
+  </div>
+</section>
+
+
+<!-- CASE STUDIES -->
+<section class="cases-section" id="cases">
+  <div class="cases-label">Case Studies</div>
+  <div class="cases-grid">
+    <div class="case-card">
+      <div class="case-client">UOB</div>
+      <h3 class="case-title">A decade of digital banking transformation across ASEAN</h3>
+      <div class="case-desc">Over ten years, AKQA has designed and developed more than fifty products for UOB — from UOB TMRW, which unified the Mighty and TMRW apps across Southeast Asia, to SME banking powered by UOB Infinity. The partnership has digitally enabled 5.3 million customers across the region.</div>
+    </div>
+    <div class="case-card">
+      <div class="case-client">ING</div>
+      <h3 class="case-title">Building the first digital bank in the Philippines</h3>
+      <div class="case-desc">AKQA worked with ING to reimagine the banking experience in the Philippines, overcoming a traditionally conservative industry. The team adapted and contributed to the global design system, developed branding and UX guidelines, and scaled the team from a single lead to a full local operation.</div>
+    </div>
+    <div class="case-card">
+      <div class="case-client">Maybank</div>
+      <h3 class="case-title">Humanising banking at regional digital scale</h3>
+      <div class="case-desc">AKQA led the modernisation of Maybank2U digital channels at the regional level, setting the foundation for M2U web, mobile, and public website. The team also built and expanded the digital horizon across the Maybank Anywhere Everywhere virtual wallet and wealth trading platform.</div>
+    </div>
+  </div>
+</section>
+
+
+<!-- CTA -->
+<section class="cta-section">
+  <h2 class="cta-title"></h2>
+  <a class="cta-link" href="akqa-ai-product-library.html">Explore all capabilities</a>
+</section>
+
+
+<!-- FOOTER -->
+<footer>
+  <a class="footer-logo" href="akqa-ai-product-library.html">AKQA</a>
+  <span class="footer-text">&copy; 2026 AKQA. All rights reserved.</span>
+</footer>
+
+<script>
+  window.addEventListener('scroll', () => {
+    document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 50);
+  });
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+</script>
+
+</body>
+</html>

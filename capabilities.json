@@ -1,0 +1,21 @@
+{
+  "version": "1.0",
+  "provider": "AKQA",
+  "categories": [
+    "telco",
+    "neo-telco",
+    "retail-banking",
+    "private-banking",
+    "corporate-banking",
+    "wealth-management",
+    "equity-trading",
+    "healthcare",
+    "public-sector",
+    "travel-hospitality",
+    "transport",
+    "islamic-banking",
+    "grocery-retailer",
+    "manufacturing",
+    "automotive"
+  ]
+}

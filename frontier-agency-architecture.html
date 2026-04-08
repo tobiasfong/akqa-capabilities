@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Frontier Agency Architecture | AKQA</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --font-heading: 'Cormorant Garamond', Georgia, serif;
+    --font-ui: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+    --akqa-black: #121212;
+    --akqa-white: #FFFFFF;
+    --akqa-off-white: #F5F5F5;
+    --akqa-gray-dark: #222222;
+    --akqa-gray-body: #414141;
+    --akqa-gray-muted: #BFBFBF;
+    --akqa-gray-light: #E5E5E5;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: var(--font-heading); font-size: 16px; line-height: 1.625;
+    color: var(--akqa-gray-body); background: #000000;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page {
+    max-width: 1200px; margin: 0 auto; padding: 80px 80px 120px;
+  }
+
+  /* HEADER */
+  .header {
+    margin-bottom: 80px;
+  }
+  .header-label {
+    font-family: var(--font-ui); font-size: 12px; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--akqa-gray-muted); margin-bottom: 24px;
+  }
+  .header-title {
+    font-family: var(--font-heading); font-size: 48px; font-weight: 400;
+    color: var(--akqa-off-white); letter-spacing: -0.03em; line-height: 1.05;
+    margin-bottom: 16px;
+  }
+  .header-sub {
+    font-family: var(--font-heading); font-size: 18px; color: var(--akqa-gray-muted);
+    max-width: 640px; line-height: 1.6;
+  }
+
+  /* DIAGRAM CONTAINER */
+  .diagram {
+    position: relative;
+  }
+
+  /* LAYER ROWS */
+  .layer {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    gap: 0;
+    margin-bottom: 2px;
+    position: relative;
+  }
+
+  .layer-label {
+    display: flex; flex-direction: column; justify-content: center; align-items: center;
+    padding: 24px 12px;
+    background: var(--akqa-gray-dark);
+    border-right: 2px solid #000000;
+  }
+  .layer-num {
+    font-family: var(--font-ui); font-size: 11px; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--akqa-gray-muted);
+  }
+  .layer-name {
+    font-family: var(--font-ui); font-size: 10px; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--akqa-gray-muted);
+    writing-mode: vertical-rl; text-orientation: mixed;
+    transform: rotate(180deg); margin-top: 12px;
+  }
+
+  .layer-content {
+    display: flex; gap: 2px; min-height: 140px;
+  }
+
+  /* COMPONENT BOXES */
+  .component {
+    flex: 1; padding: 32px 28px;
+    display: flex; flex-direction: column; justify-content: space-between;
+    transition: background 0.3s ease; cursor: default;
+    position: relative;
+  }
+  .component:hover { filter: brightness(1.1); }
+
+  .comp-title {
+    font-family: var(--font-heading); font-size: 22px; font-weight: 400;
+    color: var(--akqa-off-white); letter-spacing: -0.01em; line-height: 1.2;
+    margin-bottom: 8px;
+  }
+  .comp-desc {
+    font-family: var(--font-ui); font-size: 11px; color: var(--akqa-gray-muted);
+    line-height: 1.55; max-width: 280px;
+  }
+  .comp-tag {
+    font-family: var(--font-ui); font-size: 10px; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--akqa-gray-muted);
+    margin-bottom: 12px; opacity: 0.7;
+  }
+
+  /* LAYER COLORS — subtle differentiation */
+  .layer-harness .component { background: #1e1e1e; }
+  .layer-client .component { background: #1a1a1a; }
+  .layer-vertical .component { background: #1e1e1e; }
+  .layer-infra .component { background: #1a1a1a; }
+  .layer-data .component { background: #161616; }
+  .layer-tools .component { background: #1a1a1a; }
+
+  /* FULL-WIDTH SINGLE COMPONENT */
+  .component--full { flex: none; width: 100%; }
+
+  /* FLOW ARROWS between layers */
+  .flow-indicator {
+    display: flex; justify-content: center; align-items: center;
+    padding: 6px 0; margin-left: 100px;
+  }
+  .flow-arrow {
+    font-family: var(--font-ui); font-size: 10px; letter-spacing: 0.15em;
+    text-transform: uppercase; color: #333333;
+  }
+  .flow-line {
+    width: 1px; height: 12px; background: #333333; margin: 0 auto;
+    display: block;
+  }
+
+  /* SIDE ANNOTATION */
+  .side-label {
+    position: absolute; right: -80px; top: 50%;
+    transform: translateY(-50%) rotate(90deg);
+    font-family: var(--font-ui); font-size: 10px; letter-spacing: 0.15em;
+    text-transform: uppercase; color: #333333; white-space: nowrap;
+  }
+
+  /* OUTPUT TARGETS (bottom) */
+  .output-section {
+    margin-top: 48px; padding-top: 48px;
+    border-top: 1px solid var(--akqa-gray-dark);
+  }
+  .output-label {
+    font-family: var(--font-ui); font-size: 12px; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--akqa-gray-muted); margin-bottom: 32px;
+  }
+  .output-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 2px;
+  }
+  .output-box {
+    padding: 32px 28px; background: var(--akqa-gray-dark);
+    transition: background 0.3s ease;
+  }
+  .output-box:hover { background: #2a2a2a; }
+  .output-title {
+    font-family: var(--font-heading); font-size: 20px; font-weight: 400;
+    color: var(--akqa-off-white); margin-bottom: 8px;
+  }
+  .output-desc {
+    font-family: var(--font-ui); font-size: 11px; color: var(--akqa-gray-muted);
+    line-height: 1.55;
+  }
+
+  /* DECISION CALLOUT */
+  .decision {
+    margin-top: 48px; padding: 32px; background: var(--akqa-gray-dark);
+    border-left: 2px solid var(--akqa-gray-muted);
+  }
+  .decision-label {
+    font-family: var(--font-ui); font-size: 10px; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--akqa-gray-muted); margin-bottom: 12px;
+  }
+  .decision-text {
+    font-family: var(--font-heading); font-size: 18px; color: var(--akqa-off-white);
+    line-height: 1.5;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    .page { padding: 40px 24px 80px; }
+    .layer { grid-template-columns: 1fr; }
+    .layer-label { display: none; }
+    .layer-content { flex-direction: column; }
+    .flow-indicator { margin-left: 0; }
+    .output-grid { grid-template-columns: 1fr; }
+    .header-title { font-size: 36px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="header-label">AKQA Frontier Agency</div>
+    <h1 class="header-title">AI-First Operating Model</h1>
+    <p class="header-sub">Six layers. One operating surface. Agent orchestration, client knowledge, industry intelligence, foundation models, persistent data, and connected tooling — unified into a single architecture.</p>
+  </div>
+
+
+  <!-- DIAGRAM -->
+  <div class="diagram">
+
+    <!-- L3: AGENT HARNESS -->
+    <div class="layer layer-harness">
+      <div class="layer-label">
+        <span class="layer-num">L3</span>
+        <span class="layer-name">Orchestration</span>
+      </div>
+      <div class="layer-content">
+        <div class="component">
+          <div>
+            <div class="comp-tag">Research</div>
+            <div class="comp-title">Strategy Agents</div>
+          </div>
+          <div class="comp-desc">Market research, competitive analysis, landscape mapping, brief synthesis</div>
+        </div>
+        <div class="component">
+          <div>
+            <div class="comp-tag">Creative</div>
+            <div class="comp-title">Design Agents</div>
+          </div>
+          <div class="comp-desc">Wireframes, interaction patterns, visual concepts, design system compliance</div>
+        </div>
+        <div class="component">
+          <div>
+            <div class="comp-tag">Build</div>
+            <div class="comp-title">Engineering Agents</div>
+          </div>
+          <div class="comp-desc">Production code, integrations, infrastructure, CI/CD, cloud deployment</div>
+        </div>
+        <div class="component">
+          <div>
+            <div class="comp-tag">Verify</div>
+            <div class="comp-title">QA Agents</div>
+          </div>
+          <div class="comp-desc">Acceptance testing, accessibility, brand compliance, performance benchmarks</div>
+        </div>
+        <div class="component">
+          <div>
+            <div class="comp-tag">Ship</div>
+            <div class="comp-title">Deploy Agents</div>
+          </div>
+          <div class="comp-desc">Release pipelines, rollback, monitoring, post-launch observability</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="flow-indicator"><span class="flow-arrow">&uarr; orchestrates agents across full delivery lifecycle</span></div>
+
+    <!-- L2: CLIENT RAG -->
+    <div class="layer layer-client">
+      <div class="layer-label">
+        <span class="layer-num">L2</span>
+        <span class="layer-name">Client</span>
+      </div>
+      <div class="layer-content">
+        <div class="component">
+          <div>
+            <div class="comp-tag">Brand &amp; Design</div>
+            <div class="comp-title">Brand Assets</div>
+          </div>
+          <div class="comp-desc">Guidelines, design systems, style guides, visual identity, tone of voice</div>
+        </div>
+        <div class="component">
+          <div>
+            <div class="comp-tag">Strategy</div>
+            <div class="comp-title">Business Context</div>
+          </div>
+          <div class="comp-desc">Strategy docs, market positioning, business plans, OKRs, competitive landscape</div>
+        </div>
+        <div class="component">
+          <div>
+            <div class="comp-tag">History</div>
+            <div class="comp-title">Deliverables</div>
+          </div>
+          <div class="comp-desc">Previous AKQA work, meeting transcripts, stakeholder preferences, decision history</div>
+        </div>
+        <div class="component">
+          <div>
+            <div class="comp-tag">Technical</div>
+            <div class="comp-title">Systems</div>
+          </div>
+          <div class="comp-desc">API specs, architecture docs, infrastructure topology, compliance requirements</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="flow-indicator"><span class="flow-arrow">&uarr; client knowledge &amp; constraints</span></div>
+
+    <!-- L1: INDUSTRY VERTICAL AI -->
+    <div class="layer layer-vertical">
+      <div class="layer-label">
+        <span class="layer-num">L1</span>
+        <span class="layer-name">Domain</span>
+      </div>
+      <div class="layer-content">
+        <div class="component">
+          <div>
+            <div class="comp-tag">Option A</div>
+            <div class="comp-title">Industry RAG</div>
+          </div>
+          <div class="comp-desc">Curated knowledge per vertical — regulations, market data, competitor intel, case studies. Fast to deploy, easy to refresh.</div>
+        </div>
+        <div class="component">
+          <div>
+            <div class="comp-tag">Option B</div>
+            <div class="comp-title">Vertical LLM</div>
+          </div>
+          <div class="comp-desc">Fine-tuned models per industry. Internalised domain reasoning — thinks like a banker, not just retrieves banking knowledge.</div>
+        </div>
+        <div class="component">
+          <div>
+            <div class="comp-tag">Option C</div>
+            <div class="comp-title">RAG + LoRA Adapter</div>
+          </div>
+          <div class="comp-desc">Hybrid. RAG for knowledge, lightweight adapters for reasoning. Best of both: current knowledge, sharper domain logic, lower cost.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="flow-indicator"><span class="flow-arrow">&uarr; domain context &amp; reasoning</span></div>
+
+    <!-- L0: MODELS + TASTE LLM -->
+    <div class="layer layer-infra">
+      <div class="layer-label">
+        <span class="layer-num">L0</span>
+        <span class="layer-name">Models</span>
+      </div>
+      <div class="layer-content">
+        <div class="component">
+          <div>
+            <div class="comp-tag">Foundation</div>
+            <div class="comp-title">Anthropic Claude</div>
+          </div>
+          <div class="comp-desc">Base reasoning model via Agent SDK. Powers all agent types in the harness.</div>
+        </div>
+        <div class="component">
+          <div>
+            <div class="comp-tag">Quality Gate</div>
+            <div class="comp-title">Taste LLM</div>
+          </div>
+          <div class="comp-desc">AKQA's design sensibility and craft standards encoded as a model. Scores every output before delivery. Aesthetic and strategic filter.</div>
+        </div>
+        <div class="component">
+          <div>
+            <div class="comp-tag">Workflow</div>
+            <div class="comp-title">Temporal</div>
+          </div>
+          <div class="comp-desc">Durable execution engine for long-running, multi-step agent workflows.</div>
+        </div>
+        <div class="component">
+          <div>
+            <div class="comp-tag">Tools</div>
+            <div class="comp-title">MCP Servers</div>
+          </div>
+          <div class="comp-desc">Standard interface connecting agents to client systems, design tools, repos, and infra.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="flow-indicator"><span class="flow-arrow">&uarr; model inference, orchestration &amp; tool routing</span></div>
+
+    <!-- DATA LAYER -->
+    <div class="layer layer-data">
+      <div class="layer-label">
+        <span class="layer-num">Data</span>
+        <span class="layer-name">Storage</span>
+      </div>
+      <div class="layer-content">
+        <div class="component">
+          <div>
+            <div class="comp-tag">Vector</div>
+            <div class="comp-title">Vector Store</div>
+          </div>
+          <div class="comp-desc">Semantic retrieval for Client RAG and Industry RAG. Embedding storage and similarity search. pgvector, Qdrant, Weaviate, or managed.</div>
+        </div>
+        <div class="component">
+          <div>
+            <div class="comp-tag">Graph</div>
+            <div class="comp-title">Knowledge Graph</div>
+          </div>
+          <div class="comp-desc">Entity relationships, client org structures, dependency maps, decision trails.</div>
+        </div>
+        <div class="component">
+          <div>
+            <div class="comp-tag">Object</div>
+            <div class="comp-title">Asset Store</div>
+          </div>
+          <div class="comp-desc">Design files, documents, code artefacts, images, videos. Versioned and indexed.</div>
+        </div>
+        <div class="component">
+          <div>
+            <div class="comp-tag">Operational</div>
+            <div class="comp-title">State &amp; Logs</div>
+          </div>
+          <div class="comp-desc">Agent execution history, audit trails, workflow state, observability data.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="flow-indicator"><span class="flow-arrow">&uarr; persistent storage &amp; retrieval</span></div>
+
+    <!-- TOOLING LAYER -->
+    <div class="layer layer-tools">
+      <div class="layer-label">
+        <span class="layer-num">Tools</span>
+        <span class="layer-name">Connected</span>
+      </div>
+      <div class="layer-content">
+        <div class="component">
+          <div>
+            <div class="comp-tag">Code</div>
+            <div class="comp-title">GitHub</div>
+          </div>
+          <div class="comp-desc">Repos, PRs, code review, CI/CD pipelines. Agents read, write, and ship code.</div>
+        </div>
+        <div class="component">
+          <div>
+            <div class="comp-tag">Design</div>
+            <div class="comp-title">Paper</div>
+          </div>
+          <div class="comp-desc">Design files, prototypes, components. Agents generate and iterate on visual work.</div>
+        </div>
+        <div class="component">
+          <div>
+            <div class="comp-tag">Docs</div>
+            <div class="comp-title">Notion / Drive</div>
+          </div>
+          <div class="comp-desc">Strategy docs, meeting notes, briefs, wikis. Agents read context, write deliverables.</div>
+        </div>
+        <div class="component">
+          <div>
+            <div class="comp-tag">Comms</div>
+            <div class="comp-title">Slack / Email</div>
+          </div>
+          <div class="comp-desc">Team coordination, client comms, status updates. Agents surface and send.</div>
+        </div>
+        <div class="component">
+          <div>
+            <div class="comp-tag">PM</div>
+            <div class="comp-title">Linear / Jira</div>
+          </div>
+          <div class="comp-desc">Task tracking, sprint planning, backlog management. Agents create and update tickets.</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+
+  <!-- OUTPUT TARGETS -->
+  <div class="output-section">
+    <div class="output-label">Dual-Purpose Deployment</div>
+    <div class="output-grid">
+      <div class="output-box">
+        <div class="output-title">AKQA Delivery</div>
+        <div class="output-desc">Powers internal teams. Strategists, designers, and engineers work alongside agents across the full delivery lifecycle. The Taste LLM ensures nothing drops below the bar. Same architecture, every engagement.</div>
+      </div>
+      <div class="output-box">
+        <div class="output-title">Client Platform</div>
+        <div class="output-desc">Deployed for clients who want to operate AI-native capabilities in-house. Client RAG becomes their knowledge layer. Agent Harness powers their workflows. Taste LLM can be replaced with client quality standards.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DECISION -->
+  <div class="decision">
+    <div class="decision-label">Open Decision — Industry Vertical AI</div>
+    <div class="decision-text">Start with Option A (Industry RAG) for immediate deployment. Invest in Option C (RAG + LoRA Adapter) for verticals with deep client concentration. Reserve Option B (Fine-Tuned LLM) for verticals where AKQA intends to build defensible, proprietary advantage over time.</div>
+  </div>
+
+</div>
+
+</body>
+</html>

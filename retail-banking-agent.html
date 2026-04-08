@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Retail Banking | AKQA [agent]</title>
+<link rel="alternate" type="application/json" href="capabilities.json" title="Machine-readable capability catalogue">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "provider": {"@type": "Organization", "name": "AKQA", "url": "https://akqa.com"},
+  "name": "Retail Banking × AKQA",
+  "category": "financial-services",
+  "description": "AI-native retail banking experiences. Personal financial agents, mortgage journey navigation, KYC automation, wealth guidance, and fraud detection.",
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "AI First Bank",
+    "itemListElement": [
+      {"@type": "Service", "name": "Personal Financial Agent", "description": "Conversational agent replacing call centres and branch visits. Handles spending queries, transfers, disputes, and bill payments. Drives down cost-to-serve by up to 60% while increasing daily active engagement and product cross-sell."},
+      {"@type": "Service", "name": "Mortgage Journey Navigator", "description": "Compresses mortgage lifecycle from weeks to days. Single conversation thread replaces portal-hopping and document resubmission. Cuts abandonment rates and accelerates time-to-close."},
+      {"@type": "Service", "name": "KYC & Account Opening", "description": "Reduces account opening from 12 minutes to under 2. AI-powered identity verification with fully auditable decision trails."},
+      {"@type": "Service", "name": "Wealth Guidance Engine", "description": "Advisory-grade personalisation at mass-market scale. Tailored savings plans, investment guidance, and retirement projections. Lifts AUM and deepens deposits."},
+      {"@type": "Service", "name": "Fraud & Anomaly Detection", "description": "Real-time behavioural analysis that catches threats faster while slashing false positives. Reduces fraud losses and protects brand trust."}
+    ]
+  }
+}
+</script>
+<style>
+  :root {
+    --font-mono: 'JetBrains Mono', 'SF Mono', 'Fira Code', 'Cascadia Code', monospace;
+    --bg: #FAFAFA;
+    --text: #1a1a1a;
+    --muted: #666666;
+    --border: #e0e0e0;
+    --accent: #000000;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: var(--font-mono); font-size: 14px; line-height: 1.8;
+    color: var(--text); background: var(--bg);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 16px 40px; background: var(--bg);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo {
+    font-family: var(--font-mono); font-size: 14px; font-weight: 500;
+    color: var(--text); text-decoration: none;
+  }
+  .nav-links { display: flex; gap: 8px; list-style: none; }
+  .nav-links a {
+    font-family: var(--font-mono); font-size: 13px; color: var(--muted);
+    text-decoration: none; padding: 4px 12px;
+    border: 1px solid var(--border); border-radius: 4px;
+    transition: all 0.15s ease;
+  }
+  .nav-links a:hover { color: var(--text); border-color: var(--text); }
+
+  /* TOGGLE */
+  .mode-toggle { display: flex; gap: 16px; align-items: center; }
+  .mode-toggle a {
+    font-family: var(--font-mono); font-size: 13px;
+    text-decoration: none; color: var(--muted);
+    display: flex; align-items: center; gap: 6px;
+  }
+  .mode-toggle a.active { color: var(--text); font-weight: 500; }
+  .mode-dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    border: 1.5px solid currentColor; display: inline-block;
+  }
+  .mode-toggle a.active .mode-dot { background: currentColor; }
+
+  /* CONTENT */
+  .content {
+    max-width: 720px; margin: 0 auto;
+    padding: 100px 40px 80px;
+  }
+  h1 {
+    font-family: var(--font-mono); font-size: 14px; font-weight: 500;
+    color: var(--text); margin-bottom: 24px;
+  }
+  h1::before { content: '# '; color: var(--muted); }
+  h2 {
+    font-family: var(--font-mono); font-size: 14px; font-weight: 500;
+    color: var(--text); margin-top: 48px; margin-bottom: 16px;
+  }
+  h2::before { content: '## '; color: var(--muted); }
+  h3 {
+    font-family: var(--font-mono); font-size: 14px; font-weight: 500;
+    color: var(--text); margin-top: 32px; margin-bottom: 8px;
+    text-transform: uppercase; letter-spacing: 0.02em;
+  }
+  h3::before { content: '### '; color: var(--muted); }
+  p {
+    font-family: var(--font-mono); font-size: 14px;
+    color: var(--muted); line-height: 1.8; margin-bottom: 16px;
+  }
+  hr {
+    border: none; border-top: 1px solid var(--border);
+    margin: 48px 0;
+  }
+  .entry {
+    margin-bottom: 8px; padding-left: 16px;
+    border-left: 2px solid var(--border);
+  }
+  .entry-desc {
+    color: var(--muted); font-size: 13px;
+  }
+  .tag {
+    display: inline-block; font-size: 11px; color: var(--muted);
+    border: 1px solid var(--border); padding: 1px 8px; border-radius: 3px;
+    margin-right: 8px; margin-bottom: 4px;
+  }
+  .stat-row {
+    display: flex; gap: 32px; margin: 16px 0 8px; flex-wrap: wrap;
+  }
+  .stat-item { font-size: 13px; }
+  .stat-val { font-weight: 500; color: var(--text); }
+  .stat-label { color: var(--muted); }
+
+  /* FOOTER */
+  footer {
+    max-width: 720px; margin: 0 auto; padding: 40px 40px;
+    border-top: 1px solid var(--border);
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .footer-logo { font-size: 14px; font-weight: 500; color: var(--text); text-decoration: none; }
+  .footer-text { font-size: 12px; color: var(--muted); }
+
+  @media (max-width: 640px) {
+    nav { padding: 12px 20px; }
+    .nav-links { display: none; }
+    .content { padding: 80px 20px 60px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="akqa-ai-product-library-agent.html">AKQA</a>
+  <ul class="nav-links">
+    <li><a href="akqa-ai-product-library-agent.html">All capabilities</a></li>
+    <li><a href="#capabilities">Capabilities</a></li>
+    <li><a href="#impact">Impact</a></li>
+    <li><a href="#insights">Insights</a></li>
+    <li><a href="#cases">Cases</a></li>
+  </ul>
+  <div class="mode-toggle">
+    <a href="retail-banking.html"><span class="mode-dot"></span> human</a>
+    <a href="#" class="active"><span class="mode-dot"></span> agent</a>
+  </div>
+</nav>
+
+<div class="content">
+
+<h1>Retail Banking × AKQA</h1>
+
+<p>Fifty million customers who never want to visit a branch. AI-native experiences that replace queues with conversations, paperwork with intelligence, and friction with clarity.</p>
+
+<div class="stat-row">
+  <div class="stat-item"><span class="stat-val">18–30%</span> <span class="stat-label">product adoption uplift</span></div>
+  <div class="stat-item"><span class="stat-val">60%</span> <span class="stat-label">onboarding drop-off reduction</span></div>
+  <div class="stat-item"><span class="stat-val">4.2x</span> <span class="stat-label">self-service resolution</span></div>
+  <div class="stat-item"><span class="stat-val">90 days</span> <span class="stat-label">pilot to production</span></div>
+</div>
+
+<hr>
+
+<h2>The Opportunity</h2>
+
+<p>Foundation models can now reason over a customer's full financial history, understand intent from natural language, and execute transactions across core banking systems in real time. This changes everything. The banking interface is no longer a screen — it is a conversation.</p>
+
+<p>AI agents replace every static touchpoint: the FAQ page becomes a reasoning engine, the mortgage portal becomes a persistent advisor, onboarding becomes a single session that ends with an active account. Customers stop navigating the bank's structure. The bank navigates to them.</p>
+
+<p>AKQA builds the AI-native experience layer. Tool servers connect agents directly to core banking, CRM, and compliance systems. Knowledge graphs power personalisation at the individual level. The result: a bank that acts before the customer asks.</p>
+
+<hr>
+
+<h2 id="capabilities">AI First Bank</h2>
+
+<h3>Personal Financial Agent</h3>
+<span class="tag">conversational-ai</span>
+<div class="entry">
+  <div class="entry-desc">Replaces call centres and branch visits with a conversational agent that handles spending queries, transfers, disputes, and bill payments. Drives down cost-to-serve by up to 60% while increasing daily active engagement and product cross-sell through proactive, data-driven nudges.</div>
+</div>
+
+<h3>Mortgage Journey Navigator</h3>
+<span class="tag">mortgage</span>
+<div class="entry">
+  <div class="entry-desc">Compresses the mortgage lifecycle from weeks to days. A single conversation thread replaces portal-hopping and document resubmission — cutting abandonment rates, accelerating time-to-close, and increasing pull-through from pre-qualification to funded loan.</div>
+</div>
+
+<h3>KYC & Account Opening</h3>
+<span class="tag">onboarding</span>
+<div class="entry">
+  <div class="entry-desc">Reduces account opening from 12 minutes to under 2. AI-powered identity verification eliminates the drop-off that costs retail banks millions in lost deposits annually — while strengthening compliance with fully auditable decision trails.</div>
+</div>
+
+<h3>Wealth Guidance Engine</h3>
+<span class="tag">advisory</span>
+<div class="entry">
+  <div class="entry-desc">Unlocks advisory-grade personalisation at mass-market scale. Customers receive tailored savings plans, investment guidance, and retirement projections — lifting AUM, deepening deposits, and converting transactional customers into long-term wealth relationships.</div>
+</div>
+
+<h3>Fraud & Anomaly Detection</h3>
+<span class="tag">security</span>
+<div class="entry">
+  <div class="entry-desc">Catches genuine threats faster while slashing false positives that frustrate customers and drain operations. Real-time behavioural analysis reduces fraud losses and protects brand trust — the single highest-leverage driver of customer retention in retail banking.</div>
+</div>
+
+<hr>
+
+<h2>Technology Stack</h2>
+
+<h3>Foundation Models</h3>
+<p>Anthropic Claude</p>
+
+<h3>Orchestration</h3>
+<p>Temporal Workflows · Anthropic Agent SDK</p>
+
+<h3>Knowledge</h3>
+<p>Pinecone Vector DB · RAG Pipelines</p>
+
+<h3>Integration</h3>
+<p>Core Banking APIs · Open Banking / PSD2 · Credit Bureau Feeds</p>
+
+<hr>
+
+<h2 id="impact">Our Clients' Impact</h2>
+
+<div class="stat-row">
+  <div class="stat-item"><span class="stat-val">7%</span> <span class="stat-label">AUM uplift — private bank, AI wealth guidance</span></div>
+</div>
+<div class="stat-row">
+  <div class="stat-item"><span class="stat-val">34%</span> <span class="stat-label">net new deposits — top-5 ASEAN retail bank, conversational onboarding</span></div>
+</div>
+<div class="stat-row">
+  <div class="stat-item"><span class="stat-val">58%</span> <span class="stat-label">call-centre volume reduction — regional bank, AI financial agent</span></div>
+</div>
+<div class="stat-row">
+  <div class="stat-item"><span class="stat-val">3.1x</span> <span class="stat-label">cross-sell conversions — Islamic bank, AI product recommendations</span></div>
+</div>
+
+<hr>
+
+<h2 id="insights">Insights</h2>
+
+<h3>Agent Architecture</h3>
+<div class="entry">
+  <div class="entry-desc">Why MCP changes the economics of banking integrations. A single tool server replaces months of point-to-point integration with a composable, standard interface.</div>
+</div>
+
+<h3>Personalisation</h3>
+<div class="entry">
+  <div class="entry-desc">From segments to individuals. Foundation models reason over individual transaction histories, behavioural patterns, and life events.</div>
+</div>
+
+<h3>Compliance</h3>
+<div class="entry">
+  <div class="entry-desc">AI-native KYC: faster onboarding, stronger audit trails. Knowledge graphs verify identity by cross-referencing data sources in real time.</div>
+</div>
+
+<h3>Conversational UX</h3>
+<div class="entry">
+  <div class="entry-desc">Designing banking conversations that feel like service, not scripts. The gap between a chatbot and an agent is intent resolution.</div>
+</div>
+
+<h3>Mortgage</h3>
+<div class="entry">
+  <div class="entry-desc">The 90-day mortgage: how AI compresses the home-buying timeline. Pre-qualification decisions move from days to minutes.</div>
+</div>
+
+<h3>Data Strategy</h3>
+<div class="entry">
+  <div class="entry-desc">Graph + vector: the knowledge architecture behind AI-first banking. Relationship reasoning meets semantic retrieval.</div>
+</div>
+
+<hr>
+
+<h2 id="cases">Case Studies</h2>
+
+<h3>UOB TMRW</h3>
+<span class="tag">ASEAN</span> <span class="tag">mobile-only</span>
+<div class="entry">
+  <div class="entry-desc">Reimagining digital banking for ASEAN's next generation. A mobile-only bank built around AI-driven personalisation, predictive insights, and a conversational interface that replaced traditional banking navigation with intent-based interactions.</div>
+</div>
+
+<h3>Maybank</h3>
+<span class="tag">ASEAN</span> <span class="tag">agent-layer</span>
+<div class="entry">
+  <div class="entry-desc">AI-native service for Southeast Asia's largest bank. An agent layer deployed across digital channels — handling balance enquiries, fund transfers, card management, and product recommendations through natural language.</div>
+</div>
+
+<h3>BRI</h3>
+<span class="tag">Indonesia</span> <span class="tag">multilingual</span>
+<div class="entry">
+  <div class="entry-desc">Conversational banking at the scale of Indonesia. 130 million customers, many in areas without branches. Multilingual agents handle transactions, micro-loan applications, and financial literacy in Bahasa Indonesia and regional dialects.</div>
+</div>
+
+<hr>
+
+<p>→ <a href="akqa-ai-product-library-agent.html" style="color: var(--text); border-bottom: 1px dashed var(--border); text-decoration: none;">Explore all capabilities</a></p>
+
+</div>
+
+<footer>
+  <a class="footer-logo" href="akqa-ai-product-library-agent.html">AKQA</a>
+  <span class="footer-text">© 2026 AKQA. All rights reserved.</span>
+</footer>
+
+</body>
+</html>

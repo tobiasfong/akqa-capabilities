@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Capabilities | AKQA [agent]</title>
+<link rel="alternate" type="application/json" href="capabilities.json" title="Machine-readable capability catalogue">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "AKQA",
+  "url": "https://akqa.com",
+  "description": "AI-native capability for the customer experience layer. Built on frontier AI, designed for enterprise, engineered to deliver measurable impact.",
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "AKQA AI Capability Library",
+    "itemListElement": [
+      {"@type": "Service", "name": "Telco", "category": "telecommunications", "description": "AI-native customer experience for network operators. Conversational service, intelligent plan recommendation, and MCP-powered BSS integration."},
+      {"@type": "Service", "name": "Neo Telco", "category": "telecommunications", "description": "Next-generation digital-first operators. Born-cloud infrastructure meets AI-native customer engagement."},
+      {"@type": "Service", "name": "Retail Banking", "category": "financial-services", "description": "AI-native experiences for 50 million customers. Personal finance agents, mortgage navigation, and frictionless onboarding."},
+      {"@type": "Service", "name": "Private Banking", "category": "financial-services", "description": "Bespoke digital experiences for high-net-worth clients. Intelligent wealth advice, portfolio insights, and concierge services at scale."},
+      {"@type": "Service", "name": "Corporate Banking", "category": "financial-services", "description": "Intelligent experiences for treasury teams, CFOs, and relationship managers. Treasury intelligence, trade finance automation, and RM copilots."},
+      {"@type": "Service", "name": "Wealth Management & Private Banking", "category": "financial-services", "description": "Unified AI layer across advisory, portfolio management, and client servicing."},
+      {"@type": "Service", "name": "Equity Trading", "category": "capital-markets", "description": "AI at the customer interface of capital markets. Research intelligence, client communication, and compliance surveillance."},
+      {"@type": "Service", "name": "Healthcare", "category": "healthcare", "description": "AI-guided patient journeys from scheduling through post-care. Clinical knowledge assistance and benefits navigation."},
+      {"@type": "Service", "name": "Public Sector", "category": "government", "description": "Conversational citizen services, policy intelligence, and sovereign digital identity."},
+      {"@type": "Service", "name": "Travel & Hospitality", "category": "hospitality", "description": "AI-native guest experiences from booking through post-stay. Conversational concierge and loyalty personalisation."},
+      {"@type": "Service", "name": "Transport", "category": "mobility", "description": "Intelligent passenger and logistics experiences. Real-time journey assistance and predictive disruption management."},
+      {"@type": "Service", "name": "Islamic Banking", "category": "financial-services", "description": "Shariah-compliant AI experiences for retail and corporate clients."},
+      {"@type": "Service", "name": "Grocery Retailer", "category": "retail", "description": "AI-native grocery experiences from personalised meal planning to last-mile delivery. Demand forecasting, dynamic assortment, and waste reduction."},
+      {"@type": "Service", "name": "Manufacturing", "category": "industry", "description": "AI-powered production intelligence from shop floor to supply chain. Predictive maintenance, quality inspection, and demand sensing."},
+      {"@type": "Service", "name": "Automotive", "category": "mobility", "description": "AI-native customer journeys from configurator to after-sales. Intelligent lead routing, conversational ownership, and connected vehicle intelligence."}
+    ]
+  }
+}
+</script>
+<style>
+  :root {
+    --font-mono: 'JetBrains Mono', 'SF Mono', 'Fira Code', 'Cascadia Code', monospace;
+    --bg: #FAFAFA;
+    --text: #1a1a1a;
+    --muted: #666666;
+    --border: #e0e0e0;
+    --accent: #000000;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: var(--font-mono); font-size: 14px; line-height: 1.8;
+    color: var(--text); background: var(--bg);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 16px 40px; background: var(--bg);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo {
+    font-family: var(--font-mono); font-size: 14px; font-weight: 500;
+    color: var(--text); text-decoration: none;
+  }
+  .nav-links { display: flex; gap: 8px; list-style: none; }
+  .nav-links a {
+    font-family: var(--font-mono); font-size: 13px; color: var(--muted);
+    text-decoration: none; padding: 4px 12px;
+    border: 1px solid var(--border); border-radius: 4px;
+    transition: all 0.15s ease;
+  }
+  .nav-links a:hover { color: var(--text); border-color: var(--text); }
+
+  /* TOGGLE */
+  .mode-toggle { display: flex; gap: 16px; align-items: center; }
+  .mode-toggle a {
+    font-family: var(--font-mono); font-size: 13px;
+    text-decoration: none; color: var(--muted);
+    display: flex; align-items: center; gap: 6px;
+  }
+  .mode-toggle a.active { color: var(--text); font-weight: 500; }
+  .mode-dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    border: 1.5px solid currentColor; display: inline-block;
+  }
+  .mode-toggle a.active .mode-dot { background: currentColor; }
+
+  /* CONTENT */
+  .content {
+    max-width: 720px; margin: 0 auto;
+    padding: 100px 40px 80px;
+  }
+  h1 {
+    font-family: var(--font-mono); font-size: 14px; font-weight: 500;
+    color: var(--text); margin-bottom: 24px;
+  }
+  h1::before { content: '# '; color: var(--muted); }
+  h2 {
+    font-family: var(--font-mono); font-size: 14px; font-weight: 500;
+    color: var(--text); margin-top: 48px; margin-bottom: 16px;
+  }
+  h2::before { content: '## '; color: var(--muted); }
+  h3 {
+    font-family: var(--font-mono); font-size: 14px; font-weight: 500;
+    color: var(--text); margin-top: 32px; margin-bottom: 8px;
+    text-transform: uppercase; letter-spacing: 0.02em;
+  }
+  h3::before { content: '### '; color: var(--muted); }
+  p {
+    font-family: var(--font-mono); font-size: 14px;
+    color: var(--muted); line-height: 1.8; margin-bottom: 16px;
+  }
+  hr {
+    border: none; border-top: 1px solid var(--border);
+    margin: 48px 0;
+  }
+  .entry {
+    margin-bottom: 8px; padding-left: 16px;
+    border-left: 2px solid var(--border);
+  }
+  .entry-title {
+    font-weight: 500; color: var(--text);
+  }
+  .entry-desc {
+    color: var(--muted); font-size: 13px;
+  }
+  .tag {
+    display: inline-block; font-size: 11px; color: var(--muted);
+    border: 1px solid var(--border); padding: 1px 8px; border-radius: 3px;
+    margin-right: 8px; margin-bottom: 4px;
+  }
+  a.entry-link {
+    color: var(--text); text-decoration: none;
+    border-bottom: 1px dashed var(--border);
+  }
+  a.entry-link:hover { border-bottom-color: var(--text); }
+
+  .stat-row {
+    display: flex; gap: 32px; margin: 16px 0 8px; flex-wrap: wrap;
+  }
+  .stat-item { font-size: 13px; }
+  .stat-val { font-weight: 500; color: var(--text); }
+  .stat-lbl { color: var(--muted); }
+
+  .list-item { padding-left: 16px; position: relative; margin-bottom: 4px; }
+  .list-item::before { content: '- '; position: absolute; left: 0; color: var(--muted); }
+  .list-item .bold { font-weight: 500; color: var(--text); }
+
+  footer {
+    max-width: 720px; margin: 0 auto; padding: 0 40px 64px;
+    font-size: 12px; color: var(--muted);
+  }
+
+  @media (max-width: 640px) {
+    nav { padding: 12px 16px; }
+    .content { padding: 80px 16px 60px; }
+    footer { padding: 0 16px 40px; }
+    .nav-links { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#">~/akqa</a>
+  <ul class="nav-links">
+    <li><a href="#">/</a></li>
+    <li><a href="#industries">/industries</a></li>
+    <li><a href="#cross-industry">/cross-industry</a></li>
+    <li><a href="#partners">/partners</a></li>
+  </ul>
+  <div class="mode-toggle">
+    <a href="akqa-ai-product-library.html"><span class="mode-dot"></span> human</a>
+    <a href="#" class="active"><span class="mode-dot"></span> agent</a>
+  </div>
+</nav>
+
+<!-- CONTENT -->
+<div class="content">
+
+<h1>AKQA AI Capability Library</h1>
+
+<h2>AI-native capability for the customer experience layer.</h2>
+
+<p>Built on frontier AI, designed for enterprise, engineered to deliver measurable impact. Each capability is deployable as an autonomous agent, callable via MCP, and composable with existing enterprise systems.</p>
+
+<div class="stat-row">
+  <div class="stat-item"><span class="stat-val">12</span> <span class="stat-lbl">industries</span></div>
+  <div class="stat-item"><span class="stat-val">6</span> <span class="stat-lbl">cross-industry capabilities</span></div>
+  <div class="stat-item"><span class="stat-val">7</span> <span class="stat-lbl">technology partners</span></div>
+  <div class="stat-item"><span class="stat-val">90 days</span> <span class="stat-lbl">pilot → production</span></div>
+</div>
+
+<p style="margin-top: 24px;">Machine-readable: <a class="entry-link" href="capabilities.json">capabilities.json</a> | JSON-LD embedded in &lt;head&gt;</p>
+
+<hr>
+
+<h2 id="industries">Industry Capabilities</h2>
+
+<p>Each industry capability is a composable agent system. Capabilities can be deployed standalone or orchestrated as multi-agent workflows.</p>
+
+<h3>Telco</h3>
+<span class="tag">telecommunications</span>
+<div class="entry">
+  <div class="entry-desc">AI-native customer experience for network operators. Conversational service, intelligent plan recommendation, and MCP-powered BSS integration.</div>
+</div>
+
+<h3>Neo Telco</h3>
+<span class="tag">telecommunications</span>
+<div class="entry">
+  <div class="entry-desc">Next-generation digital-first operators. Born-cloud infrastructure meets AI-native customer engagement — no legacy, no compromise.</div>
+</div>
+
+<h3>Retail Banking</h3>
+<span class="tag">financial-services</span> <span class="tag"><a class="entry-link" href="retail-banking.html">detail-page →</a></span>
+<div class="entry">
+  <div class="entry-desc">AI-native experiences for 50 million customers who don't want to visit a branch. Personal finance agents, mortgage navigation, and frictionless onboarding.</div>
+</div>
+
+<h3>Private Banking</h3>
+<span class="tag">financial-services</span>
+<div class="entry">
+  <div class="entry-desc">Bespoke digital experiences for high-net-worth clients. Intelligent wealth advice, portfolio insights, and concierge services at scale.</div>
+</div>
+
+<h3>Corporate Banking</h3>
+<span class="tag">financial-services</span> <span class="tag"><a class="entry-link" href="corporate-banking.html">detail-page →</a></span>
+<div class="entry">
+  <div class="entry-desc">Intelligent experiences for treasury teams, CFOs, and relationship managers. Treasury intelligence, trade finance automation, and RM copilots.</div>
+</div>
+
+<h3>Wealth Management &amp; Private Banking</h3>
+<span class="tag">financial-services</span>
+<div class="entry">
+  <div class="entry-desc">Unified AI layer across advisory, portfolio management, and client servicing. Personalised guidance powered by knowledge graphs and market intelligence.</div>
+</div>
+
+<h3>Equity Trading</h3>
+<span class="tag">capital-markets</span>
+<div class="entry">
+  <div class="entry-desc">AI at the customer interface of capital markets. Research intelligence, client communication, and compliance surveillance — all conversational.</div>
+</div>
+
+<h3>Healthcare</h3>
+<span class="tag">healthcare</span>
+<div class="entry">
+  <div class="entry-desc">AI-guided patient journeys from scheduling through post-care. Clinical knowledge assistance, benefits navigation, and multilingual engagement.</div>
+</div>
+
+<h3>Public Sector</h3>
+<span class="tag">government</span>
+<div class="entry">
+  <div class="entry-desc">Conversational citizen services, policy intelligence, and sovereign digital identity. Multilingual, accessible, privacy-first by design.</div>
+</div>
+
+<h3>Travel &amp; Hospitality</h3>
+<span class="tag">hospitality</span>
+<div class="entry">
+  <div class="entry-desc">AI-native guest experiences from booking through post-stay. Conversational concierge, dynamic itinerary planning, and loyalty personalisation.</div>
+</div>
+
+<h3>Transport</h3>
+<span class="tag">mobility</span>
+<div class="entry">
+  <div class="entry-desc">Intelligent passenger and logistics experiences. Real-time journey assistance, predictive disruption management, and multimodal route intelligence.</div>
+</div>
+
+<h3>Islamic Banking</h3>
+<span class="tag">financial-services</span>
+<div class="entry">
+  <div class="entry-desc">Shariah-compliant AI experiences for retail and corporate clients. Conversational product guidance, Murabaha processing, and compliance monitoring built for Islamic finance.</div>
+</div>
+
+<h3>Grocery Retailer</h3>
+<span class="tag">retail</span>
+<div class="entry">
+  <div class="entry-desc">AI-native grocery experiences from personalised meal planning to last-mile delivery. Demand forecasting, dynamic assortment, conversational commerce, and waste reduction at shelf level.</div>
+</div>
+
+<h3>Manufacturing</h3>
+<span class="tag">industry</span>
+<div class="entry">
+  <div class="entry-desc">AI-powered production intelligence from shop floor to supply chain. Predictive maintenance, quality inspection, demand sensing, and conversational operator interfaces that reduce downtime and waste.</div>
+</div>
+
+<h3>Automotive</h3>
+<span class="tag">mobility</span>
+<div class="entry">
+  <div class="entry-desc">AI-native customer journeys from configurator to after-sales. Intelligent lead routing, conversational ownership experiences, predictive service scheduling, and connected vehicle intelligence.</div>
+</div>
+
+<hr>
+
+<h2 id="cross-industry">Cross-Industry Capability</h2>
+
+<p>Horizontal capabilities that apply across every industry vertical. Each is a standalone agent or composable building block.</p>
+
+<h3>GEO</h3>
+<span class="tag">discovery</span>
+<div class="entry">
+  <div class="entry-desc">Generative Engine Optimisation. Structure content, metadata, and brand signals so AI systems cite, recommend, and surface your products — not your competitors'.</div>
+</div>
+
+<h3>Cultural Intelligence</h3>
+<span class="tag">intelligence</span>
+<div class="entry">
+  <div class="entry-desc">AI-powered cultural sensing that detects shifts in sentiment, language, and behaviour across markets. Localisation that adapts to how people actually speak, not how brands assume they do.</div>
+</div>
+
+<h3>Synthetic Societies</h3>
+<span class="tag">simulation</span>
+<div class="entry">
+  <div class="entry-desc">Agent-based simulations of customer populations. Test campaigns, pricing strategies, and product launches against synthetic cohorts before deploying to the real world.</div>
+</div>
+
+<h3>Intelligent Onboarding</h3>
+<span class="tag">onboarding</span>
+<div class="entry">
+  <div class="entry-desc">AI-driven customer onboarding that adapts in real-time, recommends the right product, handles identity verification, and activates service in a single conversation.</div>
+</div>
+
+<h3>Predictive Retention</h3>
+<span class="tag">retention</span>
+<div class="entry">
+  <div class="entry-desc">Identifies customers likely to churn through behavioural signals and proactively intervenes with personalised offers delivered through the agent, not batch campaigns.</div>
+</div>
+
+<h3>Agentic Commerce</h3>
+<span class="tag">commerce</span>
+<div class="entry">
+  <div class="entry-desc">AI that upsells, cross-sells, and bundles at the right moment in conversation, grounded in the customer's actual usage data and context.</div>
+</div>
+
+<hr>
+
+<h2 id="stack">Technology Stack</h2>
+
+<h3>Platform</h3>
+<div class="list-item"><span class="bold">Agent orchestration</span> — MCP tool servers, Anthropic Agent SDK</div>
+<div class="list-item"><span class="bold">Workflow engines</span> — Temporal durable execution</div>
+<div class="list-item"><span class="bold">Model routing</span> — Multi-model architecture (Claude, Mistral, Cohere)</div>
+
+<h3>Intelligence</h3>
+<div class="list-item"><span class="bold">Foundation models</span> — Anthropic Claude, Mistral Large, Cohere Command R+</div>
+<div class="list-item"><span class="bold">RAG</span> — Retrieval-augmented generation pipelines</div>
+<div class="list-item"><span class="bold">Evaluation</span> — Prompt governance, guardrails, safety layers</div>
+
+<h3>Data</h3>
+<div class="list-item"><span class="bold">Vector stores</span> — Pinecone</div>
+<div class="list-item"><span class="bold">Knowledge graphs</span> — Neo4j</div>
+<div class="list-item"><span class="bold">Embedding pipelines</span> — Semantic search and retrieval</div>
+
+<hr>
+
+<h2 id="partners">Technology Partners</h2>
+
+<div class="list-item"><span class="bold">Anthropic</span> — Foundation models, Claude Partner Network</div>
+<div class="list-item"><span class="bold">OpenAI</span> — GPT models, enterprise API</div>
+<div class="list-item"><span class="bold">Mistral</span> — EU data sovereignty, Forge platform</div>
+<div class="list-item"><span class="bold">Cohere</span> — Enterprise RAG, Command R+</div>
+<div class="list-item"><span class="bold">Temporal</span> — Durable workflow execution</div>
+<div class="list-item"><span class="bold">Neo4j</span> — Knowledge graphs, entity relationships</div>
+<div class="list-item"><span class="bold">Pinecone</span> — Vector database, semantic search</div>
+
+<hr>
+
+<h2>Integration Protocol</h2>
+
+<p>All capabilities are exposed as MCP (Model Context Protocol) tool servers. Enterprise systems are wrapped as callable tools — agents orchestrate billing, provisioning, CRM, and fulfilment without custom integration code.</p>
+
+<div class="stat-row">
+  <div class="stat-item"><span class="stat-val">MCP</span> <span class="stat-lbl">integration standard</span></div>
+  <div class="stat-item"><span class="stat-val">20,000+</span> <span class="stat-lbl">community servers</span></div>
+  <div class="stat-item"><span class="stat-val">Linux Foundation</span> <span class="stat-lbl">governance</span></div>
+</div>
+
+<hr>
+
+<p>© 2026 AKQA. All rights reserved.</p>
+
+</div>
+
+<footer>
+  <hr>
+  <p>last updated: 2026-04-01 | format: agent-readable | version: 1.0</p>
+</footer>
+
+</body>
+</html>

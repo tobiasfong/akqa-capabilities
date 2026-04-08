@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Public Sector | AKQA</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --font-heading: 'Cormorant Garamond', Georgia, serif;
+    --font-ui: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+    --akqa-black: #121212;
+    --akqa-white: #FFFFFF;
+    --akqa-off-white: #F5F5F5;
+    --akqa-gray-dark: #222222;
+    --akqa-gray-body: #414141;
+    --akqa-gray-muted: #BFBFBF;
+    --akqa-gray-light: #E5E5E5;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: var(--font-heading); font-size: 16px; line-height: 1.625;
+    color: var(--akqa-gray-body); background: var(--akqa-white);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 24px 80px; background: #000000; transition: background 0.3s ease;
+  }
+  nav.scrolled { background: rgba(0,0,0,0.95); }
+  .nav-logo {
+    font-family: var(--font-heading); font-size: 22px;
+    color: var(--akqa-off-white); text-decoration: none; letter-spacing: -0.02em;
+  }
+  .nav-links { display: flex; gap: 40px; list-style: none; }
+  .nav-links a {
+    font-family: var(--font-ui); font-size: 13px; color: var(--akqa-gray-muted);
+    text-decoration: none; letter-spacing: 0.02em; transition: color 0.2s ease;
+  }
+  .nav-links a:hover { color: var(--akqa-off-white); }
+
+  /* MODE TOGGLE */
+  .mode-toggle { display: flex; gap: 16px; align-items: center; }
+  .mode-toggle a {
+    font-family: var(--font-ui); font-size: 12px;
+    text-decoration: none; color: var(--akqa-gray-muted);
+    display: flex; align-items: center; gap: 6px;
+    transition: color 0.2s ease;
+  }
+  .mode-toggle a:hover { color: var(--akqa-off-white); }
+  .mode-toggle a.active { color: var(--akqa-off-white); }
+  .mode-dot {
+    width: 7px; height: 7px; border-radius: 50%;
+    border: 1.5px solid currentColor; display: inline-block;
+  }
+  .mode-toggle a.active .mode-dot { background: currentColor; }
+
+  /* HERO */
+  .hero {
+    background: #000000; padding: 200px 80px 120px; min-height: 80vh;
+    display: flex; flex-direction: column; justify-content: flex-end;
+  }
+  .hero-breadcrumb {
+    font-family: var(--font-ui); font-size: 12px; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--akqa-gray-muted); margin-bottom: 40px;
+  }
+  .hero-breadcrumb a {
+    color: var(--akqa-gray-muted); text-decoration: none; transition: color 0.2s ease;
+  }
+  .hero-breadcrumb a:hover { color: var(--akqa-off-white); }
+  .hero-breadcrumb span { margin: 0 12px; }
+  .hero-title {
+    font-family: var(--font-heading); font-size: 72px; font-weight: 400;
+    color: var(--akqa-off-white); letter-spacing: -0.03em; line-height: 1.0;
+    max-width: 900px; margin-bottom: 32px;
+  }
+  .hero-title .x-mark { color: var(--akqa-gray-muted); }
+  .hero p {
+    font-family: var(--font-heading); font-size: 20px;
+    color: var(--akqa-gray-muted); max-width: 640px; line-height: 1.6;
+  }
+  .hero-divider { width: 120px; height: 1px; background: var(--akqa-gray-muted); margin: 48px 0 0; }
+
+  /* STATS ROW */
+  .stats-section {
+    padding: 100px 80px; background: var(--akqa-white);
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 48px;
+    border-bottom: 1px solid var(--akqa-gray-light);
+  }
+  .stat {}
+  .stat-value {
+    font-family: var(--font-heading); font-size: 56px; font-weight: 400;
+    color: var(--akqa-black); letter-spacing: -0.03em; line-height: 1.0; margin-bottom: 8px;
+  }
+  .stat-label {
+    font-family: var(--font-ui); font-size: 13px; color: var(--akqa-gray-body);
+    line-height: 1.5; max-width: 200px;
+  }
+
+  /* ABOUT / NARRATIVE */
+  .narrative-section {
+    padding: 120px 80px; background: var(--akqa-white);
+  }
+  .narrative-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 80px;
+  }
+  .narrative-label {
+    font-family: var(--font-ui); font-size: 12px; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--akqa-gray-body); margin-bottom: 32px;
+  }
+  .narrative-title {
+    font-family: var(--font-heading); font-size: 40px; font-weight: 400;
+    color: var(--akqa-black); letter-spacing: -0.02em; line-height: 1.15;
+  }
+  .narrative-body {
+    font-family: var(--font-heading); font-size: 18px; color: var(--akqa-gray-body);
+    line-height: 1.7;
+  }
+  .narrative-body p { margin-bottom: 24px; }
+  .narrative-body p:last-child { margin-bottom: 0; }
+
+  /* HOW IT WORKS — 3 NUMBERED STEPS */
+  .steps-section {
+    padding: 120px 80px; background: #000000;
+  }
+  .steps-label {
+    font-family: var(--font-ui); font-size: 12px; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--akqa-gray-muted); margin-bottom: 64px;
+    padding-bottom: 16px; border-bottom: 1px solid var(--akqa-gray-dark);
+  }
+  .steps-grid {
+    display: flex; gap: 2px; overflow-x: auto; scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch; padding-bottom: 24px;
+    scrollbar-width: thin; scrollbar-color: var(--akqa-gray-dark) transparent;
+  }
+  .steps-grid::-webkit-scrollbar { height: 4px; }
+  .steps-grid::-webkit-scrollbar-track { background: transparent; }
+  .steps-grid::-webkit-scrollbar-thumb { background: var(--akqa-gray-dark); }
+  .step {
+    flex: 0 0 380px; scroll-snap-align: start;
+    background: var(--akqa-gray-dark); padding: 56px 48px; min-height: 360px;
+    display: flex; flex-direction: column;
+  }
+  .step-number {
+    font-family: var(--font-ui); font-size: 12px; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--akqa-gray-muted); margin-bottom: 40px;
+  }
+  .step-title {
+    font-family: var(--font-heading); font-size: 28px; font-weight: 400;
+    color: var(--akqa-off-white); letter-spacing: -0.02em; line-height: 1.15;
+    margin-bottom: 20px; margin-top: auto;
+  }
+  .step-desc {
+    font-family: var(--font-ui); font-size: 13px; color: var(--akqa-gray-muted);
+    line-height: 1.6; max-width: 340px;
+  }
+
+  /* CAPABILITIES */
+  .cap-section { padding: 120px 80px; }
+  .cap-dark { background: var(--akqa-gray-dark); }
+  .cap-light { background: var(--akqa-white); }
+  .cap-alt { background: var(--akqa-off-white); }
+
+  .cap-header {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 80px; margin-bottom: 80px;
+  }
+  .cap-number {
+    font-family: var(--font-ui); font-size: 12px; letter-spacing: 0.15em;
+    text-transform: uppercase; margin-bottom: 24px;
+  }
+  .cap-dark .cap-number { color: var(--akqa-gray-muted); }
+  .cap-light .cap-number, .cap-alt .cap-number { color: var(--akqa-gray-body); }
+  .cap-title {
+    font-family: var(--font-heading); font-size: 44px; font-weight: 400;
+    letter-spacing: -0.02em; line-height: 1.1; margin-bottom: 24px;
+  }
+  .cap-dark .cap-title { color: var(--akqa-off-white); }
+  .cap-light .cap-title, .cap-alt .cap-title { color: var(--akqa-black); }
+  .cap-subtitle {
+    font-family: var(--font-heading); font-size: 18px; line-height: 1.6;
+  }
+  .cap-dark .cap-subtitle { color: var(--akqa-gray-muted); }
+  .cap-light .cap-subtitle, .cap-alt .cap-subtitle { color: var(--akqa-gray-body); }
+  .cap-header-right {
+    display: flex; flex-direction: column; justify-content: flex-end;
+  }
+  .cap-body {
+    font-family: var(--font-heading); font-size: 17px; line-height: 1.7;
+  }
+  .cap-dark .cap-body { color: var(--akqa-gray-muted); }
+  .cap-light .cap-body, .cap-alt .cap-body { color: var(--akqa-gray-body); }
+
+  .section-divider { width: 80px; height: 1px; margin-bottom: 48px; }
+  .cap-dark .section-divider { background: var(--akqa-gray-muted); }
+  .cap-light .section-divider, .cap-alt .section-divider { background: var(--akqa-gray-light); }
+
+  /* USE CASE GRID */
+  .use-cases {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px;
+  }
+  .use-case {
+    padding: 48px 40px; min-height: 240px;
+    display: flex; flex-direction: column; justify-content: flex-end;
+  }
+  .cap-dark .use-case { background: #2a2a2a; }
+  .cap-light .use-case { background: var(--akqa-off-white); }
+  .cap-alt .use-case { background: var(--akqa-white); }
+  .use-case-label {
+    font-family: var(--font-ui); font-size: 11px; letter-spacing: 0.1em;
+    text-transform: uppercase; margin-bottom: 16px;
+  }
+  .cap-dark .use-case-label { color: var(--akqa-gray-muted); }
+  .cap-light .use-case-label, .cap-alt .use-case-label { color: var(--akqa-gray-body); }
+  .use-case-title {
+    font-family: var(--font-heading); font-size: 22px; font-weight: 400;
+    letter-spacing: -0.01em; line-height: 1.2; margin-bottom: 12px;
+  }
+  .cap-dark .use-case-title { color: var(--akqa-off-white); }
+  .cap-light .use-case-title, .cap-alt .use-case-title { color: var(--akqa-black); }
+  .use-case-desc {
+    font-family: var(--font-ui); font-size: 13px; line-height: 1.6; max-width: 320px;
+  }
+  .cap-dark .use-case-desc { color: var(--akqa-gray-muted); }
+  .cap-light .use-case-desc, .cap-alt .use-case-desc { color: var(--akqa-gray-body); }
+
+  /* CLIENT LOGOS */
+  .clients-section { padding: 100px 80px; background: var(--akqa-off-white); }
+  .clients-label {
+    font-family: var(--font-ui); font-size: 12px; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--akqa-gray-body); margin-bottom: 56px;
+    padding-bottom: 16px; border-bottom: 1px solid var(--akqa-gray-light);
+  }
+  .clients-grid {
+    display: flex; flex-wrap: wrap; gap: 0; justify-content: flex-start;
+  }
+  .client-logo {
+    flex: 0 0 25%; display: flex; align-items: center; justify-content: center;
+    padding: 40px 32px; border: 0.5px solid var(--akqa-gray-light);
+    margin: -0.5px;
+  }
+  .client-logo span {
+    font-family: var(--font-heading); font-size: 22px; font-weight: 400;
+    color: var(--akqa-black); letter-spacing: -0.01em;
+    opacity: 0.7; transition: opacity 0.3s ease;
+  }
+  .client-logo:hover span { opacity: 1; }
+
+  /* TECH STACK */
+  .tech-section { padding: 80px 80px; background: #000000; }
+  .tech-label {
+    font-family: var(--font-ui); font-size: 12px; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--akqa-gray-muted); margin-bottom: 48px;
+    padding-bottom: 16px; border-bottom: 1px solid var(--akqa-gray-dark);
+  }
+  .tech-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 48px;
+  }
+  .tech-group-title {
+    font-family: var(--font-ui); font-size: 11px; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--akqa-gray-muted); margin-bottom: 20px;
+  }
+  .tech-item {
+    font-family: var(--font-heading); font-size: 18px; color: var(--akqa-off-white);
+    line-height: 2.0;
+  }
+
+  /* MEASURED IMPACT */
+  .impact-section { padding: 120px 80px; background: var(--akqa-off-white); }
+  .impact-label {
+    font-family: var(--font-ui); font-size: 12px; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--akqa-gray-body); margin-bottom: 64px;
+    padding-bottom: 16px; border-bottom: 1px solid var(--akqa-gray-light);
+  }
+  .impact-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 48px;
+  }
+  .impact-value {
+    font-family: var(--font-heading); font-size: 56px; font-weight: 400;
+    color: var(--akqa-black); letter-spacing: -0.03em; line-height: 1.0; margin-bottom: 8px;
+  }
+  .impact-label-text {
+    font-family: var(--font-ui); font-size: 13px; color: var(--akqa-gray-body);
+    line-height: 1.5; max-width: 220px;
+  }
+
+  /* INSIGHTS — horizontal scroll */
+  .insights-section { padding: 120px 80px 120px; background: var(--akqa-off-white); }
+  .insights-label {
+    font-family: var(--font-ui); font-size: 12px; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--akqa-gray-body); margin-bottom: 64px;
+    padding-bottom: 16px; border-bottom: 1px solid var(--akqa-gray-light);
+  }
+  .insights-track {
+    display: flex; gap: 2px; overflow-x: auto; scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch; padding-bottom: 24px;
+    scrollbar-width: thin; scrollbar-color: var(--akqa-gray-light) transparent;
+  }
+  .insights-track::-webkit-scrollbar { height: 4px; }
+  .insights-track::-webkit-scrollbar-track { background: transparent; }
+  .insights-track::-webkit-scrollbar-thumb { background: var(--akqa-gray-light); }
+  .insight-card {
+    flex: 0 0 380px; scroll-snap-align: start;
+    background: var(--akqa-white); padding: 48px 40px; min-height: 320px;
+    display: flex; flex-direction: column; justify-content: space-between;
+  }
+  .insight-tag {
+    font-family: var(--font-ui); font-size: 11px; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--akqa-gray-body); margin-bottom: 24px;
+  }
+  .insight-title {
+    font-family: var(--font-heading); font-size: 24px; font-weight: 400;
+    color: var(--akqa-black); letter-spacing: -0.02em; line-height: 1.2;
+    margin-bottom: 16px;
+  }
+  .insight-body {
+    font-family: var(--font-ui); font-size: 13px; color: var(--akqa-gray-body);
+    line-height: 1.65; flex-grow: 1;
+  }
+  .insight-meta {
+    font-family: var(--font-ui); font-size: 11px; color: var(--akqa-gray-muted);
+    letter-spacing: 0.05em; margin-top: 24px; padding-top: 16px;
+    border-top: 1px solid var(--akqa-gray-light);
+  }
+
+  /* CASE STUDIES */
+  .cases-section { padding: 120px 80px; background: var(--akqa-white); }
+  .cases-label {
+    font-family: var(--font-ui); font-size: 12px; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--akqa-gray-body); margin-bottom: 64px;
+    padding-bottom: 16px; border-bottom: 1px solid var(--akqa-gray-light);
+  }
+  .cases-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px;
+  }
+  .case-card {
+    background: var(--akqa-off-white); padding: 56px 48px; min-height: 420px;
+    display: flex; flex-direction: column; justify-content: flex-end;
+    position: relative; transition: background 0.3s ease;
+  }
+  .case-card:hover { background: var(--akqa-gray-light); }
+  .case-client {
+    font-family: var(--font-ui); font-size: 11px; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--akqa-gray-body); margin-bottom: 20px;
+  }
+  .case-title {
+    font-family: var(--font-heading); font-size: 32px; font-weight: 400;
+    color: var(--akqa-black); letter-spacing: -0.02em; line-height: 1.15;
+    margin-bottom: 16px;
+  }
+  .case-desc {
+    font-family: var(--font-ui); font-size: 13px; color: var(--akqa-gray-body);
+    line-height: 1.65; margin-bottom: 24px; max-width: 340px;
+  }
+  .case-stats {
+    display: flex; gap: 32px; padding-top: 20px; border-top: 1px solid var(--akqa-gray-light);
+  }
+  .case-stat-value {
+    font-family: var(--font-heading); font-size: 28px; font-weight: 400;
+    color: var(--akqa-black); letter-spacing: -0.02em; line-height: 1.0;
+  }
+  .case-stat-label {
+    font-family: var(--font-ui); font-size: 11px; color: var(--akqa-gray-body);
+    line-height: 1.4; margin-top: 4px;
+  }
+
+  /* CTA */
+  .cta-section {
+    padding: 120px 80px; background: #000000;
+    display: flex; flex-direction: column; align-items: flex-start;
+  }
+  .cta-title {
+    font-family: var(--font-heading); font-size: 44px; font-weight: 400;
+    color: var(--akqa-off-white); letter-spacing: -0.02em; line-height: 1.1;
+    max-width: 600px; margin-bottom: 40px;
+  }
+  .cta-link {
+    font-family: var(--font-ui); font-size: 14px; color: var(--akqa-off-white);
+    text-decoration: none; padding-bottom: 4px;
+    border-bottom: 1px solid var(--akqa-off-white); transition: all 0.2s ease;
+  }
+  .cta-link:hover { color: var(--akqa-gray-muted); border-bottom-color: var(--akqa-gray-muted); }
+
+  /* FOOTER */
+  footer {
+    padding: 64px 80px; background: #000000;
+    display: flex; justify-content: space-between; align-items: center;
+    border-top: 1px solid var(--akqa-gray-dark);
+  }
+  .footer-logo { font-family: var(--font-heading); font-size: 22px; color: var(--akqa-off-white); text-decoration: none; }
+  .footer-text { font-family: var(--font-ui); font-size: 12px; color: var(--akqa-gray-muted); }
+
+  /* RESPONSIVE */
+  @media (max-width: 1024px) {
+    nav, .hero, .narrative-section, .steps-section, .cap-section, .clients-section, .tech-section, .impact-section, .insights-section, .cases-section, .cta-section, footer {
+      padding-left: 40px; padding-right: 40px;
+    }
+    .client-logo { flex: 0 0 25%; }
+    .stats-section { padding-left: 40px; padding-right: 40px; grid-template-columns: repeat(2, 1fr); }
+    .hero-title { font-size: 52px; }
+    .narrative-grid, .cap-header { grid-template-columns: 1fr; gap: 40px; }
+    .use-cases { grid-template-columns: repeat(2, 1fr); }
+    .tech-grid, .impact-grid { grid-template-columns: repeat(2, 1fr); }
+    .cases-grid { grid-template-columns: repeat(2, 1fr); }
+    .insight-card { flex: 0 0 320px; }
+  }
+  @media (max-width: 640px) {
+    nav { padding: 20px 24px; }
+    .hero, .narrative-section, .steps-section, .cap-section, .clients-section, .tech-section, .impact-section, .insights-section, .cases-section, .cta-section, footer {
+      padding-left: 24px; padding-right: 24px;
+    }
+    .client-logo { flex: 0 0 50%; }
+    .stats-section { padding-left: 24px; padding-right: 24px; }
+    .hero-title { font-size: 36px; }
+    .stat-value { font-size: 40px; }
+    .use-cases { grid-template-columns: 1fr; }
+    .step { flex: 0 0 280px; }
+    .tech-grid { grid-template-columns: 1fr; }
+    .impact-grid { grid-template-columns: repeat(2, 1fr); }
+    .cases-grid { grid-template-columns: 1fr; }
+    .insight-card { flex: 0 0 280px; }
+    .nav-links { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a class="nav-logo" href="akqa-ai-product-library.html">AKQA</a>
+  <ul class="nav-links">
+    <li><a href="akqa-ai-product-library.html">All capabilities</a></li>
+    <li><a href="#approach">Approach</a></li>
+    <li><a href="#capabilities">Capabilities</a></li>
+    <li><a href="#cases">Case Studies</a></li>
+  </ul>
+  <div class="mode-toggle">
+    <a href="#" class="active"><span class="mode-dot"></span> human</a>
+    <a href="public-sector-agent.html"><span class="mode-dot"></span> agent</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-breadcrumb">
+    <a href="akqa-ai-product-library.html">Capabilities</a>
+    <span>/</span>
+    Public Sector
+  </div>
+  <h1 class="hero-title">Public Sector <span class="x-mark">&times;</span> AKQA</h1>
+  <p>Digital platforms that serve millions of citizens and workers across defence, enterprise development, housing, and social services. Unified experiences that replace fragmented portals with intelligent, people-centred systems built for transparency and accessibility.</p>
+  <div class="hero-divider"></div>
+</section>
+
+<!-- STATS -->
+<section class="stats-section">
+  <div class="stat">
+    <div class="stat-value">600%</div>
+    <div class="stat-label">Increase in web traffic across Singapore's largest public digital ecosystem</div>
+  </div>
+  <div class="stat">
+    <div class="stat-value">100k+</div>
+    <div class="stat-label">Users engaging daily across connected government and public service platforms</div>
+  </div>
+  <div class="stat">
+    <div class="stat-value">63</div>
+    <div class="stat-label">Websites revamped into a cohesive work, live, and play digital ecosystem</div>
+  </div>
+  <div class="stat">
+    <div class="stat-value">1.5m</div>
+    <div class="stat-label">Workers and members served through integrated public sector platforms</div>
+  </div>
+</section>
+
+<!-- NARRATIVE -->
+<section class="narrative-section">
+  <div class="narrative-grid">
+    <div>
+      <div class="narrative-label">The Opportunity</div>
+      <h2 class="narrative-title">Every citizen touchpoint is a service. Every service is the nation.</h2>
+    </div>
+    <div>
+      <div class="narrative-body">
+        <p>Singapore's public sector organisations manage complex ecosystems spanning defence logistics, enterprise development, housing, social services, and wildlife conservation. Citizens and workers interact with dozens of disconnected platforms, each with its own logic. The opportunity is to unify these touchpoints into intelligent, people-centred experiences where the service navigates to the citizen, not the other way around.</p>
+        <p>AI-powered platforms replace static portals with conversational citizen services, policy intelligence, and connected workspaces. Transport workflows gain transparency across roles. Enterprise support becomes self-service. Housing journeys start from user insight. Knowledge flows are personalised and unified. The interface shifts from navigating government structure to government understanding and anticipating the needs of the people it serves.</p>
+        <p>AKQA builds the experience layer that connects public institutions to the people they serve. Design systems create consistency across agencies. Martech ecosystems enable data sharing between departments. Multilingual, accessible, and privacy-first by design, every platform is built sovereign and secure — ready for the scale and sensitivity that public service demands.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT WE DO -->
+<section class="steps-section" id="approach">
+  <div class="steps-label">What We Do</div>
+  <div class="steps-grid" id="capabilities">
+    <div class="step">
+      <div class="step-number">01</div>
+      <div class="step-title">Connected Citizen Services</div>
+      <div class="step-desc">HDB built a digital ecosystem that guides home buyers and owners through property journeys with transparency and clarity. The platform connects citizens to information, to services, and to the nation's housing mission — intelligent, accessible, and designed for life at every stage.</div>
+    </div>
+    <div class="step">
+      <div class="step-number">02</div>
+      <div class="step-title">Enterprise Growth Ecosystems</div>
+      <div class="step-desc">Enterprise Singapore partnered with AKQA to serve 290,000 businesses through an integrated website and MarTech ecosystem. The platform reduced friction for business owners, enabled self-service support, and created data sharing between departments — making it easier for enterprises to access the guidance they need to grow.</div>
+    </div>
+    <div class="step">
+      <div class="step-number">03</div>
+      <div class="step-title">Transport Management Systems</div>
+      <div class="step-desc">MINDEF needed a unified platform to manage vehicle acquisition, assignment, and tracking across military operations. AKQA partnered with ST Engineering and SMRT to design a system that replaced manual processes with mobile-optimised coordination, giving soldiers and operations staff transparency and efficiency in every indent.</div>
+    </div>
+    <div class="step">
+      <div class="step-number">04</div>
+      <div class="step-title">Connected Workspaces</div>
+      <div class="step-desc">Temasek partnered with AKQA to build a connected workspace platform that unifies knowledge sharing and collaboration across the organisation. The system integrates third-party workplace applications, surfaces personalised actions, and creates a single source for institutional knowledge and daily workflows.</div>
+    </div>
+    <div class="step">
+      <div class="step-number">05</div>
+      <div class="step-title">People-Centred Service Platforms</div>
+      <div class="step-desc">NTUC represents 1.5 million workers and members across Singapore. AKQA redesigned their entire experience platform — from communications playbooks to public-facing services — creating a consistent identity that works for millions. Every touchpoint reflects NTUC's commitment to worker welfare and dignity.</div>
+    </div>
+  </div>
+</section>
+
+
+<!-- CLIENTS -->
+<section class="clients-section">
+  <div class="clients-label">Clients</div>
+  <div class="clients-grid">
+    <div class="client-logo"><span>MINDEF</span></div>
+    <div class="client-logo"><span>Temasek</span></div>
+    <div class="client-logo"><span>Enterprise Singapore</span></div>
+    <div class="client-logo"><span>NTUC</span></div>
+    <div class="client-logo"><span>IMDA</span></div>
+    <div class="client-logo"><span>HDB</span></div>
+    <div class="client-logo"><span>MSF</span></div>
+    <div class="client-logo"><span>Mandai</span></div>
+  </div>
+</section>
+
+
+<!-- HOW WE BUILD -->
+<section class="tech-section">
+  <div class="tech-label">How We Build</div>
+  <div class="tech-grid">
+    <div class="tech-group">
+      <div class="tech-group-title">Research &amp; Insight</div>
+      <div class="tech-item">User Research</div>
+      <div class="tech-item">Design Thinking Workshops</div>
+    </div>
+    <div class="tech-group">
+      <div class="tech-group-title">Design &amp; Systems</div>
+      <div class="tech-item">Design Systems</div>
+      <div class="tech-item">End-to-End UX Design</div>
+    </div>
+    <div class="tech-group">
+      <div class="tech-group-title">Service Infrastructure</div>
+      <div class="tech-item">CMS &amp; Content Management</div>
+      <div class="tech-item">API Integration</div>
+    </div>
+    <div class="tech-group">
+      <div class="tech-group-title">Platforms &amp; Operations</div>
+      <div class="tech-item">Martech Ecosystems</div>
+      <div class="tech-item">Workflow Orchestration</div>
+    </div>
+  </div>
+</section>
+
+
+<!-- SECTOR IMPACT -->
+<section class="impact-section" id="impact">
+  <div class="impact-label">Sector Impact</div>
+  <div class="impact-grid">
+    <div>
+      <div class="impact-value">500%</div>
+      <div class="impact-label-text">Growth in online applications after redesigning a loyalty and e-commerce platform for Singapore's citizens and workers</div>
+    </div>
+    <div>
+      <div class="impact-value">290K</div>
+      <div class="impact-label-text">Enterprises in Singapore served through an integrated website and Martech ecosystem that reduced friction for business owners</div>
+    </div>
+    <div>
+      <div class="impact-value">79</div>
+      <div class="impact-label-text">SME owners interviewed during research activities to uncover business concerns and aspirations — findings applied directly into product design</div>
+    </div>
+    <div>
+      <div class="impact-value">35%</div>
+      <div class="impact-label-text">Increase in deployment speed, accelerating the delivery of digital services across public sector programmes</div>
+    </div>
+  </div>
+</section>
+
+
+<!-- CASE STUDIES -->
+<section class="cases-section" id="cases">
+  <div class="cases-label">Case Studies</div>
+  <div class="cases-grid">
+    <div class="case-card">
+      <div class="case-client">MINDEF</div>
+      <h3 class="case-title">World-class transportation management for national defence readiness</h3>
+      <div class="case-desc">AKQA partnered with ST Engineering and SMRT to design and optimise MINDEF's transport management platform. The work created a one-stop system with coordination and visibility across roles, enabling soldiers and operations staff to process indents and complete tasks through mobile-optimised, transparent workflows.</div>
+    </div>
+    <div class="case-card">
+      <div class="case-client">Enterprise Singapore</div>
+      <h3 class="case-title">Inspiring businesses to grow beyond their current capabilities</h3>
+      <div class="case-desc">AKQA built an integrated Martech ecosystem and redesigned Enterprise Singapore's website to reduce friction for business owners seeking support. The platform enabled internal data sharing between departments and delivered self-service tools that made it easier for the agency to guide enterprises on their growth journey.</div>
+    </div>
+    <div class="case-card">
+      <div class="case-client">NTUC</div>
+      <h3 class="case-title">A consistent platform for every Singapore worker</h3>
+      <div class="case-desc">AKQA designed an end-to-end experience platform representing NTUC's values across multiple touchpoints and channels. The work delivered an inclusive front-stage for 1.5 million workers and members, an operationally efficient back-stage, and a communications playbook empowering internal and external teams.</div>
+    </div>
+  </div>
+</section>
+
+
+<!-- CTA -->
+<section class="cta-section">
+  <h2 class="cta-title"></h2>
+  <a class="cta-link" href="akqa-ai-product-library.html">Explore all capabilities</a>
+</section>
+
+
+<!-- FOOTER -->
+<footer>
+  <a class="footer-logo" href="akqa-ai-product-library.html">AKQA</a>
+  <span class="footer-text">&copy; 2026 AKQA. All rights reserved.</span>
+</footer>
+
+<script>
+  window.addEventListener('scroll', () => {
+    document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 50);
+  });
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+</script>
+
+</body>
+</html>

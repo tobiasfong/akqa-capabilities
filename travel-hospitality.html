@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Travel &amp; Hospitality | AKQA</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --font-heading: 'Cormorant Garamond', Georgia, serif;
+    --font-ui: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+    --akqa-black: #121212;
+    --akqa-white: #FFFFFF;
+    --akqa-off-white: #F5F5F5;
+    --akqa-gray-dark: #222222;
+    --akqa-gray-body: #414141;
+    --akqa-gray-muted: #BFBFBF;
+    --akqa-gray-light: #E5E5E5;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: var(--font-heading); font-size: 16px; line-height: 1.625;
+    color: var(--akqa-gray-body); background: var(--akqa-white);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 24px 80px; background: #000000; transition: background 0.3s ease;
+  }
+  nav.scrolled { background: rgba(0,0,0,0.95); }
+  .nav-logo {
+    font-family: var(--font-heading); font-size: 22px;
+    color: var(--akqa-off-white); text-decoration: none; letter-spacing: -0.02em;
+  }
+  .nav-links { display: flex; gap: 40px; list-style: none; }
+  .nav-links a {
+    font-family: var(--font-ui); font-size: 13px; color: var(--akqa-gray-muted);
+    text-decoration: none; letter-spacing: 0.02em; transition: color 0.2s ease;
+  }
+  .nav-links a:hover { color: var(--akqa-off-white); }
+
+  /* MODE TOGGLE */
+  .mode-toggle { display: flex; gap: 16px; align-items: center; }
+  .mode-toggle a {
+    font-family: var(--font-ui); font-size: 12px;
+    text-decoration: none; color: var(--akqa-gray-muted);
+    display: flex; align-items: center; gap: 6px;
+    transition: color 0.2s ease;
+  }
+  .mode-toggle a:hover { color: var(--akqa-off-white); }
+  .mode-toggle a.active { color: var(--akqa-off-white); }
+  .mode-dot {
+    width: 7px; height: 7px; border-radius: 50%;
+    border: 1.5px solid currentColor; display: inline-block;
+  }
+  .mode-toggle a.active .mode-dot { background: currentColor; }
+
+  /* HERO */
+  .hero {
+    background: #000000; padding: 200px 80px 120px; min-height: 80vh;
+    display: flex; flex-direction: column; justify-content: flex-end;
+  }
+  .hero-breadcrumb {
+    font-family: var(--font-ui); font-size: 12px; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--akqa-gray-muted); margin-bottom: 40px;
+  }
+  .hero-breadcrumb a {
+    color: var(--akqa-gray-muted); text-decoration: none; transition: color 0.2s ease;
+  }
+  .hero-breadcrumb a:hover { color: var(--akqa-off-white); }
+  .hero-breadcrumb span { margin: 0 12px; }
+  .hero-title {
+    font-family: var(--font-heading); font-size: 72px; font-weight: 400;
+    color: var(--akqa-off-white); letter-spacing: -0.03em; line-height: 1.0;
+    max-width: 900px; margin-bottom: 32px;
+  }
+  .hero-title .x-mark { color: var(--akqa-gray-muted); }
+  .hero p {
+    font-family: var(--font-heading); font-size: 20px;
+    color: var(--akqa-gray-muted); max-width: 640px; line-height: 1.6;
+  }
+  .hero-divider { width: 120px; height: 1px; background: var(--akqa-gray-muted); margin: 48px 0 0; }
+
+  /* STATS ROW */
+  .stats-section {
+    padding: 100px 80px; background: var(--akqa-white);
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 48px;
+    border-bottom: 1px solid var(--akqa-gray-light);
+  }
+  .stat {}
+  .stat-value {
+    font-family: var(--font-heading); font-size: 56px; font-weight: 400;
+    color: var(--akqa-black); letter-spacing: -0.03em; line-height: 1.0; margin-bottom: 8px;
+  }
+  .stat-label {
+    font-family: var(--font-ui); font-size: 13px; color: var(--akqa-gray-body);
+    line-height: 1.5; max-width: 200px;
+  }
+
+  /* ABOUT / NARRATIVE */
+  .narrative-section {
+    padding: 120px 80px; background: var(--akqa-white);
+  }
+  .narrative-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 80px;
+  }
+  .narrative-label {
+    font-family: var(--font-ui); font-size: 12px; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--akqa-gray-body); margin-bottom: 32px;
+  }
+  .narrative-title {
+    font-family: var(--font-heading); font-size: 40px; font-weight: 400;
+    color: var(--akqa-black); letter-spacing: -0.02em; line-height: 1.15;
+  }
+  .narrative-body {
+    font-family: var(--font-heading); font-size: 18px; color: var(--akqa-gray-body);
+    line-height: 1.7;
+  }
+  .narrative-body p { margin-bottom: 24px; }
+  .narrative-body p:last-child { margin-bottom: 0; }
+
+  /* HOW IT WORKS — 3 NUMBERED STEPS */
+  .steps-section {
+    padding: 120px 80px; background: #000000;
+  }
+  .steps-label {
+    font-family: var(--font-ui); font-size: 12px; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--akqa-gray-muted); margin-bottom: 64px;
+    padding-bottom: 16px; border-bottom: 1px solid var(--akqa-gray-dark);
+  }
+  .steps-grid {
+    display: flex; gap: 2px; overflow-x: auto; scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch; padding-bottom: 24px;
+    scrollbar-width: thin; scrollbar-color: var(--akqa-gray-dark) transparent;
+  }
+  .steps-grid::-webkit-scrollbar { height: 4px; }
+  .steps-grid::-webkit-scrollbar-track { background: transparent; }
+  .steps-grid::-webkit-scrollbar-thumb { background: var(--akqa-gray-dark); }
+  .step {
+    flex: 0 0 380px; scroll-snap-align: start;
+    background: var(--akqa-gray-dark); padding: 56px 48px; min-height: 360px;
+    display: flex; flex-direction: column;
+  }
+  .step-number {
+    font-family: var(--font-ui); font-size: 12px; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--akqa-gray-muted); margin-bottom: 40px;
+  }
+  .step-title {
+    font-family: var(--font-heading); font-size: 28px; font-weight: 400;
+    color: var(--akqa-off-white); letter-spacing: -0.02em; line-height: 1.15;
+    margin-bottom: 20px; margin-top: auto;
+  }
+  .step-desc {
+    font-family: var(--font-ui); font-size: 13px; color: var(--akqa-gray-muted);
+    line-height: 1.6; max-width: 340px;
+  }
+
+  /* CAPABILITIES */
+  .cap-section { padding: 120px 80px; }
+  .cap-dark { background: var(--akqa-gray-dark); }
+  .cap-light { background: var(--akqa-white); }
+  .cap-alt { background: var(--akqa-off-white); }
+
+  .cap-header {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 80px; margin-bottom: 80px;
+  }
+  .cap-number {
+    font-family: var(--font-ui); font-size: 12px; letter-spacing: 0.15em;
+    text-transform: uppercase; margin-bottom: 24px;
+  }
+  .cap-dark .cap-number { color: var(--akqa-gray-muted); }
+  .cap-light .cap-number, .cap-alt .cap-number { color: var(--akqa-gray-body); }
+  .cap-title {
+    font-family: var(--font-heading); font-size: 44px; font-weight: 400;
+    letter-spacing: -0.02em; line-height: 1.1; margin-bottom: 24px;
+  }
+  .cap-dark .cap-title { color: var(--akqa-off-white); }
+  .cap-light .cap-title, .cap-alt .cap-title { color: var(--akqa-black); }
+  .cap-subtitle {
+    font-family: var(--font-heading); font-size: 18px; line-height: 1.6;
+  }
+  .cap-dark .cap-subtitle { color: var(--akqa-gray-muted); }
+  .cap-light .cap-subtitle, .cap-alt .cap-subtitle { color: var(--akqa-gray-body); }
+  .cap-header-right {
+    display: flex; flex-direction: column; justify-content: flex-end;
+  }
+  .cap-body {
+    font-family: var(--font-heading); font-size: 17px; line-height: 1.7;
+  }
+  .cap-dark .cap-body { color: var(--akqa-gray-muted); }
+  .cap-light .cap-body, .cap-alt .cap-body { color: var(--akqa-gray-body); }
+
+  .section-divider { width: 80px; height: 1px; margin-bottom: 48px; }
+  .cap-dark .section-divider { background: var(--akqa-gray-muted); }
+  .cap-light .section-divider, .cap-alt .section-divider { background: var(--akqa-gray-light); }
+
+  /* USE CASE GRID */
+  .use-cases {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px;
+  }
+  .use-case {
+    padding: 48px 40px; min-height: 240px;
+    display: flex; flex-direction: column; justify-content: flex-end;
+  }
+  .cap-dark .use-case { background: #2a2a2a; }
+  .cap-light .use-case { background: var(--akqa-off-white); }
+  .cap-alt .use-case { background: var(--akqa-white); }
+  .use-case-label {
+    font-family: var(--font-ui); font-size: 11px; letter-spacing: 0.1em;
+    text-transform: uppercase; margin-bottom: 16px;
+  }
+  .cap-dark .use-case-label { color: var(--akqa-gray-muted); }
+  .cap-light .use-case-label, .cap-alt .use-case-label { color: var(--akqa-gray-body); }
+  .use-case-title {
+    font-family: var(--font-heading); font-size: 22px; font-weight: 400;
+    letter-spacing: -0.01em; line-height: 1.2; margin-bottom: 12px;
+  }
+  .cap-dark .use-case-title { color: var(--akqa-off-white); }
+  .cap-light .use-case-title, .cap-alt .use-case-title { color: var(--akqa-black); }
+  .use-case-desc {
+    font-family: var(--font-ui); font-size: 13px; line-height: 1.6; max-width: 320px;
+  }
+  .cap-dark .use-case-desc { color: var(--akqa-gray-muted); }
+  .cap-light .use-case-desc, .cap-alt .use-case-desc { color: var(--akqa-gray-body); }
+
+  /* CLIENT LOGOS */
+  .clients-section { padding: 100px 80px; background: var(--akqa-off-white); }
+  .clients-label {
+    font-family: var(--font-ui); font-size: 12px; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--akqa-gray-body); margin-bottom: 56px;
+    padding-bottom: 16px; border-bottom: 1px solid var(--akqa-gray-light);
+  }
+  .clients-grid {
+    display: flex; flex-wrap: wrap; gap: 0; justify-content: flex-start;
+  }
+  .client-logo {
+    flex: 0 0 25%; display: flex; align-items: center; justify-content: center;
+    padding: 40px 32px; border: 0.5px solid var(--akqa-gray-light);
+    margin: -0.5px;
+  }
+  .client-logo span {
+    font-family: var(--font-heading); font-size: 22px; font-weight: 400;
+    color: var(--akqa-black); letter-spacing: -0.01em;
+    opacity: 0.7; transition: opacity 0.3s ease;
+  }
+  .client-logo:hover span { opacity: 1; }
+
+  /* TECH STACK */
+  .tech-section { padding: 80px 80px; background: #000000; }
+  .tech-label {
+    font-family: var(--font-ui); font-size: 12px; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--akqa-gray-muted); margin-bottom: 48px;
+    padding-bottom: 16px; border-bottom: 1px solid var(--akqa-gray-dark);
+  }
+  .tech-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 48px;
+  }
+  .tech-group-title {
+    font-family: var(--font-ui); font-size: 11px; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--akqa-gray-muted); margin-bottom: 20px;
+  }
+  .tech-item {
+    font-family: var(--font-heading); font-size: 18px; color: var(--akqa-off-white);
+    line-height: 2.0;
+  }
+
+  /* MEASURED IMPACT */
+  .impact-section { padding: 120px 80px; background: var(--akqa-off-white); }
+  .impact-label {
+    font-family: var(--font-ui); font-size: 12px; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--akqa-gray-body); margin-bottom: 64px;
+    padding-bottom: 16px; border-bottom: 1px solid var(--akqa-gray-light);
+  }
+  .impact-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 48px;
+  }
+  .impact-value {
+    font-family: var(--font-heading); font-size: 56px; font-weight: 400;
+    color: var(--akqa-black); letter-spacing: -0.03em; line-height: 1.0; margin-bottom: 8px;
+  }
+  .impact-label-text {
+    font-family: var(--font-ui); font-size: 13px; color: var(--akqa-gray-body);
+    line-height: 1.5; max-width: 220px;
+  }
+
+  /* INSIGHTS — horizontal scroll */
+  .insights-section { padding: 120px 80px 120px; background: var(--akqa-off-white); }
+  .insights-label {
+    font-family: var(--font-ui); font-size: 12px; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--akqa-gray-body); margin-bottom: 64px;
+    padding-bottom: 16px; border-bottom: 1px solid var(--akqa-gray-light);
+  }
+  .insights-track {
+    display: flex; gap: 2px; overflow-x: auto; scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch; padding-bottom: 24px;
+    scrollbar-width: thin; scrollbar-color: var(--akqa-gray-light) transparent;
+  }
+  .insights-track::-webkit-scrollbar { height: 4px; }
+  .insights-track::-webkit-scrollbar-track { background: transparent; }
+  .insights-track::-webkit-scrollbar-thumb { background: var(--akqa-gray-light); }
+  .insight-card {
+    flex: 0 0 380px; scroll-snap-align: start;
+    background: var(--akqa-white); padding: 48px 40px; min-height: 320px;
+    display: flex; flex-direction: column; justify-content: space-between;
+  }
+  .insight-tag {
+    font-family: var(--font-ui); font-size: 11px; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--akqa-gray-body); margin-bottom: 24px;
+  }
+  .insight-title {
+    font-family: var(--font-heading); font-size: 24px; font-weight: 400;
+    color: var(--akqa-black); letter-spacing: -0.02em; line-height: 1.2;
+    margin-bottom: 16px;
+  }
+  .insight-body {
+    font-family: var(--font-ui); font-size: 13px; color: var(--akqa-gray-body);
+    line-height: 1.65; flex-grow: 1;
+  }
+  .insight-meta {
+    font-family: var(--font-ui); font-size: 11px; color: var(--akqa-gray-muted);
+    letter-spacing: 0.05em; margin-top: 24px; padding-top: 16px;
+    border-top: 1px solid var(--akqa-gray-light);
+  }
+
+  /* CASE STUDIES */
+  .cases-section { padding: 120px 80px; background: var(--akqa-white); }
+  .cases-label {
+    font-family: var(--font-ui); font-size: 12px; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--akqa-gray-body); margin-bottom: 64px;
+    padding-bottom: 16px; border-bottom: 1px solid var(--akqa-gray-light);
+  }
+  .cases-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px;
+  }
+  .case-card {
+    background: var(--akqa-off-white); padding: 56px 48px; min-height: 420px;
+    display: flex; flex-direction: column; justify-content: flex-end;
+    position: relative; transition: background 0.3s ease;
+  }
+  .case-card:hover { background: var(--akqa-gray-light); }
+  .case-client {
+    font-family: var(--font-ui); font-size: 11px; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--akqa-gray-body); margin-bottom: 20px;
+  }
+  .case-title {
+    font-family: var(--font-heading); font-size: 32px; font-weight: 400;
+    color: var(--akqa-black); letter-spacing: -0.02em; line-height: 1.15;
+    margin-bottom: 16px;
+  }
+  .case-desc {
+    font-family: var(--font-ui); font-size: 13px; color: var(--akqa-gray-body);
+    line-height: 1.65; margin-bottom: 24px; max-width: 340px;
+  }
+  .case-stats {
+    display: flex; gap: 32px; padding-top: 20px; border-top: 1px solid var(--akqa-gray-light);
+  }
+  .case-stat-value {
+    font-family: var(--font-heading); font-size: 28px; font-weight: 400;
+    color: var(--akqa-black); letter-spacing: -0.02em; line-height: 1.0;
+  }
+  .case-stat-label {
+    font-family: var(--font-ui); font-size: 11px; color: var(--akqa-gray-body);
+    line-height: 1.4; margin-top: 4px;
+  }
+
+  /* CTA */
+  .cta-section {
+    padding: 120px 80px; background: #000000;
+    display: flex; flex-direction: column; align-items: flex-start;
+  }
+  .cta-title {
+    font-family: var(--font-heading); font-size: 44px; font-weight: 400;
+    color: var(--akqa-off-white); letter-spacing: -0.02em; line-height: 1.1;
+    max-width: 600px; margin-bottom: 40px;
+  }
+  .cta-link {
+    font-family: var(--font-ui); font-size: 14px; color: var(--akqa-off-white);
+    text-decoration: none; padding-bottom: 4px;
+    border-bottom: 1px solid var(--akqa-off-white); transition: all 0.2s ease;
+  }
+  .cta-link:hover { color: var(--akqa-gray-muted); border-bottom-color: var(--akqa-gray-muted); }
+
+  /* FOOTER */
+  footer {
+    padding: 64px 80px; background: #000000;
+    display: flex; justify-content: space-between; align-items: center;
+    border-top: 1px solid var(--akqa-gray-dark);
+  }
+  .footer-logo { font-family: var(--font-heading); font-size: 22px; color: var(--akqa-off-white); text-decoration: none; }
+  .footer-text { font-family: var(--font-ui); font-size: 12px; color: var(--akqa-gray-muted); }
+
+  /* RESPONSIVE */
+  @media (max-width: 1024px) {
+    nav, .hero, .narrative-section, .steps-section, .cap-section, .clients-section, .tech-section, .impact-section, .insights-section, .cases-section, .cta-section, footer {
+      padding-left: 40px; padding-right: 40px;
+    }
+    .client-logo { flex: 0 0 25%; }
+    .stats-section { padding-left: 40px; padding-right: 40px; grid-template-columns: repeat(2, 1fr); }
+    .hero-title { font-size: 52px; }
+    .narrative-grid, .cap-header { grid-template-columns: 1fr; gap: 40px; }
+    .use-cases { grid-template-columns: repeat(2, 1fr); }
+    .tech-grid, .impact-grid { grid-template-columns: repeat(2, 1fr); }
+    .cases-grid { grid-template-columns: repeat(2, 1fr); }
+    .insight-card { flex: 0 0 320px; }
+  }
+  @media (max-width: 640px) {
+    nav { padding: 20px 24px; }
+    .hero, .narrative-section, .steps-section, .cap-section, .clients-section, .tech-section, .impact-section, .insights-section, .cases-section, .cta-section, footer {
+      padding-left: 24px; padding-right: 24px;
+    }
+    .client-logo { flex: 0 0 50%; }
+    .stats-section { padding-left: 24px; padding-right: 24px; }
+    .hero-title { font-size: 36px; }
+    .stat-value { font-size: 40px; }
+    .use-cases { grid-template-columns: 1fr; }
+    .step { flex: 0 0 280px; }
+    .tech-grid { grid-template-columns: 1fr; }
+    .impact-grid { grid-template-columns: repeat(2, 1fr); }
+    .cases-grid { grid-template-columns: 1fr; }
+    .insight-card { flex: 0 0 280px; }
+    .nav-links { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a class="nav-logo" href="akqa-ai-product-library.html">AKQA</a>
+  <ul class="nav-links">
+    <li><a href="akqa-ai-product-library.html">All capabilities</a></li>
+    <li><a href="#approach">Approach</a></li>
+    <li><a href="#capabilities">Capabilities</a></li>
+    <li><a href="#cases">Case Studies</a></li>
+  </ul>
+  <div class="mode-toggle">
+    <a href="#" class="active"><span class="mode-dot"></span> human</a>
+    <a href="travel-hospitality-agent.html"><span class="mode-dot"></span> agent</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-breadcrumb">
+    <a href="akqa-ai-product-library.html">Capabilities</a>
+    <span>/</span>
+    <a href="akqa-ai-product-library.html">Hospitality</a>
+    <span>/</span>
+    Travel &amp; Hospitality
+  </div>
+  <h1 class="hero-title">Travel &amp; Hospitality <span class="x-mark">&times;</span> AKQA</h1>
+  <p>AKQA builds digital experiences for airlines, hotels, and attractions. From booking platforms to in-flight companions, AKQA's work serves billions of journeys annually.</p>
+  <div class="hero-divider"></div>
+</section>
+
+<!-- STATS -->
+<section class="stats-section">
+  <div class="stat">
+    <div class="stat-value">1B+</div>
+    <div class="stat-label">App visits in a single year for a major global airline</div>
+  </div>
+  <div class="stat">
+    <div class="stat-value">15</div>
+    <div class="stat-label">Years of continuous digital partnership with a leading airline</div>
+  </div>
+  <div class="stat">
+    <div class="stat-value">1,000+</div>
+    <div class="stat-label">Species and 15,000 animals served through a connected wildlife experience platform</div>
+  </div>
+  <div class="stat">
+    <div class="stat-value">90%</div>
+    <div class="stat-label">Increase in mobile performance score for a luxury cruise platform after headless CMS rebuild</div>
+  </div>
+</section>
+
+<!-- NARRATIVE -->
+<section class="narrative-section">
+  <div class="narrative-grid">
+    <div>
+      <div class="narrative-label">The Opportunity</div>
+      <h2 class="narrative-title">Every journey begins before departure. The experience should start there too.</h2>
+    </div>
+    <div>
+      <div class="narrative-body">
+        <p>Travel and hospitality brands compete on experience — but the digital touchpoint is often the weakest link. From booking to check-in to post-stay engagement, guests and travellers expect the same attention to detail online that they receive in person. The gap between physical excellence and digital mediocrity is where loyalty is won or lost.</p>
+        <p>Intelligent platforms close that gap. AI-powered companions transform meal planning into inspiration, route planning into discovery, and booking into a relationship. Multi-brand digital ecosystems consolidate fragmented experiences into a single, intuitive journey — from the moment a guest imagines their trip through departure and beyond.</p>
+        <p>AKQA builds the digital experience layer for travel and hospitality. Customer journey mapping, user personas, and personalised booking flows form the foundation. From airline apps that become primary self-service channels to hotel platforms that reignite the booking experience — the work is live, serving billions of journeys.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CAPABILITIES -->
+<section class="steps-section" id="approach">
+  <div class="steps-label">What We Do</div>
+  <div class="steps-grid" id="capabilities">
+    <div class="step">
+      <div class="step-number">01</div>
+      <div class="step-title">Airline App Design</div>
+      <div class="step-desc">For Delta Air Lines, we built the Fly Delta app from launch in 2009 through continuous redesign. AKQA introduced Apple Pay, RFID baggage tracking, and contextual features that turned a boarding pass app into the primary self-service channel. Over 1 billion visits annually.</div>
+    </div>
+    <div class="step">
+      <div class="step-number">02</div>
+      <div class="step-title">Hotel Website Redesign</div>
+      <div class="step-desc">For Centara, we rebuilt their multi-brand hotel website through customer journey mapping and user research. AKQA designed simplified booking flows, personalised rate pages, and destination guides that increased conversion and guest satisfaction across their global portfolio.</div>
+    </div>
+    <div class="step">
+      <div class="step-number">03</div>
+      <div class="step-title">Luxury Launch Platforms</div>
+      <div class="step-desc">For Jumeirah's Marsa Al Arab, we designed a digital experience that captured the property's scale and prestige. The platform achieved fastest opening room occupancy in Jumeirah's history, earning coverage in Hollywood Reporter, Dezeen, and CNN.</div>
+    </div>
+    <div class="step">
+      <div class="step-number">04</div>
+      <div class="step-title">Cruise Platform Redesign</div>
+      <div class="step-desc">For Ponant, we delivered a headless CMS-powered platform in under 10 months. The new site achieved 90% improvement in mobile performance, 83% reduction in product time-to-market, and better conversion through destination-specific storytelling.</div>
+    </div>
+    <div class="step">
+      <div class="step-number">05</div>
+      <div class="step-title">Pilgrimage Platform</div>
+      <div class="step-desc">For Nusuk, we designed a digital platform serving 2 billion potential Hajj and Umrah pilgrims. The platform simplifies registration, personalises pilgrim journeys, and manages the world's largest seasonal migration event through intelligent, culturally respectful design.</div>
+    </div>
+  </div>
+</section>
+
+
+<!-- CLIENTS -->
+<section class="clients-section">
+  <div class="clients-label">Clients</div>
+  <div class="clients-grid">
+    <div class="client-logo"><span>Delta Air Lines</span></div>
+    <div class="client-logo"><span>Centara</span></div>
+    <div class="client-logo"><span>Ponant</span></div>
+    <div class="client-logo"><span>Jumeirah</span></div>
+    <div class="client-logo"><span>One&amp;Only Resorts</span></div>
+    <div class="client-logo"><span>Eurostar</span></div>
+    <div class="client-logo"><span>Mandai</span></div>
+    <div class="client-logo"><span>Nusuk</span></div>
+  </div>
+</section>
+
+
+<!-- HOW WE BUILD -->
+<section class="tech-section">
+  <div class="tech-label">How We Build</div>
+  <div class="tech-grid">
+    <div class="tech-group">
+      <div class="tech-group-title">Research & Strategy</div>
+      <div class="tech-item">Customer journey mapping</div>
+      <div class="tech-item">User persona development</div>
+      <div class="tech-item">Competitive analysis</div>
+    </div>
+    <div class="tech-group">
+      <div class="tech-group-title">Experience Design</div>
+      <div class="tech-item">Mobile app design</div>
+      <div class="tech-item">Booking flow optimization</div>
+      <div class="tech-item">Responsive web design</div>
+    </div>
+    <div class="tech-group">
+      <div class="tech-group-title">Personalization</div>
+      <div class="tech-item">AI-powered recommendations</div>
+      <div class="tech-item">Contextual messaging</div>
+      <div class="tech-item">Membership experiences</div>
+    </div>
+    <div class="tech-group">
+      <div class="tech-group-title">Integration</div>
+      <div class="tech-item">Payment systems (Apple Pay)</div>
+      <div class="tech-item">Baggage tracking</div>
+      <div class="tech-item">Booking platforms</div>
+    </div>
+  </div>
+</section>
+
+
+<!-- SECTOR IMPACT -->
+<section class="impact-section" id="impact">
+  <div class="impact-label">Sector Impact</div>
+  <div class="impact-grid">
+    <div>
+      <div class="impact-value">83%</div>
+      <div class="impact-label-text">Faster product time-to-market for a luxury cruise operator deploying a headless CMS-powered destination platform</div>
+    </div>
+    <div>
+      <div class="impact-value">2B+</div>
+      <div class="impact-label-text">Potential pilgrims served through Nusuk's digital platform — managing the world's largest seasonal migration for Hajj and Umrah with culturally respectful, intelligent design at global scale</div>
+    </div>
+    <div>
+      <div class="impact-value">7</div>
+      <div class="impact-label-text">Hospitality and travel brands served — from Delta to Jumeirah, Ponant, and Eurostar</div>
+    </div>
+    <div>
+      <div class="impact-value">10</div>
+      <div class="impact-label-text">Months from kickoff to launch for a luxury cruise platform — delivered under original timeline with headless CMS architecture</div>
+    </div>
+  </div>
+</section>
+
+
+<!-- CASE STUDIES -->
+<section class="cases-section" id="cases">
+  <div class="cases-label">Case Studies</div>
+  <div class="cases-grid">
+    <div class="case-card">
+      <div class="case-client">Delta Air Lines</div>
+      <h3 class="case-title">Fifteen years redefining travel in the digital age</h3>
+      <div class="case-desc">AKQA has partnered with Delta Air Lines since 2009 to develop Fly Delta — the airline's primary self-service channel. From the first app launch through continuous redesign, the team has focused on empathy and smart UI, delivering industry firsts including Apple Pay integration and RFID baggage tracking. Over one billion visits in 2023.</div>
+    </div>
+    <div class="case-card">
+      <div class="case-client">Centara</div>
+      <h3 class="case-title">Digitalising world-class Thai hospitality across global markets</h3>
+      <div class="case-desc">AKQA worked with Centara to build an intuitive, multi-brand website relaunch. Customer journey mapping workshops, user personas, and extensive research identified key targets. The team enhanced experiences through personalised membership rates, destination recommendations, and a satisfying booking journey for end users.</div>
+    </div>
+    <div class="case-card">
+      <div class="case-client">Mandai</div>
+      <h3 class="case-title">Connected wildlife experience for over a thousand species</h3>
+      <div class="case-desc">AKQA partnered with Mandai Wildlife Reserves Singapore to deliver a delightful cross-platform visitor experience. MarTech integration gathers user data and delivers tailored reports, while design thinking workshops and research drive personalisation across pre-visit, during-visit, and post-visit touchpoints.</div>
+    </div>
+  </div>
+</section>
+
+
+<!-- CTA -->
+<section class="cta-section">
+  <h2 class="cta-title"></h2>
+  <a class="cta-link" href="akqa-ai-product-library.html">Explore all capabilities</a>
+</section>
+
+
+<!-- FOOTER -->
+<footer>
+  <a class="footer-logo" href="akqa-ai-product-library.html">AKQA</a>
+  <span class="footer-text">&copy; 2026 AKQA. All rights reserved.</span>
+</footer>
+
+<script>
+  window.addEventListener('scroll', () => {
+    document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 50);
+  });
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+</script>
+
+</body>
+</html>
