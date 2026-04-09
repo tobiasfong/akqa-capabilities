@@ -423,6 +423,8 @@
     .insight-card { flex: 0 0 280px; }
     .nav-links { display: none; }
   }
+  a.case-card-link { text-decoration: none; color: inherit; display: block; }
+  a.case-card-link:hover .case-card { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(0,0,0,0.12); }
 </style>
 </head>
 <body>
@@ -599,21 +601,27 @@
 <section class="cases-section" id="cases">
   <div class="cases-label">Case Studies</div>
   <div class="cases-grid">
+    <a href="https://www.aleph-labs.com/work/hsbc" target="_blank" rel="noopener" class="case-card-link">
     <div class="case-card">
       <div class="case-client">HSBC</div>
       <h3 class="case-title">Embedding financial services where forty million customers already operate</h3>
       <div class="case-desc">AKQA partnered with HSBC to introduce embedded financing — enabling banking services on non-financial partner platforms across 62 countries. Users complete transactions from payments to credit borrowing as part of end-to-end experiences, such as paying invoices directly from accounting platforms.</div>
     </div>
+    </a>
+    <a href="https://www.aleph-labs.com/work/standard-chartered" target="_blank" rel="noopener" class="case-card-link">
     <div class="case-card">
       <div class="case-client">Standard Chartered</div>
       <h3 class="case-title">Sixteen years transforming corporate banking across forty-five countries</h3>
       <div class="case-desc">Over sixteen years, AKQA has delivered twenty-two-plus projects for Standard Chartered — including the Straight2Bank corporate platform serving clients across forty-five countries. A unified design system with forty-four reusable components enables cost-efficient scaling across cultural, language, and behavioural boundaries.</div>
     </div>
+    </a>
+    <a href="https://www.aleph-labs.com/work/techcombank" target="_blank" rel="noopener" class="case-card-link">
     <div class="case-card">
       <div class="case-client">Techcombank</div>
       <h3 class="case-title">Research-driven business banking changing ninety million lives in Vietnam</h3>
       <div class="case-desc">AKQA partnered with Techcombank to build sustainable finance through user research, journey design, and product design. Over one hundred users interviewed across twenty rounds of testing validated every decision — from information architecture to design system — delivering coherent SME banking experiences across desktop and mobile.</div>
     </div>
+    </a>
   </div>
 </section>
 

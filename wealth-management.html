@@ -423,6 +423,8 @@
     .insight-card { flex: 0 0 280px; }
     .nav-links { display: none; }
   }
+  a.case-card-link { text-decoration: none; color: inherit; display: block; }
+  a.case-card-link:hover .case-card { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(0,0,0,0.12); }
 </style>
 </head>
 <body>
@@ -597,18 +599,18 @@
 <section class="cases-section" id="cases">
   <div class="cases-label">Case Studies</div>
   <div class="cases-grid">
-    <div class="case-card">
+    <a href="https://www.aleph-labs.com/work/uob" target="_blank" rel="noopener" class="case-card-link"><div class="case-card">
       <div class="case-client">UOB</div>
       <h3 class="case-title">Wealth ecosystem connecting clients and bankers across ASEAN</h3>
       <div class="case-desc">AKQA delivered an ecosystem of front-stage solutions for wealth clients and backstage tools for relationship managers across UOB's ASEAN network. The suite of digital solutions enables the bank to scale advisory services while continuously optimising client relationships and portfolio performance.</div>
-    </div>
+    </div></a>
     <div class="case-card">
       <div class="case-client">Bank of Singapore</div>
       <h3 class="case-title">Private banking platform for high-net-worth client relationships</h3>
       <div class="case-desc">AKQA worked closely with Bank of Singapore to understand how high-net-worth individuals with banking relationships between two and two hundred million dollars interact with their private bank. The team designed multi-channel order execution — direct trading, RM-assisted orders, and family office integration — with RM navigator and pitchbook tools.</div>
     </div>
-    <div class="case-card">
-      <div class="case-client">HESTA — Australia</div>
+    <a href="https://www.akqa.com/work/hesta/addressing-economic-inequality/" target="_blank" rel="noopener" class="case-card-link"><div class="case-card">
+      <div class="case-client">HESTA</div>
       <h3 class="case-title">Future Planner: retirement advice at scale for 700,000 members</h3>
       <div class="case-desc">AKQA built Future Planner for HESTA — the Health Employees' Superannuation Trust Australia — an interactive online retirement planning tool addressing a fund where women retire with 47% less super than men. The platform expanded advice-reach from under 1% to 98.5% of membership, with 133,187+ members using it since launch and 103,930+ unique retirement projections generated. Winner of the Adobe Experience Maker Award.</div>
       <div class="case-stats">
@@ -621,7 +623,7 @@
           <div class="case-stat-label">members used Future Planner since launch</div>
         </div>
       </div>
-    </div>
+    </div></a>
   </div>
 </section>
 
