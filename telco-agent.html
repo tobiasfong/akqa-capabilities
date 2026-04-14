@@ -4,10 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Telco | AKQA [agent]</title>
-<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root {
-    --font-mono: 'JetBrains Mono', 'SF Mono', 'Fira Code', 'Cascadia Code', monospace;
+    --font-mono: "Season Sans", sans-serif;
     --bg: #FAFAFA;
     --text: #1a1a1a;
     --muted: #666666;
@@ -120,7 +119,103 @@
   .nav-logo, .footer-logo { display: inline-flex; align-items: center; gap: 8px; }
   .akqa-logo { display: block; width: 86px; height: auto; }
   .footer-logo .akqa-logo { width: 78px; }
-</style>
+        /* Season font system */
+        @font-face {
+            font-family: "Season Mix";
+            src: url("SeasonMix-Regular.otf") format("opentype");
+            font-weight: 400;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: "Season Sans";
+            src: url("SeasonSans-Regular.otf") format("opentype");
+            font-weight: 400;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: "Season Serif";
+            src: url("SeasonSerif-Regular.otf") format("opentype");
+            font-weight: 400;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        :root {
+            --font-heading: "Season Mix", serif;
+            --font-ui: "Season Sans", sans-serif;
+            --font-mono: "Season Sans", sans-serif;
+        }
+
+        body,
+        p,
+        li,
+        .hero p,
+        .subtitle,
+        .product-desc,
+        .narrative-body,
+        .narrative-body p,
+        .step-desc,
+        .case-desc,
+        .entry-desc,
+        .comp-desc,
+        .output-desc,
+        .decision-text,
+        .footer-text {
+            font-family: "Season Sans", sans-serif;
+            text-transform: none;
+        }
+
+        h1,
+        h2,
+        .hero-title,
+        .header-title {
+            font-family: "Season Mix", serif;
+            text-transform: uppercase;
+        }
+
+        h3,
+        h4,
+        .product-name,
+        .industry-title,
+        .narrative-title,
+        .step-title,
+        .case-title,
+        .use-case-title,
+        .cta-title,
+        .tech-item,
+        .client-logo,
+        .entry h3,
+        .comp-title,
+        .output-title,
+        .decision-label {
+            font-family: "Season Sans", sans-serif;
+            text-transform: none;
+        }
+
+        .section-header,
+        .product-tag,
+        .hero-breadcrumb,
+        .narrative-label,
+        .steps-label,
+        .step-number,
+        .case-client,
+        .case-stat-label,
+        .tech-group-title,
+        .stat-label,
+        .impact-label-text,
+        .tag,
+        .mode-toggle a,
+        .nav-links a,
+        .label {
+            font-family: "Season Serif", serif;
+            text-transform: none;
+        }
+
+    </style>
 </head>
 <body>
 
