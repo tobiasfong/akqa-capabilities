@@ -237,8 +237,8 @@
   }
   .client-logo {
     flex: 0 0 25%; display: flex; align-items: center; justify-content: center;
-    padding: 40px 32px; border: 0.5px solid var(--akqa-gray-light);
-    margin: -0.5px;
+    min-height: 140px; padding: 16px 18px; border: 0.5px solid var(--akqa-gray-light);
+    margin: -0.5px; background: var(--akqa-white);
   }
   .client-logo span {
     font-family: var(--font-heading); font-size: 22px; font-weight: 400;
@@ -249,31 +249,16 @@
 
   .client-logo img {
     display: block;
-    max-width: 150px;
-    max-height: 54px;
-    width: auto;
-    height: auto;
+    max-width: 100%;
+    max-height: 100px;
+    width: 100%;
+    height: 100px;
     object-fit: contain;
     filter: grayscale(1);
-    opacity: 0.72;
+    opacity: 0.95;
     transition: opacity 0.3s ease, filter 0.3s ease;
   }
   .client-logo:hover img { opacity: 1; filter: grayscale(0); }
-  .case-client-logo {
-    min-height: 32px;
-    display: flex;
-    align-items: center;
-  }
-  .case-client-logo img {
-    display: block;
-    max-width: 140px;
-    max-height: 34px;
-    width: auto;
-    height: auto;
-    object-fit: contain;
-    filter: grayscale(1);
-    opacity: 0.8;
-  }
 
   /* TECH STACK */
   .tech-section { padding: 80px 80px; background: #000000; }
@@ -663,7 +648,7 @@
     <div class="client-logo"><img src="logos/ING.png" alt="ING" loading="lazy"></div>
     <div class="client-logo"><img src="logos/In1Bank.png" alt="In1Bank" loading="lazy"></div>
     <div class="client-logo"><img src="logos/Sacombank.png" alt="Sacombank" loading="lazy"></div>
-    <div class="client-logo"><img src="logos/Technombank.png" alt="Technombank" loading="lazy"></div>
+    <div class="client-logo"><img src="logos/Technombank.png" alt="Techcombank" loading="lazy"></div>
     <div class="client-logo"><img src="logos/TPBank.png" alt="TPBank" loading="lazy"></div>
     <div class="client-logo"><img src="logos/KWSP%20EPF.png" alt="KWSP EPF" loading="lazy"></div>
     <div class="client-logo"><img src="logos/RHB.png" alt="RHB" loading="lazy"></div>
@@ -741,21 +726,21 @@
   <div class="cases-grid">
     <a href="https://www.aleph-labs.com/work/uob" target="_blank" rel="noopener" class="case-card-link">
     <div class="case-card">
-      <div class="case-client case-client-logo"><img src="logos/UOB.png" alt="UOB" loading="lazy"></div>
+      <div class="case-client">UOB</div>
       <h3 class="case-title">A decade of digital banking transformation across ASEAN</h3>
       <div class="case-desc">Over ten years, AKQA has designed and developed more than fifty products for UOB — from UOB TMRW, which unified the Mighty and TMRW apps across Southeast Asia, to SME banking powered by UOB Infinity. The partnership has digitally enabled 5.3 million customers across the region.</div>
     </div>
     </a>
     <a href="https://www.aleph-labs.com/work/ing" target="_blank" rel="noopener" class="case-card-link">
     <div class="case-card">
-      <div class="case-client case-client-logo"><img src="logos/ING.png" alt="ING" loading="lazy"></div>
+      <div class="case-client">ING</div>
       <h3 class="case-title">Building the first digital bank in the Philippines</h3>
       <div class="case-desc">AKQA worked with ING to reimagine the banking experience in the Philippines, overcoming a traditionally conservative industry. The team adapted and contributed to the global design system, developed branding and UX guidelines, and scaled the team from a single lead to a full local operation.</div>
     </div>
     </a>
     <a href="https://www.akqa.com/work/partners-life/evince/" target="_blank" rel="noopener" class="case-card-link">
     <div class="case-card">
-      <div class="case-client case-client-logo"><img src="logos/Partners%20Life.png" alt="Partners Life" loading="lazy"></div>
+      <div class="case-client">Partners Life</div>
       <h3 class="case-title">Making life insurance advice interactive and independent</h3>
       <div class="case-desc">New Zealand is one of the most underinsured developed nations. AKQA built Evince for Partners Life — a visual, interactive advice tool that helps customers understand their life insurance needs based on personal risk. The tool cut the advice process from 23 days to 11, and 64% of customers now complete fact-finding independently without an adviser.</div>
     </div>

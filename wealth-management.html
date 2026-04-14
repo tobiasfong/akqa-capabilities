@@ -237,8 +237,8 @@
   }
   .client-logo {
     flex: 0 0 25%; display: flex; align-items: center; justify-content: center;
-    padding: 40px 32px; border: 0.5px solid var(--akqa-gray-light);
-    margin: -0.5px;
+    min-height: 140px; padding: 16px 18px; border: 0.5px solid var(--akqa-gray-light);
+    margin: -0.5px; background: var(--akqa-white);
   }
   .client-logo span {
     font-family: var(--font-heading); font-size: 22px; font-weight: 400;
@@ -249,31 +249,16 @@
 
   .client-logo img {
     display: block;
-    max-width: 150px;
-    max-height: 54px;
-    width: auto;
-    height: auto;
+    max-width: 100%;
+    max-height: 100px;
+    width: 100%;
+    height: 100px;
     object-fit: contain;
     filter: grayscale(1);
-    opacity: 0.72;
+    opacity: 0.95;
     transition: opacity 0.3s ease, filter 0.3s ease;
   }
   .client-logo:hover img { opacity: 1; filter: grayscale(0); }
-  .case-client-logo {
-    min-height: 32px;
-    display: flex;
-    align-items: center;
-  }
-  .case-client-logo img {
-    display: block;
-    max-width: 140px;
-    max-height: 34px;
-    width: auto;
-    height: auto;
-    object-fit: contain;
-    filter: grayscale(1);
-    opacity: 0.8;
-  }
 
   /* TECH STACK */
   .tech-section { padding: 80px 80px; background: #000000; }
@@ -726,17 +711,17 @@
   <div class="cases-label">Case Studies</div>
   <div class="cases-grid">
     <a href="https://www.aleph-labs.com/work/uob" target="_blank" rel="noopener" class="case-card-link"><div class="case-card">
-      <div class="case-client case-client-logo"><img src="logos/UOB.png" alt="UOB" loading="lazy"></div>
+      <div class="case-client">UOB</div>
       <h3 class="case-title">Wealth ecosystem connecting clients and bankers across ASEAN</h3>
       <div class="case-desc">AKQA delivered an ecosystem of front-stage solutions for wealth clients and backstage tools for relationship managers across UOB's ASEAN network. The suite of digital solutions enables the bank to scale advisory services while continuously optimising client relationships and portfolio performance.</div>
     </div></a>
     <div class="case-card">
-      <div class="case-client case-client-logo"><img src="logos/Bank%20of%20Singapore.png" alt="Bank of Singapore" loading="lazy"></div>
+      <div class="case-client">Bank of Singapore</div>
       <h3 class="case-title">Private banking platform for high-net-worth client relationships</h3>
       <div class="case-desc">AKQA worked closely with Bank of Singapore to understand how high-net-worth individuals with banking relationships between two and two hundred million dollars interact with their private bank. The team designed multi-channel order execution — direct trading, RM-assisted orders, and family office integration — with RM navigator and pitchbook tools.</div>
     </div>
     <a href="https://www.akqa.com/work/hesta/addressing-economic-inequality/" target="_blank" rel="noopener" class="case-card-link"><div class="case-card">
-      <div class="case-client case-client-logo"><img src="logos/HESTA.png" alt="HESTA" loading="lazy"></div>
+      <div class="case-client">HESTA</div>
       <h3 class="case-title">Future Planner: retirement advice at scale for 700,000 members</h3>
       <div class="case-desc">AKQA built Future Planner for HESTA — the Health Employees' Superannuation Trust Australia — an interactive online retirement planning tool addressing a fund where women retire with 47% less super than men. The platform expanded advice-reach from under 1% to 98.5% of membership, with 133,187+ members using it since launch and 103,930+ unique retirement projections generated. Winner of the Adobe Experience Maker Award.</div>
     </div></a>

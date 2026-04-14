@@ -237,8 +237,8 @@
   }
   .client-logo {
     flex: 0 0 25%; display: flex; align-items: center; justify-content: center;
-    padding: 40px 32px; border: 0.5px solid var(--akqa-gray-light);
-    margin: -0.5px;
+    min-height: 140px; padding: 16px 18px; border: 0.5px solid var(--akqa-gray-light);
+    margin: -0.5px; background: var(--akqa-white);
   }
   .client-logo span {
     font-family: var(--font-heading); font-size: 22px; font-weight: 400;
@@ -249,31 +249,16 @@
 
   .client-logo img {
     display: block;
-    max-width: 150px;
-    max-height: 54px;
-    width: auto;
-    height: auto;
+    max-width: 100%;
+    max-height: 100px;
+    width: 100%;
+    height: 100px;
     object-fit: contain;
     filter: grayscale(1);
-    opacity: 0.72;
+    opacity: 0.95;
     transition: opacity 0.3s ease, filter 0.3s ease;
   }
   .client-logo:hover img { opacity: 1; filter: grayscale(0); }
-  .case-client-logo {
-    min-height: 32px;
-    display: flex;
-    align-items: center;
-  }
-  .case-client-logo img {
-    display: block;
-    max-width: 140px;
-    max-height: 34px;
-    width: auto;
-    height: auto;
-    object-fit: contain;
-    filter: grayscale(1);
-    opacity: 0.8;
-  }
 
   /* TECH STACK */
   .tech-section { padding: 80px 80px; background: #000000; }
@@ -660,7 +645,7 @@
     <div class="client-logo"><img src="logos/HSBC.png" alt="HSBC" loading="lazy"></div>
     <div class="client-logo"><img src="logos/DBS.png" alt="DBS" loading="lazy"></div>
     <div class="client-logo"><img src="logos/Permata%20Bank.png" alt="Permata Bank" loading="lazy"></div>
-    <div class="client-logo"><img src="logos/Technombank.png" alt="Technombank" loading="lazy"></div>
+    <div class="client-logo"><img src="logos/Technombank.png" alt="Techcombank" loading="lazy"></div>
     <div class="client-logo"><img src="logos/MUFG.png" alt="MUFG" loading="lazy"></div>
     <div class="client-logo"><img src="logos/Amex.png" alt="Amex" loading="lazy"></div>
   </div>
@@ -729,21 +714,21 @@
   <div class="cases-grid">
     <a href="https://www.aleph-labs.com/work/hsbc" target="_blank" rel="noopener" class="case-card-link">
     <div class="case-card">
-      <div class="case-client case-client-logo"><img src="logos/HSBC.png" alt="HSBC" loading="lazy"></div>
+      <div class="case-client">HSBC</div>
       <h3 class="case-title">Embedding financial services where forty million customers already operate</h3>
       <div class="case-desc">AKQA partnered with HSBC to introduce embedded financing — enabling banking services on non-financial partner platforms across 62 countries. Users complete transactions from payments to credit borrowing as part of end-to-end experiences, such as paying invoices directly from accounting platforms.</div>
     </div>
     </a>
     <a href="https://www.aleph-labs.com/work/standard-chartered" target="_blank" rel="noopener" class="case-card-link">
     <div class="case-card">
-      <div class="case-client case-client-logo"><img src="logos/Standard%20Chartered.png" alt="Standard Chartered" loading="lazy"></div>
+      <div class="case-client">Standard Chartered</div>
       <h3 class="case-title">Sixteen years transforming corporate banking across forty-five countries</h3>
       <div class="case-desc">Over sixteen years, AKQA has delivered twenty-two-plus projects for Standard Chartered — including the Straight2Bank corporate platform serving clients across forty-five countries. A unified design system with forty-four reusable components enables cost-efficient scaling across cultural, language, and behavioural boundaries.</div>
     </div>
     </a>
     <a href="https://www.aleph-labs.com/work/techcombank" target="_blank" rel="noopener" class="case-card-link">
     <div class="case-card">
-      <div class="case-client case-client-logo"><img src="logos/Technombank.png" alt="Technombank" loading="lazy"></div>
+      <div class="case-client">Techcombank</div>
       <h3 class="case-title">Research-driven business banking changing ninety million lives in Vietnam</h3>
       <div class="case-desc">AKQA partnered with Techcombank to build sustainable finance through user research, journey design, and product design. Over one hundred users interviewed across twenty rounds of testing validated every decision — from information architecture to design system — delivering coherent SME banking experiences across desktop and mobile.</div>
     </div>

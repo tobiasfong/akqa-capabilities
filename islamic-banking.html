@@ -237,8 +237,8 @@
   }
   .client-logo {
     flex: 0 0 25%; display: flex; align-items: center; justify-content: center;
-    padding: 40px 32px; border: 0.5px solid var(--akqa-gray-light);
-    margin: -0.5px;
+    min-height: 140px; padding: 16px 18px; border: 0.5px solid var(--akqa-gray-light);
+    margin: -0.5px; background: var(--akqa-white);
   }
   .client-logo span {
     font-family: var(--font-heading); font-size: 22px; font-weight: 400;
@@ -249,31 +249,16 @@
 
   .client-logo img {
     display: block;
-    max-width: 150px;
-    max-height: 54px;
-    width: auto;
-    height: auto;
+    max-width: 100%;
+    max-height: 100px;
+    width: 100%;
+    height: 100px;
     object-fit: contain;
     filter: grayscale(1);
-    opacity: 0.72;
+    opacity: 0.95;
     transition: opacity 0.3s ease, filter 0.3s ease;
   }
   .client-logo:hover img { opacity: 1; filter: grayscale(0); }
-  .case-client-logo {
-    min-height: 32px;
-    display: flex;
-    align-items: center;
-  }
-  .case-client-logo img {
-    display: block;
-    max-width: 140px;
-    max-height: 34px;
-    width: auto;
-    height: auto;
-    object-fit: contain;
-    filter: grayscale(1);
-    opacity: 0.8;
-  }
 
   /* TECH STACK */
   .tech-section { padding: 80px 80px; background: #000000; }
@@ -724,17 +709,17 @@
   <div class="cases-label">Case Studies</div>
   <div class="cases-grid">
     <a href="https://www.aleph-labs.com/work/beu" target="_blank" rel="noopener" class="case-card-link"><div class="case-card">
-      <div class="case-client case-client-logo"><img src="logos/Bank%20Islam.png" alt="Bank Islam" loading="lazy"></div>
+      <div class="case-client">Bank Islam</div>
       <h3 class="case-title">Malaysia's first cloud-native Islamic digital bank experience</h3>
       <div class="case-desc">AKQA conceptualised and designed Be U — Bank Islam's first digital banking product targeting a younger generation. The cloud-native platform features personal assistant Aqil for daily needs and targeted recommendations, a marketplace for income opportunities, and personalised experiences built from target audience interviews and usability testing. Available on Android and iOS.</div>
     </div></a>
     <div class="case-card">
-      <div class="case-client case-client-logo"><img src="logos/BSI.png" alt="BSI" loading="lazy"></div>
+      <div class="case-client">BSI</div>
       <h3 class="case-title">Bringing Islamic banking closer to the people of Indonesia</h3>
       <div class="case-desc">AKQA developed a mobile app prioritising easy access, adaptive dashboards, and personalised financial stories for BSI. The project reinforced the Islamic bank's position as a trusted institution catering to the unique needs of Indonesian customers — contributing to the growth of Islamic finance in Indonesia.</div>
     </div>
     <a href="https://www.aleph-labs.com/work/midf" target="_blank" rel="noopener" class="case-card-link"><div class="case-card">
-      <div class="case-client case-client-logo"><img src="logos/MIDF.png" alt="MIDF" loading="lazy"></div>
+      <div class="case-client">MIDF</div>
       <h3 class="case-title">Shariah-compliant investment platform from zero to trade</h3>
       <div class="case-desc">AKQA designed, built, and launched MIDF Invest's first financial investment app from the ground up. The platform provides convenience for everyday citizens to buy and sell ETFs and trade in Shariah-compliant stocks — with integrated market insights for informed decision-making.</div>
     </div></a>

@@ -237,8 +237,8 @@
   }
   .client-logo {
     flex: 0 0 25%; display: flex; align-items: center; justify-content: center;
-    padding: 40px 32px; border: 0.5px solid var(--akqa-gray-light);
-    margin: -0.5px;
+    min-height: 140px; padding: 16px 18px; border: 0.5px solid var(--akqa-gray-light);
+    margin: -0.5px; background: var(--akqa-white);
   }
   .client-logo span {
     font-family: var(--font-heading); font-size: 22px; font-weight: 400;
@@ -249,31 +249,16 @@
 
   .client-logo img {
     display: block;
-    max-width: 150px;
-    max-height: 54px;
-    width: auto;
-    height: auto;
+    max-width: 100%;
+    max-height: 100px;
+    width: 100%;
+    height: 100px;
     object-fit: contain;
     filter: grayscale(1);
-    opacity: 0.72;
+    opacity: 0.95;
     transition: opacity 0.3s ease, filter 0.3s ease;
   }
   .client-logo:hover img { opacity: 1; filter: grayscale(0); }
-  .case-client-logo {
-    min-height: 32px;
-    display: flex;
-    align-items: center;
-  }
-  .case-client-logo img {
-    display: block;
-    max-width: 140px;
-    max-height: 34px;
-    width: auto;
-    height: auto;
-    object-fit: contain;
-    filter: grayscale(1);
-    opacity: 0.8;
-  }
 
   /* TECH STACK */
   .tech-section { padding: 80px 80px; background: #000000; }
@@ -740,17 +725,17 @@
   <div class="cases-label">Case Studies</div>
   <div class="cases-grid">
     <a href="https://www.akqa.com/work/nestle/nestle-goodnes/" target="_blank" rel="noopener" class="case-card-link"><div class="case-card">
-      <div class="case-client case-client-logo"><img src="logos/Nestle%CC%81.png" alt="Nestlé" loading="lazy"></div>
+      <div class="case-client">Nestlé</div>
       <h3 class="case-title">AI-powered family companion launched first in the Philippines</h3>
       <div class="case-desc">AKQA partnered with Nestlé and Microsoft to create Goodnes — an AI-powered family companion that unifies hundreds of brands into a single destination for personalised meal planning, budgeting, and grocery lists. Powered by GPT-4.0 with three virtual companions, the platform launched in the Philippines and is expanding across Asia-Pacific.</div>
     </div></a>
     <a href="https://www.akqa.com/news/foodstuffs-win-sitecore-ultimate-experience-award/" target="_blank" rel="noopener" class="case-card-link"><div class="case-card">
-      <div class="case-client case-client-logo"><img src="logos/Foodstuffs%20North%20Island.png" alt="Foodstuffs North Island" loading="lazy"></div>
+      <div class="case-client">Foodstuffs North Island</div>
       <h3 class="case-title">A local vibe, at a national scale</h3>
       <div class="case-desc">AKQA partnered with Foodstuffs North Island over 3 years to build an integrated omnichannel platform for New Zealand's major grocery retailer — spanning Foodstuffs and Pak'nSave. The platform delivers personalised content, online shopping, shoppable recipes, a shopping list builder, and healthier food choices. Winner of the Sitecore Ultimate Experience Award for APAC. "This achievement required dedication and tenacity from both teams collaborating as one." — Paul Bartlett, Head of Digital Transformation.</div>
     </div></a>
     <a href="https://www.akqa.com/work/fonterra/visit-fonterra/" target="_blank" rel="noopener" class="case-card-link"><div class="case-card">
-      <div class="case-client case-client-logo"><img src="logos/Fonterra.png" alt="Fonterra" loading="lazy"></div>
+      <div class="case-client">Fonterra</div>
       <h3 class="case-title">Farm to plate, at global scale</h3>
       <div class="case-desc">For Fonterra — the world's largest dairy exporter — AKQA built an immersive digital platform that brings the farm-to-plate supply chain to life. What began as a pandemic response became a permanent business asset used across customer experience, employee training, and trade shows. Available in multiple languages including Mandarin. "It's always exciting when you feel confident sharing new digital technology and seeing faces light up." — Ian Rodney, Senior Brand Experience Manager, Fonterra.</div>
     </div></a>

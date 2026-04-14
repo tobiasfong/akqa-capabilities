@@ -237,8 +237,8 @@
   }
   .client-logo {
     flex: 0 0 25%; display: flex; align-items: center; justify-content: center;
-    padding: 40px 32px; border: 0.5px solid var(--akqa-gray-light);
-    margin: -0.5px;
+    min-height: 140px; padding: 16px 18px; border: 0.5px solid var(--akqa-gray-light);
+    margin: -0.5px; background: var(--akqa-white);
   }
   .client-logo span {
     font-family: var(--font-heading); font-size: 22px; font-weight: 400;
@@ -249,31 +249,16 @@
 
   .client-logo img {
     display: block;
-    max-width: 150px;
-    max-height: 54px;
-    width: auto;
-    height: auto;
+    max-width: 100%;
+    max-height: 100px;
+    width: 100%;
+    height: 100px;
     object-fit: contain;
     filter: grayscale(1);
-    opacity: 0.72;
+    opacity: 0.95;
     transition: opacity 0.3s ease, filter 0.3s ease;
   }
   .client-logo:hover img { opacity: 1; filter: grayscale(0); }
-  .case-client-logo {
-    min-height: 32px;
-    display: flex;
-    align-items: center;
-  }
-  .case-client-logo img {
-    display: block;
-    max-width: 140px;
-    max-height: 34px;
-    width: auto;
-    height: auto;
-    object-fit: contain;
-    filter: grayscale(1);
-    opacity: 0.8;
-  }
 
   /* TECH STACK */
   .tech-section { padding: 80px 80px; background: #000000; }
@@ -736,17 +721,17 @@
   <div class="cases-label">Case Studies</div>
   <div class="cases-grid">
     <div class="case-card">
-      <div class="case-client case-client-logo"><img src="logos/Muang%20Thai%20Life.png" alt="Muang Thai Life" loading="lazy"></div>
+      <div class="case-client">Muang Thai Life</div>
       <h3 class="case-title">Total digital ecosystem for Thailand's leading insurer</h3>
       <div class="case-desc">AKQA partnered with Muang Thai Life to deliver an end-to-end digital ecosystem spanning straight-through purchase, telemedicine, personal finance assistance, goal management, lifestyle rewards, and claims — across mobile, desktop, and web. The engagement humanised the insurance experience for Thai customers through unified digital touchpoints.</div>
     </div>
     <a href="https://www.aleph-labs.com/work/generali" target="_blank" rel="noopener" class="case-card-link"><div class="case-card">
-      <div class="case-client case-client-logo"><img src="logos/Generali.png" alt="Generali" loading="lazy"></div>
+      <div class="case-client">Generali</div>
       <h3 class="case-title">Simplifying insurance through habit-building in Vietnam</h3>
       <div class="case-desc">AKQA built GenVita as more than a communication platform — we designed it to be a companion, advisor, and guide. The team localised Generali's global brand for Vietnam, created habit-driven wellness roadmaps, and streamlined the digital insurance process by overcoming technical and operational blockers.</div>
     </div></a>
     <div class="case-card">
-      <div class="case-client case-client-logo"><img src="logos/Thomson%20Medical.png" alt="Thomson Medical" loading="lazy"></div>
+      <div class="case-client">Thomson Medical</div>
       <h3 class="case-title">Consolidating seventeen care properties into one experience</h3>
       <div class="case-desc">Through co-creation workshops and design thinking, AKQA helped Thomson Medical merge seventeen websites into a single digital experience. The project elevated brand awareness, improved customer satisfaction, and redesigned the overall service journey through the power of CX and digital integration.</div>
     </div>
