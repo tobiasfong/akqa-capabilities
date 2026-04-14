@@ -70,7 +70,7 @@
     color: var(--akqa-gray-muted); text-decoration: none; transition: color 0.2s ease;
   }
   .hero-breadcrumb a:hover { color: var(--akqa-off-white); }
-  .hero-breadcrumb span { margin: 0 12px; }
+  .hero-breadcrumb span { margin: 0 8px; }
   .hero-title {
     font-family: var(--font-heading); font-size: 72px; font-weight: 400;
     color: var(--akqa-off-white); letter-spacing: -0.03em; line-height: 1.0;
@@ -141,9 +141,9 @@
     padding: 120px 80px; background: #000000;
   }
   .steps-label {
-    font-family: var(--font-ui); font-size: 12px; letter-spacing: 0.15em;
-    text-transform: uppercase; color: var(--akqa-gray-muted); margin-bottom: 64px;
-    padding-bottom: 16px; border-bottom: 1px solid var(--akqa-gray-dark);
+    font-family: var(--font-ui); font-size: 12px; letter-spacing: 0.04em;
+    text-transform: uppercase; color: var(--akqa-gray-muted); margin-bottom: 44px;
+    padding-bottom: 12px; border-bottom: 1px solid var(--akqa-gray-dark);
   }
   .steps-grid {
     display: flex; gap: 2px; overflow-x: auto; scroll-snap-type: x mandatory;
@@ -278,20 +278,20 @@
   /* TECH STACK */
   .tech-section { padding: 80px 80px; background: #000000; }
   .tech-label {
-    font-family: var(--font-ui); font-size: 12px; letter-spacing: 0.15em;
-    text-transform: uppercase; color: var(--akqa-gray-muted); margin-bottom: 48px;
-    padding-bottom: 16px; border-bottom: 1px solid var(--akqa-gray-dark);
+    font-family: var(--font-ui); font-size: 12px; letter-spacing: 0.04em;
+    text-transform: uppercase; color: var(--akqa-gray-muted); margin-bottom: 40px;
+    padding-bottom: 12px; border-bottom: 1px solid var(--akqa-gray-dark);
   }
   .tech-grid {
-    display: grid; grid-template-columns: repeat(4, 1fr); gap: 48px;
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px;
   }
   .tech-group-title {
     font-family: var(--font-ui); font-size: 11px; letter-spacing: 0.1em;
-    text-transform: uppercase; color: var(--akqa-gray-muted); margin-bottom: 20px;
+    text-transform: uppercase; color: var(--akqa-gray-muted); margin-bottom: 18px;
   }
   .tech-item {
     font-family: var(--font-heading); font-size: 18px; color: var(--akqa-off-white);
-    line-height: 2.0;
+    line-height: 1.35; margin-bottom: 16px;
   }
 
   /* MEASURED IMPACT */
@@ -558,13 +558,17 @@
         }
 
         .tech-label,
-        .tech-group-title,
-        .tech-item,
         .impact-label,
         .insights-label,
         .cases-label,
         .clients-label,
-        .use-case-label {
+        .use-case-label,
+        .steps-label {
+            letter-spacing: 0.04em;
+        }
+
+        .tech-group-title,
+        .tech-item {
             letter-spacing: 0;
         }
 
