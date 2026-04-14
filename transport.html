@@ -247,6 +247,34 @@
   }
   .client-logo:hover span { opacity: 1; }
 
+  .client-logo img {
+    display: block;
+    max-width: 150px;
+    max-height: 54px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    filter: grayscale(1);
+    opacity: 0.72;
+    transition: opacity 0.3s ease, filter 0.3s ease;
+  }
+  .client-logo:hover img { opacity: 1; filter: grayscale(0); }
+  .case-client-logo {
+    min-height: 32px;
+    display: flex;
+    align-items: center;
+  }
+  .case-client-logo img {
+    display: block;
+    max-width: 140px;
+    max-height: 34px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    filter: grayscale(1);
+    opacity: 0.8;
+  }
+
   /* TECH STACK */
   .tech-section { padding: 80px 80px; background: #000000; }
   .tech-label {
@@ -630,20 +658,20 @@
 <section class="clients-section">
   <div class="clients-label">Clients</div>
   <div class="clients-grid">
-    <div class="client-logo"><span>MINDEF</span></div>
-    <div class="client-logo"><span>Singapore Airlines</span></div>
-    <div class="client-logo"><span>Rolls Royce</span></div>
-    <div class="client-logo"><span>Seletar Airport</span></div>
-    <div class="client-logo"><span>Malaysia Airport</span></div>
-    <div class="client-logo"><span>Garuda Airlines</span></div>
-    <div class="client-logo"><span>ST Engineering</span></div>
-    <div class="client-logo"><span>SMRT</span></div>
-    <div class="client-logo"><span>Transurban</span></div>
-    <div class="client-logo"><span>Waka Kotahi</span></div>
-    <div class="client-logo"><span>JR East</span></div>
-    <div class="client-logo"><span>JAL</span></div>
-    <div class="client-logo"><span>ANA</span></div>
-    <div class="client-logo"><span>Apollo Tyres</span></div>
+    <div class="client-logo"><img src="logos/MINDEF.png" alt="MINDEF" loading="lazy"></div>
+    <div class="client-logo"><img src="logos/Singapore%20Airlines.png" alt="Singapore Airlines" loading="lazy"></div>
+    <div class="client-logo"><img src="logos/Rolls%20Royce.png" alt="Rolls Royce" loading="lazy"></div>
+    <div class="client-logo"><img src="logos/Seletar%20Airport.png" alt="Seletar Airport" loading="lazy"></div>
+    <div class="client-logo"><img src="logos/Malaysia%20Airport.png" alt="Malaysia Airport" loading="lazy"></div>
+    <div class="client-logo"><img src="logos/Garuda%20Airlines.png" alt="Garuda Airlines" loading="lazy"></div>
+    <div class="client-logo"><img src="logos/ST%20Engineering.png" alt="ST Engineering" loading="lazy"></div>
+    <div class="client-logo"><img src="logos/SMRT.png" alt="SMRT" loading="lazy"></div>
+    <div class="client-logo"><img src="logos/Transurban.png" alt="Transurban" loading="lazy"></div>
+    <div class="client-logo"><img src="logos/Waka%20Kotahi.png" alt="Waka Kotahi" loading="lazy"></div>
+    <div class="client-logo"><img src="logos/JR%20East.png" alt="JR East" loading="lazy"></div>
+    <div class="client-logo"><img src="logos/JAL.png" alt="JAL" loading="lazy"></div>
+    <div class="client-logo"><img src="logos/ANA.png" alt="ANA" loading="lazy"></div>
+    <div class="client-logo"><img src="logos/Apollo%20Tyres.png" alt="Apollo Tyres" loading="lazy"></div>
   </div>
 </section>
 
@@ -705,18 +733,18 @@
   <div class="cases-label">Case Studies</div>
   <div class="cases-grid">
     <div class="case-card">
-      <div class="case-client">MINDEF</div>
+      <div class="case-client case-client-logo"><img src="logos/MINDEF.png" alt="MINDEF" loading="lazy"></div>
       <h3 class="case-title">World-class transport management for Singapore's national defence</h3>
       <div class="case-desc">Together with ST Engineering and SMRT, AKQA designed and optimised transport workflows for MINDEF — creating a holistic transport management system that assists soldiers in acquiring required resources for missions and training. The one-stop platform replaced manual processes with digital coordination, visibility, and mobile access.</div>
     </div>
     <div class="case-card">
-      <div class="case-client">Singapore Airlines &amp; Rolls Royce</div>
+      <div class="case-client case-client-logo"><img src="logos/Singapore%20Airlines.png" alt="Singapore Airlines" loading="lazy"><img src="logos/Rolls%20Royce.png" alt="Rolls Royce" loading="lazy"></div>
       <h3 class="case-title">Pilot efficiency and safety through in-flight data intelligence</h3>
       <div class="case-desc">AKQA partnered with Singapore Airlines and Rolls Royce to push the boundaries of in-flight data. AKQA brought design, data science, and technology together to nudge pilots into more fuel-efficient flights — improving safety and reducing environmental impact.</div>
     </div>
     <a href="https://www.akqa.com/work/volvo-cars/volvo-studio-tokyo-explorer/" target="_blank" rel="noopener" class="case-card-link">
     <div class="case-card">
-      <div class="case-client">Volvo</div>
+      <div class="case-client case-client-logo"><img src="logos/Volvo%20Japan.png" alt="Volvo Japan" loading="lazy"></div>
       <h3 class="case-title">Volvo Studio Tokyo Explorer — reaching a new generation of Japanese drivers</h3>
       <div class="case-desc">AKQA created an immersive companion app for Volvo's studio in Tokyo's Aoyama district, designed to attract younger Japanese audiences less interested in traditional car ownership. AR-triggered interactions, Virtual Northern Lights, a floating zen garden, virtual Stockholm driving, and an AR-enhanced Fika Café turned the physical space into a living digital experience. Visitor numbers and test drives both doubled within the first 6 months. "It was a delight working with AKQA to create a truly unique, fun and interactive experience for our space and successfully attract a new audience." — Miyuki Kitagawa, Brand Manager, Volvo Japan</div>
     </div>

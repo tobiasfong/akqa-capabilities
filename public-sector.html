@@ -247,6 +247,34 @@
   }
   .client-logo:hover span { opacity: 1; }
 
+  .client-logo img {
+    display: block;
+    max-width: 150px;
+    max-height: 54px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    filter: grayscale(1);
+    opacity: 0.72;
+    transition: opacity 0.3s ease, filter 0.3s ease;
+  }
+  .client-logo:hover img { opacity: 1; filter: grayscale(0); }
+  .case-client-logo {
+    min-height: 32px;
+    display: flex;
+    align-items: center;
+  }
+  .case-client-logo img {
+    display: block;
+    max-width: 140px;
+    max-height: 34px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    filter: grayscale(1);
+    opacity: 0.8;
+  }
+
   /* TECH STACK */
   .tech-section { padding: 80px 80px; background: #000000; }
   .tech-label {
@@ -628,25 +656,25 @@
 <section class="clients-section">
   <div class="clients-label">Clients</div>
   <div class="clients-grid">
-    <div class="client-logo"><span>MINDEF</span></div>
-    <div class="client-logo"><span>Temasek</span></div>
-    <div class="client-logo"><span>Enterprise Singapore</span></div>
-    <div class="client-logo"><span>NTUC</span></div>
-    <div class="client-logo"><span>IMDA</span></div>
-    <div class="client-logo"><span>HDB</span></div>
-    <div class="client-logo"><span>MSF</span></div>
-    <div class="client-logo"><span>Mandai</span></div>
-    <div class="client-logo"><span>KWSP EPF</span></div>
-    <div class="client-logo"><span>Dept of Education Vic</span></div>
-    <div class="client-logo"><span>WA Dept Education</span></div>
-    <div class="client-logo"><span>Office of Commonwealth Ombudsman</span></div>
-    <div class="client-logo"><span>Visit Vic</span></div>
-    <div class="client-logo"><span>Vic Dept of Transport</span></div>
-    <div class="client-logo"><span>Inland Revenue</span></div>
-    <div class="client-logo"><span>Ministry of Justice</span></div>
-    <div class="client-logo"><span>Ministry of Foreign Affairs &amp; Trade</span></div>
-    <div class="client-logo"><span>Waka Kotahi</span></div>
-    <div class="client-logo"><span>Worksafe NZ</span></div>
+    <div class="client-logo"><img src="logos/MINDEF.png" alt="MINDEF" loading="lazy"></div>
+    <div class="client-logo"><img src="logos/Temasek.png" alt="Temasek" loading="lazy"></div>
+    <div class="client-logo"><img src="logos/Enterprise%20Singapore.png" alt="Enterprise Singapore" loading="lazy"></div>
+    <div class="client-logo"><img src="logos/NTUC.png" alt="NTUC" loading="lazy"></div>
+    <div class="client-logo"><img src="logos/IMDA.png" alt="IMDA" loading="lazy"></div>
+    <div class="client-logo"><img src="logos/HDB.png" alt="HDB" loading="lazy"></div>
+    <div class="client-logo"><img src="logos/MSF.png" alt="MSF" loading="lazy"></div>
+    <div class="client-logo"><img src="logos/Mandai.png" alt="Mandai" loading="lazy"></div>
+    <div class="client-logo"><img src="logos/KWSP%20EPF.png" alt="KWSP EPF" loading="lazy"></div>
+    <div class="client-logo"><img src="logos/Dept%20of%20Education%20Vic.png" alt="Dept of Education Vic" loading="lazy"></div>
+    <div class="client-logo"><img src="logos/WA%20Dept%20Education.png" alt="WA Dept Education" loading="lazy"></div>
+    <div class="client-logo"><img src="logos/Office%20of%20Commonwealth%20Ombudsman.png" alt="Office of Commonwealth Ombudsman" loading="lazy"></div>
+    <div class="client-logo"><img src="logos/Visit%20Vic.png" alt="Visit Vic" loading="lazy"></div>
+    <div class="client-logo"><img src="logos/Vic%20Dept%20of%20Transport.png" alt="Vic Dept of Transport" loading="lazy"></div>
+    <div class="client-logo"><img src="logos/Inland%20Revenue.png" alt="Inland Revenue" loading="lazy"></div>
+    <div class="client-logo"><img src="logos/Ministry%20of%20Justice.png" alt="Ministry of Justice" loading="lazy"></div>
+    <div class="client-logo"><img src="logos/Ministry%20of%20Foreign%20Affairs%20%26%20Trade.png" alt="Ministry of Foreign Affairs &amp; Trade" loading="lazy"></div>
+    <div class="client-logo"><img src="logos/Waka%20Kotahi.png" alt="Waka Kotahi" loading="lazy"></div>
+    <div class="client-logo"><img src="logos/Worksafe%20NZ.png" alt="Worksafe NZ" loading="lazy"></div>
   </div>
 </section>
 
@@ -716,7 +744,7 @@
     </a>
     <a href="https://www.aleph-labs.com/work/enterprisesg" target="_blank" rel="noopener" class="case-card-link">
     <div class="case-card">
-      <div class="case-client">Enterprise Singapore</div>
+      <div class="case-client case-client-logo"><img src="logos/Enterprise%20Singapore.png" alt="Enterprise Singapore" loading="lazy"></div>
       <h3 class="case-title">Inspiring businesses to grow beyond their current capabilities</h3>
       <div class="case-desc">AKQA built an integrated Martech ecosystem and redesigned Enterprise Singapore's website to reduce friction for business owners seeking support. The platform enabled internal data sharing between departments and delivered self-service tools that made it easier for the agency to guide enterprises on their growth journey.</div>
     </div>

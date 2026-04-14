@@ -247,6 +247,34 @@
   }
   .client-logo:hover span { opacity: 1; }
 
+  .client-logo img {
+    display: block;
+    max-width: 150px;
+    max-height: 54px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    filter: grayscale(1);
+    opacity: 0.72;
+    transition: opacity 0.3s ease, filter 0.3s ease;
+  }
+  .client-logo:hover img { opacity: 1; filter: grayscale(0); }
+  .case-client-logo {
+    min-height: 32px;
+    display: flex;
+    align-items: center;
+  }
+  .case-client-logo img {
+    display: block;
+    max-width: 140px;
+    max-height: 34px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    filter: grayscale(1);
+    opacity: 0.8;
+  }
+
   /* TECH STACK */
   .tech-section { padding: 80px 80px; background: #000000; }
   .tech-label {
@@ -633,20 +661,20 @@
 <section class="clients-section">
   <div class="clients-label">Clients</div>
   <div class="clients-grid">
-    <div class="client-logo"><span>Muang Thai Life</span></div>
-    <div class="client-logo"><span>Thomson Medical</span></div>
-    <div class="client-logo"><span>NTUC Income</span></div>
-    <div class="client-logo"><span>Generali</span></div>
-    <div class="client-logo"><span>AIA</span></div>
-    <div class="client-logo"><span>Sequis</span></div>
-    <div class="client-logo"><span>Prudential</span></div>
-    <div class="client-logo"><span>Manulife</span></div>
-    <div class="client-logo"><span>Synapxe Health Hub</span></div>
-    <div class="client-logo"><span>Health Promotion Board</span></div>
-    <div class="client-logo"><span>Blackmores</span></div>
-    <div class="client-logo"><span>Novo Nordisk</span></div>
-    <div class="client-logo"><span>Douglas Pharmaceuticals</span></div>
-    <div class="client-logo"><span>Union Medical &amp; Benefits Society</span></div>
+    <div class="client-logo"><img src="logos/Muang%20Thai%20Life.png" alt="Muang Thai Life" loading="lazy"></div>
+    <div class="client-logo"><img src="logos/Thomson%20Medical.png" alt="Thomson Medical" loading="lazy"></div>
+    <div class="client-logo"><img src="logos/NTUC%20Income.png" alt="NTUC Income" loading="lazy"></div>
+    <div class="client-logo"><img src="logos/Generali.png" alt="Generali" loading="lazy"></div>
+    <div class="client-logo"><img src="logos/AIA.png" alt="AIA" loading="lazy"></div>
+    <div class="client-logo"><img src="logos/Sequis.png" alt="Sequis" loading="lazy"></div>
+    <div class="client-logo"><img src="logos/Prudential.png" alt="Prudential" loading="lazy"></div>
+    <div class="client-logo"><img src="logos/Manulife.png" alt="Manulife" loading="lazy"></div>
+    <div class="client-logo"><img src="logos/Synapxe%20Health%20Hub.png" alt="Synapxe Health Hub" loading="lazy"></div>
+    <div class="client-logo"><img src="logos/Health%20Promotion%20Board.png" alt="Health Promotion Board" loading="lazy"></div>
+    <div class="client-logo"><img src="logos/Blackmores.png" alt="Blackmores" loading="lazy"></div>
+    <div class="client-logo"><img src="logos/Novo%20Nordisk.png" alt="Novo Nordisk" loading="lazy"></div>
+    <div class="client-logo"><img src="logos/Douglas%20Pharmaceuticals.png" alt="Douglas Pharmaceuticals" loading="lazy"></div>
+    <div class="client-logo"><img src="logos/Union%20Medical%20%26%20Benefits%20Society.png" alt="Union Medical &amp; Benefits Society" loading="lazy"></div>
   </div>
 </section>
 
@@ -708,17 +736,17 @@
   <div class="cases-label">Case Studies</div>
   <div class="cases-grid">
     <div class="case-card">
-      <div class="case-client">Muang Thai Life</div>
+      <div class="case-client case-client-logo"><img src="logos/Muang%20Thai%20Life.png" alt="Muang Thai Life" loading="lazy"></div>
       <h3 class="case-title">Total digital ecosystem for Thailand's leading insurer</h3>
       <div class="case-desc">AKQA partnered with Muang Thai Life to deliver an end-to-end digital ecosystem spanning straight-through purchase, telemedicine, personal finance assistance, goal management, lifestyle rewards, and claims — across mobile, desktop, and web. The engagement humanised the insurance experience for Thai customers through unified digital touchpoints.</div>
     </div>
     <a href="https://www.aleph-labs.com/work/generali" target="_blank" rel="noopener" class="case-card-link"><div class="case-card">
-      <div class="case-client">Generali (GenVita)</div>
+      <div class="case-client case-client-logo"><img src="logos/Generali.png" alt="Generali" loading="lazy"></div>
       <h3 class="case-title">Simplifying insurance through habit-building in Vietnam</h3>
       <div class="case-desc">AKQA built GenVita as more than a communication platform — we designed it to be a companion, advisor, and guide. The team localised Generali's global brand for Vietnam, created habit-driven wellness roadmaps, and streamlined the digital insurance process by overcoming technical and operational blockers.</div>
     </div></a>
     <div class="case-card">
-      <div class="case-client">Thomson Medical</div>
+      <div class="case-client case-client-logo"><img src="logos/Thomson%20Medical.png" alt="Thomson Medical" loading="lazy"></div>
       <h3 class="case-title">Consolidating seventeen care properties into one experience</h3>
       <div class="case-desc">Through co-creation workshops and design thinking, AKQA helped Thomson Medical merge seventeen websites into a single digital experience. The project elevated brand awareness, improved customer satisfaction, and redesigned the overall service journey through the power of CX and digital integration.</div>
     </div>

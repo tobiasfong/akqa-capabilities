@@ -247,6 +247,34 @@
   }
   .client-logo:hover span { opacity: 1; }
 
+  .client-logo img {
+    display: block;
+    max-width: 150px;
+    max-height: 54px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    filter: grayscale(1);
+    opacity: 0.72;
+    transition: opacity 0.3s ease, filter 0.3s ease;
+  }
+  .client-logo:hover img { opacity: 1; filter: grayscale(0); }
+  .case-client-logo {
+    min-height: 32px;
+    display: flex;
+    align-items: center;
+  }
+  .case-client-logo img {
+    display: block;
+    max-width: 140px;
+    max-height: 34px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    filter: grayscale(1);
+    opacity: 0.8;
+  }
+
   /* TECH STACK */
   .tech-section { padding: 80px 80px; background: #000000; }
   .tech-label {
@@ -630,23 +658,23 @@
 <section class="clients-section">
   <div class="clients-label">Clients</div>
   <div class="clients-grid">
-    <div class="client-logo"><span>Nestlé</span></div>
-    <div class="client-logo"><span>Coca-Cola</span></div>
-    <div class="client-logo"><span>Fonterra</span></div>
-    <div class="client-logo"><span>Whittaker's</span></div>
-    <div class="client-logo"><span>Sprite</span></div>
-    <div class="client-logo"><span>Fanta</span></div>
-    <div class="client-logo"><span>J H Whittaker &amp; Sons</span></div>
-    <div class="client-logo"><span>Bunnings</span></div>
-    <div class="client-logo"><span>KFC</span></div>
-    <div class="client-logo"><span>Scentre Group</span></div>
-    <div class="client-logo"><span>Wesfarmers</span></div>
-    <div class="client-logo"><span>Spotlight Retail Group</span></div>
-    <div class="client-logo"><span>Cash Converters</span></div>
-    <div class="client-logo"><span>Foodstuffs North Island</span></div>
-    <div class="client-logo"><span>Pak'nSave</span></div>
-    <div class="client-logo"><span>Liquorland</span></div>
-    <div class="client-logo"><span>IFB</span></div>
+    <div class="client-logo"><img src="logos/Nestle%CC%81.png" alt="Nestlé" loading="lazy"></div>
+    <div class="client-logo"><img src="logos/Coca-Cola.png" alt="Coca-Cola" loading="lazy"></div>
+    <div class="client-logo"><img src="logos/Fonterra.png" alt="Fonterra" loading="lazy"></div>
+    <div class="client-logo"><img src="logos/Whittaker%27s.png" alt="Whittaker&#x27;s" loading="lazy"></div>
+    <div class="client-logo"><img src="logos/Sprite.png" alt="Sprite" loading="lazy"></div>
+    <div class="client-logo"><img src="logos/Fanta.png" alt="Fanta" loading="lazy"></div>
+    <div class="client-logo"><img src="logos/Whittaker%27s.png" alt="Whittaker&#x27;s" loading="lazy"></div>
+    <div class="client-logo"><img src="logos/Bunnings.png" alt="Bunnings" loading="lazy"></div>
+    <div class="client-logo"><img src="logos/KFC.png" alt="KFC" loading="lazy"></div>
+    <div class="client-logo"><img src="logos/Scentre%20Group.png" alt="Scentre Group" loading="lazy"></div>
+    <div class="client-logo"><img src="logos/Wesfarmers.png" alt="Wesfarmers" loading="lazy"></div>
+    <div class="client-logo"><img src="logos/Spotlight%20Retail%20Group.png" alt="Spotlight Retail Group" loading="lazy"></div>
+    <div class="client-logo"><img src="logos/Cash%20Converters.png" alt="Cash Converters" loading="lazy"></div>
+    <div class="client-logo"><img src="logos/Foodstuffs%20North%20Island.png" alt="Foodstuffs North Island" loading="lazy"></div>
+    <div class="client-logo"><img src="logos/Pak%27nSave.png" alt="Pak&#x27;nSave" loading="lazy"></div>
+    <div class="client-logo"><img src="logos/Liquorland.png" alt="Liquorland" loading="lazy"></div>
+    <div class="client-logo"><img src="logos/IFB.png" alt="IFB" loading="lazy"></div>
   </div>
 </section>
 
@@ -712,17 +740,17 @@
   <div class="cases-label">Case Studies</div>
   <div class="cases-grid">
     <a href="https://www.akqa.com/work/nestle/nestle-goodnes/" target="_blank" rel="noopener" class="case-card-link"><div class="case-card">
-      <div class="case-client">Nestlé</div>
+      <div class="case-client case-client-logo"><img src="logos/Nestle%CC%81.png" alt="Nestlé" loading="lazy"></div>
       <h3 class="case-title">AI-powered family companion launched first in the Philippines</h3>
       <div class="case-desc">AKQA partnered with Nestlé and Microsoft to create Goodnes — an AI-powered family companion that unifies hundreds of brands into a single destination for personalised meal planning, budgeting, and grocery lists. Powered by GPT-4.0 with three virtual companions, the platform launched in the Philippines and is expanding across Asia-Pacific.</div>
     </div></a>
     <a href="https://www.akqa.com/news/foodstuffs-win-sitecore-ultimate-experience-award/" target="_blank" rel="noopener" class="case-card-link"><div class="case-card">
-      <div class="case-client">Foodstuffs North Island</div>
+      <div class="case-client case-client-logo"><img src="logos/Foodstuffs%20North%20Island.png" alt="Foodstuffs North Island" loading="lazy"></div>
       <h3 class="case-title">A local vibe, at a national scale</h3>
       <div class="case-desc">AKQA partnered with Foodstuffs North Island over 3 years to build an integrated omnichannel platform for New Zealand's major grocery retailer — spanning Foodstuffs and Pak'nSave. The platform delivers personalised content, online shopping, shoppable recipes, a shopping list builder, and healthier food choices. Winner of the Sitecore Ultimate Experience Award for APAC. "This achievement required dedication and tenacity from both teams collaborating as one." — Paul Bartlett, Head of Digital Transformation.</div>
     </div></a>
     <a href="https://www.akqa.com/work/fonterra/visit-fonterra/" target="_blank" rel="noopener" class="case-card-link"><div class="case-card">
-      <div class="case-client">Fonterra</div>
+      <div class="case-client case-client-logo"><img src="logos/Fonterra.png" alt="Fonterra" loading="lazy"></div>
       <h3 class="case-title">Farm to plate, at global scale</h3>
       <div class="case-desc">For Fonterra — the world's largest dairy exporter — AKQA built an immersive digital platform that brings the farm-to-plate supply chain to life. What began as a pandemic response became a permanent business asset used across customer experience, employee training, and trade shows. Available in multiple languages including Mandarin. "It's always exciting when you feel confident sharing new digital technology and seeing faces light up." — Ian Rodney, Senior Brand Experience Manager, Fonterra.</div>
     </div></a>

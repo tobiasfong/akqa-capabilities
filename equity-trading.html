@@ -247,6 +247,34 @@
   }
   .client-logo:hover span { opacity: 1; }
 
+  .client-logo img {
+    display: block;
+    max-width: 150px;
+    max-height: 54px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    filter: grayscale(1);
+    opacity: 0.72;
+    transition: opacity 0.3s ease, filter 0.3s ease;
+  }
+  .client-logo:hover img { opacity: 1; filter: grayscale(0); }
+  .case-client-logo {
+    min-height: 32px;
+    display: flex;
+    align-items: center;
+  }
+  .case-client-logo img {
+    display: block;
+    max-width: 140px;
+    max-height: 34px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    filter: grayscale(1);
+    opacity: 0.8;
+  }
+
   /* TECH STACK */
   .tech-section { padding: 80px 80px; background: #000000; }
   .tech-label {
@@ -631,12 +659,12 @@
 <section class="clients-section">
   <div class="clients-label">Clients</div>
   <div class="clients-grid">
-    <div class="client-logo"><span>OSL</span></div>
-    <div class="client-logo"><span>MIDF</span></div>
-    <div class="client-logo"><span>Cake DeFi</span></div>
-    <div class="client-logo"><span>Nanovest</span></div>
-    <div class="client-logo"><span>Pepperstone</span></div>
-    <div class="client-logo"><span>Eightcap</span></div>
+    <div class="client-logo"><img src="logos/OSL.png" alt="OSL" loading="lazy"></div>
+    <div class="client-logo"><img src="logos/MIDF.png" alt="MIDF" loading="lazy"></div>
+    <div class="client-logo"><img src="logos/Cake%20DeFi.png" alt="Cake DeFi" loading="lazy"></div>
+    <div class="client-logo"><img src="logos/Nanovest.png" alt="Nanovest" loading="lazy"></div>
+    <div class="client-logo"><img src="logos/Pepperstone.png" alt="Pepperstone" loading="lazy"></div>
+    <div class="client-logo"><img src="logos/Eightcap.png" alt="Eightcap" loading="lazy"></div>
   </div>
 </section>
 
@@ -698,17 +726,17 @@
   <div class="cases-label">Case Studies</div>
   <div class="cases-grid">
     <div class="case-card">
-      <div class="case-client">OSL</div>
+      <div class="case-client case-client-logo"><img src="logos/OSL.png" alt="OSL" loading="lazy"></div>
       <h3 class="case-title">Bringing new asset classes to institutional investors worldwide</h3>
       <div class="case-desc">AKQA worked closely with OSL to define the target audience for the crypto exchange and design the experience to match. Together, the team conceptualised an end-to-end experience to serve institutional investors across multiple channels and use cases.</div>
     </div>
     <a href="https://www.aleph-labs.com/work/midf" target="_blank" rel="noopener" class="case-card-link"><div class="case-card">
-      <div class="case-client">MIDF Invest</div>
+      <div class="case-client case-client-logo"><img src="logos/MIDF.png" alt="MIDF" loading="lazy"></div>
       <h3 class="case-title">From zero to trade in emerging markets</h3>
       <div class="case-desc">AKQA built MIDF Invest's first financial investment app — transforming a grant provider known for funding Malaysia's SME backbone into a digital-native trading platform. The all-in-one app provides Shariah-compliant stock and ETF trading with integrated market insights, identified through market gap analysis and customer pain point research.</div>
     </div></a>
     <a href="https://www.aleph-labs.com/work/cake" target="_blank" rel="noopener" class="case-card-link"><div class="case-card">
-      <div class="case-client">Cake DeFi</div>
+      <div class="case-client case-client-logo"><img src="logos/Cake%20DeFi.png" alt="Cake DeFi" loading="lazy"></div>
       <h3 class="case-title">The winning brand formula for decentralised finance</h3>
       <div class="case-desc">AKQA reimagined Cake DeFi's brand expression to reach beyond its crypto-native core. Customer research, lean-branding exercises, and journey workshops produced a new visual identity — anchored by the iconic HyperBerry colour palette — with brand guidelines, image assets, and a system designed to welcome newcomers to decentralised finance.</div>
     </div></a>

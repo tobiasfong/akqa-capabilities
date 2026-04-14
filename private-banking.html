@@ -247,6 +247,34 @@
   }
   .client-logo:hover span { opacity: 1; }
 
+  .client-logo img {
+    display: block;
+    max-width: 150px;
+    max-height: 54px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    filter: grayscale(1);
+    opacity: 0.72;
+    transition: opacity 0.3s ease, filter 0.3s ease;
+  }
+  .client-logo:hover img { opacity: 1; filter: grayscale(0); }
+  .case-client-logo {
+    min-height: 32px;
+    display: flex;
+    align-items: center;
+  }
+  .case-client-logo img {
+    display: block;
+    max-width: 140px;
+    max-height: 34px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    filter: grayscale(1);
+    opacity: 0.8;
+  }
+
   /* TECH STACK */
   .tech-section { padding: 80px 80px; background: #000000; }
   .tech-label {
@@ -626,11 +654,11 @@
 <section class="clients-section">
   <div class="clients-label">Clients</div>
   <div class="clients-grid">
-    <div class="client-logo"><span>Bank of Singapore</span></div>
-    <div class="client-logo"><span>UOB</span></div>
-    <div class="client-logo"><span>Prudential Japan</span></div>
-    <div class="client-logo"><span>HESTA</span></div>
-    <div class="client-logo"><span>Partners Life</span></div>
+    <div class="client-logo"><img src="logos/Bank%20of%20Singapore.png" alt="Bank of Singapore" loading="lazy"></div>
+    <div class="client-logo"><img src="logos/UOB.png" alt="UOB" loading="lazy"></div>
+    <div class="client-logo"><img src="logos/Prudential%20Japan.png" alt="Prudential Japan" loading="lazy"></div>
+    <div class="client-logo"><img src="logos/HESTA.png" alt="HESTA" loading="lazy"></div>
+    <div class="client-logo"><img src="logos/Partners%20Life.png" alt="Partners Life" loading="lazy"></div>
   </div>
 </section>
 
@@ -692,13 +720,13 @@
   <div class="cases-label">Case Studies</div>
   <div class="cases-grid">
     <div class="case-card">
-      <div class="case-client">Bank of Singapore</div>
+      <div class="case-client case-client-logo"><img src="logos/Bank%20of%20Singapore.png" alt="Bank of Singapore" loading="lazy"></div>
       <h3 class="case-title">Private banking for high-net-worth clients across Asia-Pacific</h3>
       <div class="case-desc">AKQA worked closely with Bank of Singapore to deeply understand how high-net-worth individuals with banking relationships between two and two hundred million dollars interact with their private bank. The team designed multi-channel execution — direct trading, RM-assisted orders, and family office integration — with RM navigator and pitchbook tools.</div>
     </div>
     <a href="https://www.aleph-labs.com/work/uob" target="_blank" rel="noopener" class="case-card-link">
     <div class="case-card">
-      <div class="case-client">UOB</div>
+      <div class="case-client case-client-logo"><img src="logos/UOB.png" alt="UOB" loading="lazy"></div>
       <h3 class="case-title">Wealth ecosystem for bankers and clients across ASEAN</h3>
       <div class="case-desc">AKQA delivered an ecosystem of front-stage solutions for wealth clients and backstage tools for relationship managers across UOB's ASEAN network. The digital suite enables the bank to provide the right advisory solutions while bankers continuously optimise client relationships and portfolios.</div>
     </div>

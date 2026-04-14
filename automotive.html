@@ -247,6 +247,34 @@
   }
   .client-logo:hover span { opacity: 1; }
 
+  .client-logo img {
+    display: block;
+    max-width: 150px;
+    max-height: 54px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    filter: grayscale(1);
+    opacity: 0.72;
+    transition: opacity 0.3s ease, filter 0.3s ease;
+  }
+  .client-logo:hover img { opacity: 1; filter: grayscale(0); }
+  .case-client-logo {
+    min-height: 32px;
+    display: flex;
+    align-items: center;
+  }
+  .case-client-logo img {
+    display: block;
+    max-width: 140px;
+    max-height: 34px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    filter: grayscale(1);
+    opacity: 0.8;
+  }
+
   /* TECH STACK */
   .tech-section { padding: 80px 80px; background: #000000; }
   .tech-label {
@@ -630,15 +658,15 @@
 <section class="clients-section">
   <div class="clients-label">Clients</div>
   <div class="clients-grid">
-    <div class="client-logo"><span>Nissan</span></div>
-    <div class="client-logo"><span>Volvo Japan</span></div>
-    <div class="client-logo"><span>General Motors China</span></div>
-    <div class="client-logo"><span>NIO</span></div>
-    <div class="client-logo"><span>Hyundai</span></div>
-    <div class="client-logo"><span>Toyota</span></div>
-    <div class="client-logo"><span>Mazda</span></div>
-    <div class="client-logo"><span>Mitsubishi</span></div>
-    <div class="client-logo"><span>Volkswagen UK</span></div>
+    <div class="client-logo"><img src="logos/Nissan.png" alt="Nissan" loading="lazy"></div>
+    <div class="client-logo"><img src="logos/Volvo%20Japan.png" alt="Volvo Japan" loading="lazy"></div>
+    <div class="client-logo"><img src="logos/General%20Motors%20China.png" alt="General Motors China" loading="lazy"></div>
+    <div class="client-logo"><img src="logos/NIO.png" alt="NIO" loading="lazy"></div>
+    <div class="client-logo"><img src="logos/Hyundai.png" alt="Hyundai" loading="lazy"></div>
+    <div class="client-logo"><img src="logos/Toyota.png" alt="Toyota" loading="lazy"></div>
+    <div class="client-logo"><img src="logos/Mazda.png" alt="Mazda" loading="lazy"></div>
+    <div class="client-logo"><img src="logos/Mitsubishi.png" alt="Mitsubishi" loading="lazy"></div>
+    <div class="client-logo"><img src="logos/Volkswagen%20UK.png" alt="Volkswagen UK" loading="lazy"></div>
   </div>
 </section>
 
@@ -704,17 +732,17 @@
   <div class="cases-label">Case Studies</div>
   <div class="cases-grid">
     <a href="https://www.akqa.com/work/nissan/idx/" target="_blank" rel="noopener" class="case-card-link"><div class="case-card">
-      <div class="case-client">Nissan</div>
+      <div class="case-client case-client-logo"><img src="logos/Nissan.png" alt="Nissan" loading="lazy"></div>
       <h3 class="case-title">The world's first VR car configurator, built for the Tokyo Motor Show</h3>
       <div class="case-desc">AKQA partnered with Nissan and Oculus Rift to create the IDx — a world-first VR car configuration experience debuted at the Tokyo Motor Show. The installation drew average sessions of 7 minutes and queue wait times of up to 70 minutes, outperforming every other activity on the show floor. It won First Place at Creative Showcase and the Digital Installations award at Design Week.</div>
     </div></a>
     <a href="https://www.akqa.com/work/volvo-cars/volvo-studio-tokyo-explorer/" target="_blank" rel="noopener" class="case-card-link"><div class="case-card">
-      <div class="case-client">Volvo Japan</div>
+      <div class="case-client case-client-logo"><img src="logos/Volvo%20Japan.png" alt="Volvo Japan" loading="lazy"></div>
       <h3 class="case-title">Volvo Studio Tokyo Explorer — reaching a new generation of Japanese drivers</h3>
       <div class="case-desc">AKQA created an immersive companion app for Volvo's studio in Tokyo's Aoyama district, designed to attract younger Japanese audiences. AR-triggered interactions, Virtual Northern Lights, a floating zen garden, and an AR-enhanced Fika Café turned the physical space into a living digital experience. "It was a delight working with AKQA to create a truly unique, fun and interactive experience." — Miyuki Kitagawa, Brand Manager, Volvo Japan</div>
     </div></a>
     <div class="case-card">
-      <div class="case-client">General Motors China</div>
+      <div class="case-client case-client-logo"><img src="logos/General%20Motors%20China.png" alt="General Motors China" loading="lazy"></div>
       <h3 class="case-title">Hello Billy — an AI voice assistant for the showroom floor</h3>
       <div class="case-desc">AKQA built "Hello Billy" for General Motors in China — an AI voice assistant with holographic display and Kinect sensors. The multi-sensory in-showroom experience achieved a 76% conversation rate and 100% touch interaction rate with visitors, transforming the traditional dealership visit into an interactive, technology-led journey.</div>
     </div>

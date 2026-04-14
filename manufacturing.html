@@ -247,6 +247,34 @@
   }
   .client-logo:hover span { opacity: 1; }
 
+  .client-logo img {
+    display: block;
+    max-width: 150px;
+    max-height: 54px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    filter: grayscale(1);
+    opacity: 0.72;
+    transition: opacity 0.3s ease, filter 0.3s ease;
+  }
+  .client-logo:hover img { opacity: 1; filter: grayscale(0); }
+  .case-client-logo {
+    min-height: 32px;
+    display: flex;
+    align-items: center;
+  }
+  .case-client-logo img {
+    display: block;
+    max-width: 140px;
+    max-height: 34px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    filter: grayscale(1);
+    opacity: 0.8;
+  }
+
   /* TECH STACK */
   .tech-section { padding: 80px 80px; background: #000000; }
   .tech-label {
@@ -630,13 +658,13 @@
 <section class="clients-section">
   <div class="clients-label">Clients</div>
   <div class="clients-grid">
-    <div class="client-logo"><span>Sony BRAVIA</span></div>
-    <div class="client-logo"><span>Bridgestone</span></div>
-    <div class="client-logo"><span>Breville</span></div>
-    <div class="client-logo"><span>Dyson</span></div>
-    <div class="client-logo"><span>IFB</span></div>
-    <div class="client-logo"><span>Apollo Tyres</span></div>
-    <div class="client-logo"><span>Amrize</span></div>
+    <div class="client-logo"><img src="logos/Sony%20BRAVIA.png" alt="Sony BRAVIA" loading="lazy"></div>
+    <div class="client-logo"><img src="logos/Bridgestone.png" alt="Bridgestone" loading="lazy"></div>
+    <div class="client-logo"><img src="logos/Breville.png" alt="Breville" loading="lazy"></div>
+    <div class="client-logo"><img src="logos/Dyson.png" alt="Dyson" loading="lazy"></div>
+    <div class="client-logo"><img src="logos/IFB.png" alt="IFB" loading="lazy"></div>
+    <div class="client-logo"><img src="logos/Apollo%20Tyres.png" alt="Apollo Tyres" loading="lazy"></div>
+    <div class="client-logo"><img src="logos/Amrize.png" alt="Amrize" loading="lazy"></div>
   </div>
 </section>
 
@@ -702,17 +730,17 @@
   <div class="cases-label">Case Studies</div>
   <div class="cases-grid">
     <a href="https://www.akqa.com/work/sony-bravia/cinema-is-coming-home/" target="_blank" rel="noopener" class="case-card-link"><div class="case-card">
-      <div class="case-client">Sony BRAVIA</div>
+      <div class="case-client case-client-logo"><img src="logos/Sony%20BRAVIA.png" alt="Sony BRAVIA" loading="lazy"></div>
       <h3 class="case-title">Cinema is Coming Home</h3>
       <div class="case-desc">AKQA's Tokyo studio led the brand platform campaign for Sony BRAVIA, partnering with Sony Pictures Animation and Imageworks — including directors of Spider-Man: Into the Spider-Verse — to bring cinematic storytelling into the home. Services spanned brand platform, film production, campaign creative, VFX, and social media. "They helped bring our vision to life in ways that truly connect with audiences." — Motoi Kawamura, GM Global Sales &amp; Marketing, Sony</div>
     </div></a>
     <div class="case-card">
-      <div class="case-client">Bridgestone</div>
+      <div class="case-client case-client-logo"><img src="logos/Bridgestone.png" alt="Bridgestone" loading="lazy"></div>
       <h3 class="case-title">Bringing a precision manufacturer into the digital age across India</h3>
       <div class="case-desc">AKQA partners with Bridgestone in India to deliver digital experiences that connect the industrial tyre manufacturer with consumers and fleet operators across the subcontinent. The work spans brand strategy, digital platforms, and customer engagement — translating precision manufacturing heritage into modern digital brand presence for one of the world's most trusted tyre brands.</div>
     </div>
     <div class="case-card">
-      <div class="case-client">Breville</div>
+      <div class="case-client case-client-logo"><img src="logos/Breville.png" alt="Breville" loading="lazy"></div>
       <h3 class="case-title">Premium digital experiences for Australia's leading appliance brand</h3>
       <div class="case-desc">AKQA builds digital product experiences for Breville in Australia, translating engineering innovation into consumer desire. From product discovery through to purchase, the work connects kitchen appliance craft with premium digital storytelling — helping Breville maintain its market position as a brand synonymous with quality and design in the Australian and APAC market.</div>
     </div>

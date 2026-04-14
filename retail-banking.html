@@ -247,6 +247,34 @@
   }
   .client-logo:hover span { opacity: 1; }
 
+  .client-logo img {
+    display: block;
+    max-width: 150px;
+    max-height: 54px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    filter: grayscale(1);
+    opacity: 0.72;
+    transition: opacity 0.3s ease, filter 0.3s ease;
+  }
+  .client-logo:hover img { opacity: 1; filter: grayscale(0); }
+  .case-client-logo {
+    min-height: 32px;
+    display: flex;
+    align-items: center;
+  }
+  .case-client-logo img {
+    display: block;
+    max-width: 140px;
+    max-height: 34px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    filter: grayscale(1);
+    opacity: 0.8;
+  }
+
   /* TECH STACK */
   .tech-section { padding: 80px 80px; background: #000000; }
   .tech-label {
@@ -630,23 +658,23 @@
 <section class="clients-section">
   <div class="clients-label">Clients</div>
   <div class="clients-grid">
-    <div class="client-logo"><span>UOB</span></div>
-    <div class="client-logo"><span>Maybank</span></div>
-    <div class="client-logo"><span>ING</span></div>
-    <div class="client-logo"><span>In1Bank</span></div>
-    <div class="client-logo"><span>Sacombank</span></div>
-    <div class="client-logo"><span>Techcombank</span></div>
-    <div class="client-logo"><span>TPBank</span></div>
-    <div class="client-logo"><span>KWSP EPF</span></div>
-    <div class="client-logo"><span>RHB</span></div>
-    <div class="client-logo"><span>Ambank</span></div>
-    <div class="client-logo"><span>CIMB</span></div>
-    <div class="client-logo"><span>BRI</span></div>
-    <div class="client-logo"><span>BNI</span></div>
-    <div class="client-logo"><span>BCA</span></div>
-    <div class="client-logo"><span>Partners Life</span></div>
-    <div class="client-logo"><span>Reserve Bank of NZ</span></div>
-    <div class="client-logo"><span>Banking Ombudsman</span></div>
+    <div class="client-logo"><img src="logos/UOB.png" alt="UOB" loading="lazy"></div>
+    <div class="client-logo"><img src="logos/Maybank.png" alt="Maybank" loading="lazy"></div>
+    <div class="client-logo"><img src="logos/ING.png" alt="ING" loading="lazy"></div>
+    <div class="client-logo"><img src="logos/In1Bank.png" alt="In1Bank" loading="lazy"></div>
+    <div class="client-logo"><img src="logos/Sacombank.png" alt="Sacombank" loading="lazy"></div>
+    <div class="client-logo"><img src="logos/Technombank.png" alt="Technombank" loading="lazy"></div>
+    <div class="client-logo"><img src="logos/TPBank.png" alt="TPBank" loading="lazy"></div>
+    <div class="client-logo"><img src="logos/KWSP%20EPF.png" alt="KWSP EPF" loading="lazy"></div>
+    <div class="client-logo"><img src="logos/RHB.png" alt="RHB" loading="lazy"></div>
+    <div class="client-logo"><img src="logos/Ambank.png" alt="Ambank" loading="lazy"></div>
+    <div class="client-logo"><img src="logos/CIMB.png" alt="CIMB" loading="lazy"></div>
+    <div class="client-logo"><img src="logos/BRI.png" alt="BRI" loading="lazy"></div>
+    <div class="client-logo"><img src="logos/BNI.png" alt="BNI" loading="lazy"></div>
+    <div class="client-logo"><img src="logos/BCA.png" alt="BCA" loading="lazy"></div>
+    <div class="client-logo"><img src="logos/Partners%20Life.png" alt="Partners Life" loading="lazy"></div>
+    <div class="client-logo"><img src="logos/Reserve%20Bank%20of%20NZ.png" alt="Reserve Bank of NZ" loading="lazy"></div>
+    <div class="client-logo"><img src="logos/Banking%20Ombudsman.png" alt="Banking Ombudsman" loading="lazy"></div>
   </div>
 </section>
 
@@ -713,21 +741,21 @@
   <div class="cases-grid">
     <a href="https://www.aleph-labs.com/work/uob" target="_blank" rel="noopener" class="case-card-link">
     <div class="case-card">
-      <div class="case-client">UOB</div>
+      <div class="case-client case-client-logo"><img src="logos/UOB.png" alt="UOB" loading="lazy"></div>
       <h3 class="case-title">A decade of digital banking transformation across ASEAN</h3>
       <div class="case-desc">Over ten years, AKQA has designed and developed more than fifty products for UOB — from UOB TMRW, which unified the Mighty and TMRW apps across Southeast Asia, to SME banking powered by UOB Infinity. The partnership has digitally enabled 5.3 million customers across the region.</div>
     </div>
     </a>
     <a href="https://www.aleph-labs.com/work/ing" target="_blank" rel="noopener" class="case-card-link">
     <div class="case-card">
-      <div class="case-client">ING</div>
+      <div class="case-client case-client-logo"><img src="logos/ING.png" alt="ING" loading="lazy"></div>
       <h3 class="case-title">Building the first digital bank in the Philippines</h3>
       <div class="case-desc">AKQA worked with ING to reimagine the banking experience in the Philippines, overcoming a traditionally conservative industry. The team adapted and contributed to the global design system, developed branding and UX guidelines, and scaled the team from a single lead to a full local operation.</div>
     </div>
     </a>
     <a href="https://www.akqa.com/work/partners-life/evince/" target="_blank" rel="noopener" class="case-card-link">
     <div class="case-card">
-      <div class="case-client">Partners Life</div>
+      <div class="case-client case-client-logo"><img src="logos/Partners%20Life.png" alt="Partners Life" loading="lazy"></div>
       <h3 class="case-title">Making life insurance advice interactive and independent</h3>
       <div class="case-desc">New Zealand is one of the most underinsured developed nations. AKQA built Evince for Partners Life — a visual, interactive advice tool that helps customers understand their life insurance needs based on personal risk. The tool cut the advice process from 23 days to 11, and 64% of customers now complete fact-finding independently without an adviser.</div>
     </div>
