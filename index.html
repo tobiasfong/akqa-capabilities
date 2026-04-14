@@ -255,13 +255,16 @@
     .hero-title-container { height: 100px; }
     .nav-links { display: none; }
   }
+  .nav-logo, .footer-logo { display: inline-flex; align-items: center; gap: 8px; }
+  .akqa-logo { display: block; width: 86px; height: auto; }
+  .footer-logo .akqa-logo { width: 78px; }
 </style>
 </head>
 <body>
 
 <!-- NAV -->
 <nav id="nav">
-  <a class="nav-logo" href="#">AKQA</a>
+  <a class="nav-logo" href="#"><img class="akqa-logo" src="AKQA_logo.svg" alt="AKQA"></a>
   <ul class="nav-links">
     <li><a href="#industry" class="active">Industries</a></li>
     <li><a href="#capability">Capability</a></li>
@@ -487,7 +490,7 @@
 
 <!-- FOOTER -->
 <footer>
-  <a class="footer-logo" href="#">AKQA</a>
+  <a class="footer-logo" href="#"><img class="akqa-logo" src="AKQA_logo.svg" alt="AKQA"></a>
   <span class="footer-text">&copy; 2026 AKQA. All rights reserved.</span>
 </footer>
 

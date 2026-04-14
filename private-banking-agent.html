@@ -117,12 +117,15 @@
     .nav-links { display: none; }
     .content { padding: 80px 20px 60px; }
   }
+  .nav-logo, .footer-logo { display: inline-flex; align-items: center; gap: 8px; }
+  .akqa-logo { display: block; width: 86px; height: auto; }
+  .footer-logo .akqa-logo { width: 78px; }
 </style>
 </head>
 <body>
 
 <nav>
-  <a class="nav-logo" href="akqa-ai-product-library-agent.html">AKQA <span class="nav-mode">[agent]</span></a>
+  <a class="nav-logo" href="akqa-ai-product-library-agent.html"><img class="akqa-logo" src="AKQA_logo.svg" alt="AKQA"> <span class="nav-mode">[agent]</span></a>
   <div class="mode-toggle">
     <a href="private-banking.html"><span class="mode-dot"></span> human</a>
     <a href="#" class="active"><span class="mode-dot"></span> agent</a>
@@ -145,7 +148,7 @@
 </main>
 
 <footer>
-  <a class="footer-logo" href="akqa-ai-product-library-agent.html">AKQA <span class="nav-mode">[agent]</span></a>
+  <a class="footer-logo" href="akqa-ai-product-library-agent.html"><img class="akqa-logo" src="AKQA_logo.svg" alt="AKQA"> <span class="nav-mode">[agent]</span></a>
   <span class="footer-text">&copy; 2026 AKQA. All rights reserved.</span>
 </footer>
 

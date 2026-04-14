@@ -158,13 +158,16 @@
     footer { padding: 0 16px 40px; }
     .nav-links { display: none; }
   }
+  .nav-logo, .footer-logo { display: inline-flex; align-items: center; gap: 8px; }
+  .akqa-logo { display: block; width: 86px; height: auto; }
+  .footer-logo .akqa-logo { width: 78px; }
 </style>
 </head>
 <body>
 
 <!-- NAV -->
 <nav>
-  <a class="nav-logo" href="#">~/akqa</a>
+  <a class="nav-logo" href="#"><img class="akqa-logo" src="AKQA_logo.svg" alt="AKQA"></a>
   <ul class="nav-links">
     <li><a href="#">/</a></li>
     <li><a href="#industries">/industries</a></li>
